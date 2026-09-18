@@ -1,0 +1,3072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇳 India's Cloud Native Ecosystem — KCD Gujarat 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════ */
+/*  RESET & BASE — clean light theme inspired by cncg.in      */
+/* ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a1628;
+  --bg-gradient: linear-gradient(180deg, #0E2A52 0%, #0a1628 100%);
+  --white: #132042;
+  --border: #1e3a6e;
+  --border-light: #162d55;
+  --text-900: #ffffff;
+  --text-800: #E6EDFB;
+  --text-700: #C9D8F7;
+  --text-600: #B9CCF2;
+  --text-500: #7C8AA5;
+  --text-400: #5a6a8a;
+  --text-300: #2a4070;
+  --blue-600: #5CE1E6;
+  --blue-500: #5CE1E6;
+  --blue-100: #132042;
+  --blue-50: #0E2A52;
+  --leaders: #2563eb;
+  --maintainers: #059669;
+  --projects: #d97706;
+  --ambassadors: #7c3aed;
+  --companies: #dc2626;
+  --education: #ca8a04;
+  --community: #0891b2;
+  --diversity: #db2777;
+  --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+}
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-800);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #5CE1E6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  HEADER — sticky frosted glass like cncg.in                */
+/* ═══════════════════════════════════════════════════════════ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(14,42,82,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-logo {
+  /* KCD Gujarat logo is now an img tag */
+}
+.header-brand h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-900);
+}
+.header-brand h1 span { color: #5CE1E6; }
+.header-sub {
+  font-size: 0.75rem;
+  color: var(--text-500);
+  margin-left: 12px;
+  display: none;
+}
+@media (min-width: 640px) { .header-sub { display: inline; } }
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-nav a {
+  font-size: 0.85rem;
+  color: var(--text-600);
+  transition: color 0.2s;
+}
+.header-nav a:hover { color: var(--blue-600); text-decoration: none; }
+
+/* Search */
+.search-wrap { position: relative; }
+.search-wrap input {
+  width: 220px;
+  padding: 8px 12px 8px 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0E2A52;
+  color: #E6EDFB;
+  font-family: inherit;
+  font-size: 0.8rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-wrap input:focus {
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+.search-wrap input::placeholder { color: var(--text-400); }
+.search-wrap svg {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  fill: var(--text-400);
+}
+.search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #132042;
+  border: 1px solid #1e3a6e;
+  border-radius: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.search-results.show { display: block; }
+.search-result-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.8rem;
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: var(--blue-50); }
+.sr-symbol {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.65rem;
+  color: white;
+  flex-shrink: 0;
+}
+.sr-name { font-weight: 600; color: var(--text-800); }
+.sr-meta { font-size: 0.7rem; color: var(--text-500); }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  HERO — stats section like cncg.in                         */
+/* ═══════════════════════════════════════════════════════════ */
+.hero {
+  text-align: center;
+  padding: 40px 24px 32px;
+}
+.hero h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-900);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 640px) { .hero h2 { font-size: 2.5rem; } }
+.hero p {
+  color: var(--text-600);
+  max-width: 560px;
+  margin: 0 auto 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-700);
+}
+.hero-stat strong { color: var(--text-900); }
+.hero-stat .icon { color: var(--blue-500); font-size: 1rem; }
+.hero-divider {
+  height: 16px;
+  width: 1px;
+  background: var(--text-300);
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  MAIN LAYOUT — map + sidebar                               */
+/* ═══════════════════════════════════════════════════════════ */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 16px 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .main-layout {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  flex-wrap: wrap;
+}
+.filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.filter-select {
+  padding: 6px 30px 6px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0E2A52;
+  color: #E6EDFB;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  min-width: 150px;
+}
+.filter-select:focus {
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+.filter-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+}
+.filter-chip {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-600);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-chip:hover { border-color: var(--blue-500); color: var(--blue-600); }
+.filter-chip.active {
+  background: var(--blue-50);
+  border-color: var(--blue-500);
+  color: var(--blue-600);
+  font-weight: 600;
+}
+
+/* MAP PANEL */
+.map-panel {
+  flex: 0 0 42%;
+  min-height: 600px;
+  border-radius: 20px;
+  overflow: visible;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--white);
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .map-panel { height: 72vh; min-height: 520px; }
+}
+.map-svg-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.map-svg-wrap svg {
+  max-height: 100%;
+  max-width: 100%;
+}
+/* State paths — light theme */
+.map-svg-wrap svg path {
+  fill: #1a3a6e;
+  stroke: #2a5090;
+  stroke-width: 0.8;
+  transition: fill 0.25s ease;
+  cursor: pointer;
+}
+.map-svg-wrap svg path.has-data { fill: #3b82f6; }
+.map-svg-wrap svg path:hover { fill: #5CE1E6; }
+.map-svg-wrap svg path.state-active {
+  fill: #5CE1E6;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+/* City dots */
+.city-dot { cursor: pointer; transition: all 0.3s ease; }
+.city-dot circle.dot-bg {
+  fill: rgba(37, 99, 235, 0.12);
+  transition: all 0.3s;
+}
+.city-dot circle.dot-core {
+  fill: var(--blue-600);
+  transition: all 0.3s;
+}
+.city-dot:hover circle.dot-bg { fill: rgba(37, 99, 235, 0.25); }
+.city-dot:hover circle.dot-core { fill: #1d4ed8; }
+.city-dot.active circle.dot-bg { fill: rgba(37, 99, 235, 0.3); }
+.city-dot.active circle.dot-core { fill: #1d4ed8; }
+.city-label {
+  fill: var(--text-600);
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  pointer-events: none;
+}
+.city-count {
+  display: none;
+}
+@keyframes pulse {
+  0% { opacity: 0.6; r: inherit; }
+  100% { opacity: 0; }
+}
+.city-dot.active .pulse-ring {
+  animation: pulse 1.5s ease-out infinite;
+}
+/* Ahmedabad golden pulse */
+@keyframes goldenPulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+.city-dot[data-city="ahmedabad"] .golden-ring {
+  fill: none;
+  stroke: #ca8a04;
+  stroke-width: 2;
+  animation: goldenPulse 2s ease-out infinite;
+}
+/* Pan-India button */
+.pan-india-btn {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 20px;
+  border-radius: 24px;
+  border: 1px solid var(--blue-500);
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+  color: var(--blue-600);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 5;
+  white-space: nowrap;
+}
+.pan-india-btn:hover {
+  background: var(--blue-50);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+}
+.pan-india-btn .count { opacity: 0.6; font-weight: 400; }
+
+/* SIDEBAR (hidden, kept for JS compat) */
+.sidebar-panel { display: none; }
+
+/* DASHBOARD PANEL — right side grid */
+.dashboard-panel {
+  flex: 1;
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .dashboard-panel {
+    height: 72vh;
+    min-height: 520px;
+  }
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  height: 100%;
+  grid-template-rows: repeat(3, 1fr);
+}
+@media (min-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+.dash-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.dash-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+.dash-card-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-500);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dash-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Donut chart via conic-gradient */
+.donut-wrap { display: flex; align-items: center; gap: 12px; }
+.donut {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+.donut-hole {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-900);
+}
+.donut-legend {
+  display: flex; flex-direction: column; gap: 2px;
+  font-size: 0.62rem; color: var(--text-600); overflow: hidden;
+}
+.donut-legend-item { display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+.donut-legend-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.donut-legend-val { font-weight: 700; color: var(--text-800); margin-left: auto; padding-left: 4px; }
+
+/* Horizontal bar chart */
+.bar-chart { display: flex; flex-direction: column; gap: 5px; flex: 1; justify-content: center; }
+.bar-row { display: flex; align-items: center; gap: 6px; font-size: 0.68rem; }
+.bar-label {
+  width: 65px; text-align: right; color: var(--text-600); font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0;
+}
+.bar-track { flex: 1; height: 12px; background: var(--blue-50); border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; transition: width 0.6s ease; min-width: 2px; }
+.bar-fill.blue { background: var(--blue-500); }
+.bar-fill.green { background: #059669; }
+.bar-fill.amber { background: #d97706; }
+.bar-fill.purple { background: #7c3aed; }
+.bar-fill.cyan { background: #0891b2; }
+.bar-fill.pink { background: #db2777; }
+.bar-val { width: 28px; text-align: right; font-weight: 700; color: var(--text-800); font-size: 0.68rem; flex-shrink: 0; }
+
+/* Big metric */
+.metric-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+.metric-big { font-size: 1.8rem; font-weight: 800; color: var(--blue-600); line-height: 1; }
+.metric-unit { font-size: 0.75rem; color: var(--text-500); font-weight: 500; }
+.metric-sub { font-size: 0.68rem; color: var(--text-500); line-height: 1.5; }
+.metric-sub strong { color: var(--text-800); }
+
+/* Ring SVG chart */
+.ring-wrap { display: flex; align-items: center; gap: 14px; }
+.ring-svg { width: 76px; height: 76px; flex-shrink: 0; }
+.ring-stats { display: flex; flex-direction: column; gap: 4px; }
+.ring-stat-val { font-size: 1.3rem; font-weight: 800; color: var(--text-900); }
+.ring-stat-label { font-size: 0.65rem; color: var(--text-500); }
+.ring-stat-sub { font-size: 0.62rem; color: var(--blue-600); font-weight: 600; }
+
+/* Activity list */
+.activity-list { display: flex; flex-direction: column; gap: 4px; font-size: 0.68rem; }
+.activity-row { display: flex; align-items: center; gap: 6px; color: var(--text-600); padding: 2px 0; }
+.activity-val { font-weight: 700; color: var(--text-900); min-width: 36px; }
+.activity-icon { font-size: 0.8rem; }
+
+/* Category group */
+.cat-group { margin-bottom: 16px; }
+.cat-group-title {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 4px 0;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ENTITY CARD — clean white like cncg.in */
+.entity-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+.entity-card:hover {
+  background: var(--blue-50);
+  border-color: #bfdbfe;
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.symbol-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: white;
+  flex-shrink: 0;
+}
+.card-info { flex: 1; min-width: 0; }
+.card-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-org {
+  font-size: 0.7rem;
+  color: var(--text-500);
+  margin-top: 1px;
+}
+.card-title {
+  font-size: 0.7rem;
+  color: var(--text-400);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+.card-chevron {
+  color: var(--text-300);
+  flex-shrink: 0;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+}
+.entity-card:hover .card-chevron { color: var(--blue-500); }
+
+/* Expanded card detail */
+.card-detail {
+  display: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+}
+.entity-card.expanded .card-detail { display: block; }
+.entity-card.expanded .card-chevron { display: none; }
+.card-detail .description {
+  font-size: 0.8rem;
+  color: var(--text-600);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.card-detail .highlight {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--blue-600);
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: var(--blue-50);
+  border-radius: 10px;
+  border-left: 3px solid var(--blue-500);
+  margin-bottom: 10px;
+}
+.card-detail .links {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.card-detail .links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Kubestronaut name grid — clean chips instead of comma blob */
+.ks-name-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.ks-name-grid::-webkit-scrollbar { width: 3px; }
+.ks-name-grid::-webkit-scrollbar-thumb { background: var(--text-300); border-radius: 2px; }
+.ks-name-chip {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-700);
+  background: var(--blue-50);
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.ks-name-chip:hover {
+  background: var(--blue-100);
+  color: var(--blue-600);
+  border-color: var(--blue-500);
+}
+
+/* Welcome state */
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  height: 100%;
+}
+.welcome .arrow {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+.welcome h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-800);
+  margin-bottom: 6px;
+}
+.welcome p {
+  font-size: 0.85rem;
+  color: var(--text-500);
+  line-height: 1.5;
+  max-width: 260px;
+}
+.show-all-btn {
+  margin-top: 12px;
+  padding: 6px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--blue-500);
+  background: var(--blue-50);
+  color: var(--blue-600);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.show-all-btn:hover { background: var(--blue-100); }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  LEGEND                                                      */
+/* ═══════════════════════════════════════════════════════════ */
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px;
+  font-size: 0.7rem;
+  color: var(--text-500);
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--blue-500);
+  background: #0E2A52;
+  display: inline-block;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  CHAPTERS GRID — state cards like cncg.in                   */
+/* ═══════════════════════════════════════════════════════════ */
+.chapters-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+  width: 100%;
+}
+.chapters-section h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-900);
+  text-align: center;
+  margin-bottom: 6px;
+}
+.chapters-section > p {
+  font-size: 0.85rem;
+  color: var(--text-600);
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 12px;
+}
+@media (min-width: 640px) { .state-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .state-grid { grid-template-columns: repeat(3, 1fr); } }
+.state-card {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  padding: 16px 18px;
+  transition: all 0.2s;
+}
+.state-card:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+}
+.state-card h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-900);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.state-card h3 .badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: var(--blue-100);
+  color: var(--blue-600);
+  border-radius: 20px;
+  padding: 1px 8px;
+}
+.state-card ul {
+  list-style: none;
+  padding: 0;
+}
+.state-card li {
+  font-size: 0.8rem;
+  color: var(--blue-600);
+  padding: 2px 0;
+}
+.state-card li:hover { color: #1d4ed8; text-decoration: underline; cursor: pointer; }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  STATS BAR (bottom)                                         */
+/* ═══════════════════════════════════════════════════════════ */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--text-500);
+}
+.stats-bar .stat-val { font-weight: 700; color: var(--blue-600); }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  FOOTER — clean like cncg.in                                */
+/* ═══════════════════════════════════════════════════════════ */
+.site-footer {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-400);
+  padding: 16px;
+}
+.site-footer a { color: var(--text-400); }
+.site-footer a:hover { color: var(--blue-500); }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  TOOLTIP                                                    */
+/* ═══════════════════════════════════════════════════════════ */
+.tooltip {
+  position: fixed;
+  background: var(--text-800);
+  border: 1px solid var(--text-700);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 1000;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.tooltip.show { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  TABS — Good / Bad / Unspoken                                */
+/* ═══════════════════════════════════════════════════════════ */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 0 24px 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.tab-btn {
+  flex: 1;
+  padding: 16px 24px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-600);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: -0.01em;
+}
+.tab-btn:first-child { border-radius: 12px 0 0 12px; }
+.tab-btn:nth-child(2), .tab-btn:nth-child(3) { border-radius: 0; border-left: none; border-right: none; }
+.tab-btn:last-child { border-radius: 0 12px 12px 0; }
+/* Color-coded active states */
+.tab-btn[data-tab="good"].active {
+  background: #16a34a; border-color: #16a34a; color: white;
+  box-shadow: 0 2px 8px rgba(22,163,74,0.3);
+}
+.tab-btn[data-tab="bad"].active {
+  background: #dc2626; border-color: #dc2626; color: white;
+  box-shadow: 0 2px 8px rgba(220,38,38,0.3);
+}
+.tab-btn[data-tab="unspoken"].active {
+  background: #d97706; border-color: #d97706; color: white;
+  box-shadow: 0 2px 8px rgba(217,119,6,0.3);
+}
+.tab-btn[data-tab="future"].active {
+  background: #2563eb; border-color: #2563eb; color: white;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+.tab-btn:not(.active):hover { background: #1a3a6e; color: #E6EDFB; }
+.tab-page { display: none !important; }
+.tab-page.active { display: block !important; }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  TAB 1 — The Good (stat strip + contributors + stories)      */
+/* ═══════════════════════════════════════════════════════════ */
+/* ── Stat Strip ── */
+.stat-strip {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px;
+  max-width: 1440px; margin: 0 auto 36px; padding: 0 24px;
+}
+@media (max-width: 768px) { .stat-strip { grid-template-columns: repeat(3, 1fr); } }
+.stat-chip {
+  text-align: center; padding: 42px 18px 38px;
+  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15); transition: all 0.3s;
+  cursor: pointer; position: relative; overflow: hidden;
+}
+.stat-chip:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: #bfdbfe; }
+.stat-chip.expanded { background: linear-gradient(135deg, #0E2A52 0%, #1a3a6e 100%); border-color: #5CE1E6; box-shadow: 0 8px 24px rgba(92,225,230,0.15); }
+.stat-chip .stat-num {
+  font-size: 3.6rem; font-weight: 800; line-height: 1; letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums; transition: transform 0.3s;
+}
+.stat-chip.expanded .stat-num { transform: scale(0.85); }
+.stat-chip .stat-num.green { color: #5CE1E6; }
+.stat-chip .stat-num.blue { color: #60a5fa; }
+.stat-chip .stat-lbl {
+  font-size: 0.9rem; font-weight: 600; color: #B9CCF2; margin-top: 12px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.stat-chip .stat-detail {
+  max-height: 0; opacity: 0; overflow: hidden;
+  font-size: 0.78rem; color: #C9D8F7; line-height: 1.5;
+  margin-top: 0; transition: all 0.3s ease;
+}
+.stat-chip.expanded .stat-detail {
+  max-height: 80px; opacity: 1; margin-top: 10px;
+  padding-top: 10px; border-top: 1px solid var(--border);
+}
+/* ── Contributors Gallery ── */
+.contrib-section { max-width: 1440px; margin: 0 auto 24px; padding: 0 24px; }
+.contrib-heading {
+  font-size: 1.1rem; font-weight: 800; color: var(--text-800);
+  margin-bottom: 16px; letter-spacing: -0.02em;
+}
+.contrib-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+@media (max-width: 768px) { .contrib-gallery { grid-template-columns: repeat(3, 1fr); } }
+.contrib-card {
+  text-align: center; cursor: pointer; padding: 14px 8px;
+  border-radius: 14px; border: 1px solid transparent; transition: all 0.2s;
+}
+.contrib-card:hover { background: #1a3a6e; border-color: #5CE1E6; transform: translateY(-2px); }
+.contrib-card.active { background: #eff6ff; border-color: #bfdbfe; }
+.contrib-photo {
+  width: 80px; height: 80px; border-radius: 50%;
+  margin: 0 auto 10px; object-fit: cover;
+  border: 3px solid #1e3a6e; transition: border-color 0.2s;
+}
+.contrib-card:hover .contrib-photo { border-color: #3b82f6; }
+.contrib-card.active .contrib-photo { border-color: #2563eb; }
+.contrib-name { font-weight: 700; font-size: 0.82rem; color: var(--text-800); }
+.contrib-role { font-size: 0.72rem; color: #B9CCF2; margin-top: 2px; }
+.contrib-org { font-size: 0.66rem; color: #7C8AA5; margin-top: 1px; }
+/* Bio panel — overlay on gallery */
+.contrib-bio {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7); z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.contrib-bio-inner {
+  display: flex; gap: 24px; padding: 32px;
+  background: #132042;
+  border: 1px solid #1e3a6e; border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  animation: scaleIn 0.25s ease-out;
+  max-width: 700px; width: 100%; position: relative;
+}
+@keyframes scaleIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
+.contrib-bio-close {
+  position: absolute; top: 12px; right: 16px;
+  background: none; border: none; font-size: 1.4rem;
+  cursor: pointer; color: #7C8AA5; transition: color 0.2s;
+}
+.contrib-bio-close:hover { color: #374151; }
+.contrib-bio-left { flex: 0 0 auto; text-align: center; }
+.contrib-bio-left img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #2563eb; }
+.contrib-bio-left .bio-name { font-weight: 800; font-size: 1rem; margin-top: 8px; }
+.contrib-bio-left .bio-title { font-size: 0.82rem; color: #B9CCF2; margin-top: 2px; }
+.contrib-bio-right { flex: 1; }
+.contrib-bio-right .bio-bullets { list-style: none; padding: 0; margin: 0; }
+.contrib-bio-right .bio-bullets li {
+  font-size: 0.82rem; color: #374151; line-height: 1.7;
+  padding: 4px 0 4px 20px; position: relative;
+}
+.contrib-bio-right .bio-bullets li::before { content: '\25B8'; position: absolute; left: 0; color: #2563eb; font-weight: 700; }
+.contrib-bio-right .bio-highlight {
+  font-size: 0.82rem; font-style: italic; color: #2563eb;
+  padding: 10px 14px; background: rgba(37,99,235,0.06);
+  border-radius: 8px; margin-top: 10px; border-left: 3px solid #3b82f6;
+}
+.contrib-bio-right .bio-links { display: flex; gap: 8px; margin-top: 10px; }
+.contrib-bio-right .bio-links a {
+  font-size: 0.72rem; color: #2563eb; background: #eff6ff;
+  padding: 4px 12px; border-radius: 8px; text-decoration: none;
+  border: 1px solid #bfdbfe; font-weight: 500;
+}
+.contrib-bio-right .bio-links a:hover { color: white; background: #2563eb; }
+@media (max-width: 768px) { .contrib-bio-inner { flex-direction: column; } }
+/* ── Story blocks ── */
+.good-stories { max-width: 1440px; margin: 0 auto 24px; padding: 0 24px; }
+.good-stories .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 1023px) { .good-stories .story-grid { grid-template-columns: 1fr; } }
+/* ── Map standalone ── */
+.map-standalone { max-width: 1440px; margin: 20px auto 0; padding: 0 24px; }
+.map-standalone .map-panel { height: auto; min-height: 600px; max-height: none; overflow: visible; }
+.map-standalone .map-panel .map-svg-wrap { min-height: 600px; }
+/* ── Future tab ── */
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  TAB 2 — The Bad (red accent theme)                         */
+/* ═══════════════════════════════════════════════════════════ */
+.bad-section-intro {
+  max-width: 800px; margin: 0 auto 32px; padding: 0 24px; text-align: center;
+}
+.bad-section-intro h2 {
+  font-size: 2rem; font-weight: 800; color: #f87171; margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.bad-section-intro p {
+  font-size: 1rem; color: #B9CCF2; line-height: 1.6;
+}
+
+.bad-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  max-width: 1200px; margin: 0 auto 32px; padding: 0 24px;
+}
+@media (max-width: 768px) { .bad-grid { grid-template-columns: 1fr; } }
+
+.bad-card {
+  background: linear-gradient(135deg, #1a1025 0%, #132042 100%);
+  border: 1px solid #3b1a1a; border-radius: 18px;
+  padding: 36px 28px; transition: all 0.3s; cursor: default;
+  position: relative; overflow: hidden;
+}
+.bad-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #dc2626, #f87171, transparent);
+}
+.bad-card:hover { border-color: #7f1d1d; transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(220,38,38,0.12); }
+.bad-card .bad-num {
+  font-size: 3.2rem; font-weight: 800; color: #f87171; line-height: 1;
+  letter-spacing: -0.03em; margin-bottom: 8px;
+}
+.bad-card .bad-title {
+  font-size: 1.1rem; font-weight: 700; color: #E6EDFB; margin-bottom: 10px;
+}
+.bad-card .bad-desc {
+  font-size: 0.92rem; color: #B9CCF2; line-height: 1.65;
+}
+.bad-card .bad-desc em { color: #f87171; font-style: normal; font-weight: 600; }
+.bad-card .bad-desc strong { color: #fca5a5; }
+.bad-card .bad-quote {
+  font-size: 0.88rem; color: #fca5a5; font-style: italic; margin-top: 12px;
+  padding-top: 10px; border-top: 1px solid #3b1a1a; line-height: 1.5;
+}
+
+.bad-secondary {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  max-width: 1200px; margin: 0 auto 40px; padding: 0 24px;
+}
+@media (max-width: 768px) { .bad-secondary { grid-template-columns: 1fr; } }
+
+.bad-chip {
+  background: linear-gradient(135deg, #1a1025 0%, #132042 100%);
+  border: 1px solid #3b1a1a; border-radius: 16px;
+  padding: 28px 20px; text-align: center; transition: all 0.3s;
+}
+.bad-chip:hover { border-color: #7f1d1d; transform: translateY(-2px); }
+.bad-chip .bad-chip-title {
+  font-size: 1rem; font-weight: 700; color: #f87171; margin-bottom: 10px;
+}
+.bad-chip .bad-chip-desc {
+  font-size: 0.88rem; color: #B9CCF2; line-height: 1.55;
+}
+.bad-chip .bad-chip-quote {
+  font-size: 0.82rem; color: #fca5a5; font-style: italic; margin-top: 10px; line-height: 1.4;
+}
+
+.proof-section {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px 32px;
+}
+.proof-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 1px solid #3b1a1a;
+}
+.proof-header h3 {
+  font-size: 1.3rem; font-weight: 800; color: #f87171; white-space: nowrap;
+}
+.proof-header .proof-line {
+  flex: 1; height: 1px; background: linear-gradient(90deg, #7f1d1d, transparent);
+}
+.proof-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+@media (max-width: 768px) { .proof-grid { grid-template-columns: 1fr; } }
+
+.proof-card {
+  background: linear-gradient(135deg, #1a1025 0%, #132042 100%);
+  border: 1px solid #3b1a1a; border-radius: 16px;
+  padding: 24px; transition: all 0.3s;
+}
+.proof-card:hover { border-color: #7f1d1d; box-shadow: 0 6px 24px rgba(220,38,38,0.08); }
+.proof-card .proof-label {
+  font-weight: 700; font-size: 0.95rem; color: #f87171; margin-bottom: 12px;
+}
+.proof-card .proof-caption {
+  font-size: 0.82rem; color: #7C8AA5; margin-top: 10px; line-height: 1.5;
+}
+.proof-card .narr-img { border-radius: 10px; width: 100%; margin-top: 0; }
+.proof-card .narr-img-row { display: flex; gap: 10px; }
+.proof-card .narr-img-row .narr-img { flex: 1; min-width: 0; object-fit: contain; }
+
+.proof-card-text {
+  display: flex; align-items: center; justify-content: center; min-height: 200px;
+}
+.proof-card-text .inner { text-align: center; padding: 12px; }
+.proof-card-text .inner .headline {
+  font-size: 1.25rem; font-weight: 800; color: #f87171; line-height: 1.4; margin-bottom: 12px;
+}
+.proof-card-text .inner .subtext {
+  font-size: 0.95rem; color: #B9CCF2; line-height: 1.6;
+}
+.proof-card-text .inner .subtext strong { color: #fca5a5; }
+.proof-card-text .inner .callout {
+  font-size: 0.88rem; color: #f87171; font-weight: 600; margin-top: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  TAB 3 — The Unspoken (amber accent theme)                  */
+/* ═══════════════════════════════════════════════════════════ */
+.unspoken-intro {
+  max-width: 800px; margin: 0 auto 36px; padding: 0 24px; text-align: center;
+}
+.unspoken-intro h2 {
+  font-size: 2rem; font-weight: 800; color: #fbbf24; margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.unspoken-intro p {
+  font-size: 1rem; color: #B9CCF2; line-height: 1.6;
+}
+
+.unspoken-featured {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  max-width: 1200px; margin: 0 auto 24px; padding: 0 24px;
+}
+@media (max-width: 768px) { .unspoken-featured { grid-template-columns: 1fr; } }
+
+.unspoken-card {
+  background: linear-gradient(135deg, #1a1808 0%, #132042 100%);
+  border: 1px solid #3d3010; border-radius: 18px;
+  padding: 32px 24px; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.unspoken-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #d97706, #fbbf24, transparent);
+}
+.unspoken-card:hover { border-color: #92400e; transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(251,191,36,0.08); }
+.unspoken-card .uc-num {
+  font-size: 2.8rem; font-weight: 800; color: #fbbf24; line-height: 1;
+  margin-bottom: 8px;
+}
+.unspoken-card .uc-title {
+  font-size: 1.05rem; font-weight: 700; color: #E6EDFB; margin-bottom: 10px;
+}
+.unspoken-card .uc-desc {
+  font-size: 0.9rem; color: #B9CCF2; line-height: 1.6;
+}
+.unspoken-card .uc-desc strong { color: #fcd34d; }
+.unspoken-card .uc-quote {
+  font-size: 0.85rem; color: #fcd34d; font-style: italic; margin-top: 12px;
+  padding-top: 10px; border-top: 1px solid #3d3010; line-height: 1.5;
+}
+
+.unspoken-bottom {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  max-width: 1200px; margin: 0 auto 40px; padding: 0 24px;
+}
+@media (max-width: 768px) { .unspoken-bottom { grid-template-columns: repeat(2, 1fr); } }
+
+.unspoken-chip {
+  background: linear-gradient(135deg, #1a1808 0%, #132042 100%);
+  border: 1px solid #3d3010; border-radius: 16px;
+  padding: 24px 18px; text-align: center; transition: all 0.3s;
+}
+.unspoken-chip:hover { border-color: #92400e; transform: translateY(-2px); }
+.unspoken-chip .uch-title {
+  font-size: 0.95rem; font-weight: 700; color: #fbbf24; margin-bottom: 8px;
+}
+.unspoken-chip .uch-desc {
+  font-size: 0.85rem; color: #B9CCF2; line-height: 1.5;
+}
+
+.unspoken-quote {
+  max-width: 800px; margin: 0 auto; padding: 0 24px 32px; text-align: center;
+}
+.unspoken-quote .divider-img {
+  width: 100px; margin: 0 auto 20px; display: block; opacity: 0.5;
+}
+.unspoken-quote .quote-text {
+  font-size: 1.5rem; font-weight: 700; color: #fbbf24; line-height: 1.5;
+}
+.unspoken-quote .quote-text .highlight { color: #ffffff; }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  TAB 4 — The Future (cyan accent, hopeful theme)             */
+/* ═══════════════════════════════════════════════════════════ */
+.future-hero-v2 {
+  text-align: center; max-width: 900px; margin: 0 auto 40px; padding: 48px 24px;
+  position: relative;
+}
+.future-hero-v2::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 2px; background: linear-gradient(90deg, transparent, #5CE1E6, transparent);
+}
+.future-hero-v2 .future-label {
+  display: inline-block; font-size: 0.78rem; font-weight: 700; color: #5CE1E6;
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px;
+  padding: 6px 16px; border: 1px solid rgba(92,225,230,0.3); border-radius: 20px;
+  background: rgba(92,225,230,0.06);
+}
+.future-hero-v2 h2 {
+  font-size: 2.2rem; font-weight: 800; color: #E6EDFB; line-height: 1.3; margin-bottom: 18px;
+}
+.future-hero-v2 h2 span { color: #5CE1E6; }
+.future-hero-v2 p {
+  font-size: 1.05rem; color: #B9CCF2; line-height: 1.7; max-width: 700px; margin: 0 auto;
+}
+
+.future-actions-v2 {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1200px; margin: 0 auto 40px; padding: 0 24px;
+}
+@media (max-width: 768px) { .future-actions-v2 { grid-template-columns: 1fr; } }
+
+.future-card {
+  background: linear-gradient(135deg, #0a1e3d 0%, #132042 100%);
+  border: 1px solid #1e3a6e; border-radius: 18px;
+  padding: 32px 24px; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.future-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #5CE1E6, #3b82f6, transparent);
+}
+.future-card:hover { border-color: #5CE1E6; transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(92,225,230,0.1); }
+.future-card .fc-title {
+  font-size: 1.1rem; font-weight: 700; color: #E6EDFB; margin-bottom: 10px;
+}
+.future-card .fc-desc {
+  font-size: 0.92rem; color: #B9CCF2; line-height: 1.65;
+}
+
+.future-closing {
+  max-width: 800px; margin: 0 auto; padding: 0 24px 48px; text-align: center;
+}
+.future-closing .closing-card {
+  background: linear-gradient(135deg, #0a1e3d 0%, #0E2A52 100%);
+  border: 1px solid #1e3a6e; border-radius: 20px;
+  padding: 40px 36px; position: relative; overflow: hidden;
+}
+.future-closing .closing-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #5CE1E6, transparent);
+}
+.future-closing .quote-text {
+  font-size: 1.15rem; font-weight: 500; color: #E6EDFB; line-height: 1.6;
+}
+.future-closing .quote-cta {
+  display: block; margin-top: 14px;
+  font-size: 1.4rem; font-weight: 800; color: #5CE1E6;
+}
+
+.future-hero { text-align: center; max-width: 800px; margin: 0 auto 32px; padding: 40px 24px; }
+.future-hero h2 { font-size: 1.8rem; font-weight: 800; color: var(--text-800); line-height: 1.3; margin-bottom: 16px; }
+.future-hero h2 span { color: #5CE1E6; }
+.future-hero p { font-size: 1rem; color: #B9CCF2; line-height: 1.7; }
+.future-actions {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  max-width: 1200px; margin: 0 auto 32px; padding: 0 24px;
+}
+@media (max-width: 768px) { .future-actions { grid-template-columns: 1fr; } }
+.future-action {
+  padding: 24px; background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; transition: all 0.2s; box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.future-action:hover { border-color: #5CE1E6; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(92,225,230,0.1); }
+.future-action .fa-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.future-action .fa-title { font-weight: 700; font-size: 0.95rem; color: var(--text-800); margin-bottom: 6px; }
+.future-action .fa-desc { font-size: 0.85rem; color: #B9CCF2; line-height: 1.6; }
+
+.narrative { max-width: 1440px; margin: 0 auto; padding: 0 24px 32px; }
+.narrative-section { margin-bottom: 28px; }
+.narrative-section-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 16px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+.narrative-section-header h3 {
+  font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em;
+}
+.narrative-section-header .section-tag {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 4px 12px; border-radius: 20px;
+}
+.tag-good { background: rgba(34,197,94,0.1); color: #16a34a; }
+.tag-bad { background: rgba(239,68,68,0.1); color: #dc2626; }
+.tag-unspoken { background: rgba(245,158,11,0.1); color: #d97706; }
+
+.narrative-grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 768px) { .narrative-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .narrative-grid.wide { grid-template-columns: repeat(3, 1fr); } }
+
+.narr-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px; transition: all 0.2s;
+  display: flex; flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.narr-card:hover { border-color: #5CE1E6; box-shadow: 0 6px 24px rgba(92,225,230,0.1); transform: translateY(-2px); }
+.narr-card.featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #132042 0%, #1a2d55 100%);
+  border-color: #1e3a6e;
+}
+.narr-card .big-num {
+  font-size: 3rem; font-weight: 800; line-height: 1;
+  margin-bottom: 8px; letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.narr-card .big-num.green { color: #5CE1E6; }
+.narr-card .big-num.red { color: #dc2626; }
+.narr-card .big-num.amber { color: #fbbf24; }
+.narr-card .big-num.blue { color: #60a5fa; }
+.narr-card .narr-label {
+  font-size: 0.95rem; font-weight: 700; color: #E6EDFB;
+  margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.narr-card .narr-desc {
+  font-size: 0.85rem; color: #B9CCF2; line-height: 1.7; flex: 1;
+}
+.narr-card .narr-trend {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.75rem; font-weight: 600; margin-top: 8px;
+  padding: 3px 10px; border-radius: 8px;
+}
+.narr-card .narr-trend.up { color: #5CE1E6; background: rgba(92,225,230,0.1); }
+.narr-card .narr-trend.down { color: #f87171; background: rgba(220,38,38,0.1); }
+.narr-card .narr-sources {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+  padding-top: 10px; border-top: 1px solid #1e3a6e;
+}
+.narr-card .narr-sources a {
+  font-size: 0.72rem; color: #2563eb; background: #eff6ff;
+  padding: 5px 12px; border-radius: 8px; text-decoration: none;
+  border: 1px solid #bfdbfe; transition: all 0.15s;
+  font-weight: 500;
+}
+.narr-card .narr-sources a:hover {
+  color: white; background: #2563eb; border-color: #2563eb;
+}
+.narr-card .narr-quote { color: #E6EDFB;
+  font-size: 0.85rem; font-style: italic; color: #2563eb;
+  line-height: 1.7; margin-top: 10px;
+  padding: 14px 18px; background: #f0f5ff;
+  border-radius: 10px; border-left: 3px solid #3b82f6;
+}
+/* Proof images in narrative cards */
+.narr-card .narr-img {
+  width: 100%; border-radius: 10px; margin-top: 12px;
+  border: 1px solid var(--border); background: #0E2A52;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.narr-card .narr-img-caption { color: #7C8AA5;
+  font-size: 0.72rem; color: #7C8AA5; text-align: center;
+  margin-top: 6px; font-style: italic;
+}
+.narr-card .narr-img-row {
+  display: flex; gap: 12px; margin-top: 12px;
+}
+.narr-card .narr-img-row .narr-img { margin-top: 0; flex: 1; min-width: 0; object-fit: contain; }
+/* Comparison bar in narrative */
+.narr-compare {
+  display: flex; align-items: center; gap: 8px;
+  margin: 6px 0; font-size: 0.72rem;
+}
+.narr-compare-label { width: 50px; text-align: right; color: var(--text-500); font-weight: 600; }
+.narr-compare-track { flex: 1; height: 16px; background: #0E2A52; border-radius: 8px; overflow: hidden; }
+.narr-compare-fill { height: 100%; border-radius: 8px; }
+.narr-compare-val { width: 44px; font-weight: 700; color: var(--text-800); }
+/* VS card */
+.vs-row {
+  display: flex; align-items: center; justify-content: center; gap: 24px;
+  padding: 8px 0;
+}
+.vs-side { text-align: center; }
+.vs-num { font-size: 2.5rem; font-weight: 900; line-height: 1; }
+.vs-label { font-size: 0.7rem; color: var(--text-500); margin-top: 4px; }
+.vs-divider { font-size: 1.2rem; color: var(--text-300); font-weight: 300; }
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  RIPPLE TAP EFFECT                                          */
+/* ═══════════════════════════════════════════════════════════ */
+.ripple-target { position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.ripple-target .ripple {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(92,225,230,0.45) 0%, rgba(92,225,230,0) 70%);
+  transform: scale(0); animation: rippleOut 0.6s ease-out forwards;
+}
+@keyframes rippleOut {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+/* Active press feel */
+.ripple-target:active { transform: scale(0.96); }
+.tab-btn:active { transform: scale(0.95); }
+.slide-arrow:active { transform: scale(0.88); }
+.intro-start-btn:active { transform: scale(0.95); }
+.bad-card:active, .unspoken-card:active { transform: scale(0.98); }
+.bad-chip:active, .unspoken-chip:active { transform: scale(0.97); }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  SLIDE NAVIGATION                                           */
+/* ═══════════════════════════════════════════════════════════ */
+.slide { display: none; min-height: 100vh; }
+.slide.active { display: block; }
+
+.slide-nav {
+  position: fixed; bottom: 32px; right: 32px; z-index: 50;
+  display: flex; gap: 10px;
+}
+.slide-arrow {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(92,225,230,0.12); border: 1px solid rgba(92,225,230,0.3);
+  color: #5CE1E6; font-size: 1.3rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s; backdrop-filter: blur(8px);
+}
+.slide-arrow:hover {
+  background: rgba(92,225,230,0.25); border-color: #5CE1E6;
+  transform: scale(1.08);
+}
+.slide-arrow:disabled {
+  opacity: 0.3; cursor: default; transform: none;
+}
+
+/* ── Intro slide ── */
+.intro-slide {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; position: relative;
+  background: var(--bg-gradient);
+}
+.intro-slide::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('img/kcd-gujarat-bg.jpg') center 90% / cover no-repeat;
+  opacity: 0.15;
+}
+.intro-content {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 60px;
+  max-width: 1100px; padding: 40px 24px; width: 100%;
+}
+.intro-left { flex: 1; text-align: left; }
+.intro-right { flex-shrink: 0; }
+.intro-photo {
+  width: 480px; height: 520px; border-radius: 24px;
+  border: 4px solid #5CE1E6; object-fit: cover;
+  object-position: center top;
+  box-shadow: 0 0 60px rgba(92,225,230,0.15);
+}
+.intro-name {
+  font-size: 2.8rem; font-weight: 800; color: #ffffff; margin-bottom: 8px;
+}
+.intro-role {
+  font-size: 1.2rem; color: #5CE1E6; font-weight: 600; margin-bottom: 32px;
+}
+.intro-talk-label {
+  display: inline-block; font-size: 0.85rem; font-weight: 700; color: #5CE1E6;
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px;
+  padding: 8px 20px; border: 1px solid rgba(92,225,230,0.3); border-radius: 20px;
+  background: rgba(92,225,230,0.06);
+}
+.intro-talk-title {
+  font-size: 3.2rem; font-weight: 800; color: #E6EDFB; line-height: 1.25;
+  margin-bottom: 14px;
+}
+.intro-talk-title span { color: #5CE1E6; }
+.intro-subtitle {
+  font-size: 1.4rem; color: #B9CCF2; line-height: 1.6; margin-bottom: 28px;
+}
+.intro-event {
+  display: flex; align-items: center; gap: 16px;
+}
+.intro-event img { height: 60px; border-radius: 8px; }
+.intro-event-text { text-align: left; }
+.intro-event-text .ev-name { font-size: 0.9rem; font-weight: 700; color: #E6EDFB; }
+.intro-event-text .ev-detail { font-size: 0.78rem; color: #7C8AA5; }
+.intro-start-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 32px; padding: 14px 32px; border-radius: 30px;
+  background: linear-gradient(135deg, #5CE1E6, #3b82f6);
+  color: #0a1628; font-weight: 700; font-size: 1rem;
+  border: none; cursor: pointer; transition: all 0.3s;
+  font-family: inherit;
+}
+.intro-start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(92,225,230,0.3); }
+@media (max-width: 768px) {
+  .intro-content { flex-direction: column-reverse; gap: 30px; }
+  .intro-left { text-align: center; }
+  .intro-photo { width: 200px; height: 200px; }
+  .intro-event { justify-content: center; }
+}
+
+/* ── Global logo (top-left on all slides) ── */
+.global-logo {
+  position: fixed; top: 16px; left: 20px; z-index: 60;
+  display: flex; align-items: center; gap: 10px;
+}
+.global-logo img { width: 96px; height: 106px; border-radius: 8px; }
+
+/* ── Vultr slide ── */
+.sponsor-slide {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; background: var(--bg-gradient);
+}
+.sponsor-content {
+  text-align: center; max-width: 700px; padding: 40px 24px;
+}
+.sponsor-label {
+  font-size: 0.78rem; font-weight: 700; color: #5CE1E6;
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 24px;
+}
+.sponsor-logo {
+  height: 60px; margin-bottom: 24px; filter: brightness(0) invert(1); opacity: 0.9;
+}
+.sponsor-name {
+  font-size: 2.2rem; font-weight: 800; color: #E6EDFB; margin-bottom: 12px;
+}
+.sponsor-desc {
+  font-size: 1.05rem; color: #B9CCF2; line-height: 1.7; margin-bottom: 24px;
+}
+.sponsor-link {
+  display: inline-block; padding: 10px 24px; border-radius: 20px;
+  border: 1px solid rgba(92,225,230,0.3); color: #5CE1E6;
+  font-weight: 600; font-size: 0.9rem; transition: all 0.3s;
+}
+.sponsor-link:hover { background: rgba(92,225,230,0.1); text-decoration: none; }
+
+/* ── Thank You slide ── */
+.thankyou-slide {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; background: var(--bg-gradient); position: relative;
+}
+.thankyou-slide::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('img/kcd-gujarat-bg.jpg') center 90% / cover no-repeat;
+  opacity: 0.1;
+}
+.thankyou-content {
+  position: relative; z-index: 1; text-align: center;
+  max-width: 600px; padding: 40px 24px;
+}
+.thankyou-title {
+  font-size: 3rem; font-weight: 800; color: #5CE1E6; margin-bottom: 20px;
+}
+.thankyou-msg {
+  font-size: 1.15rem; color: #B9CCF2; line-height: 1.7; margin-bottom: 32px;
+}
+.thankyou-connect {
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  margin-top: 20px;
+}
+.thankyou-connect a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 20px;
+  border: 1px solid rgba(92,225,230,0.3); color: #5CE1E6;
+  font-weight: 600; font-size: 0.85rem; transition: all 0.3s;
+}
+.thankyou-connect a:hover { background: rgba(92,225,230,0.1); text-decoration: none; }
+.thankyou-photo {
+  width: 100px; height: 100px; border-radius: 50%;
+  border: 3px solid #5CE1E6; object-fit: cover;
+  margin: 0 auto 20px; display: block;
+}
+
+/* ── Future tab bullet styling ── */
+.future-card li {
+  position: relative; padding-left: 18px; margin-bottom: 4px;
+  font-size: 0.9rem; color: #B9CCF2;
+}
+.future-card li::before {
+  content: '—'; position: absolute; left: 0; color: #5CE1E6; font-weight: 700;
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- GLOBAL LOGO (visible on all slides) -->
+<div class="global-logo">
+  <img src="img/kcd-gujarat-slide1-img0.png" alt="KCD Gujarat 2026">
+</div>
+
+<!-- ═══════════ SLIDE 0: INTRO ═══════════ -->
+<div class="slide active" id="slide-intro">
+  <div class="intro-slide">
+    <div class="intro-content">
+      <div class="intro-left">
+        <div class="intro-talk-label">KCD Gujarat 2026 &middot; Ahmedabad &middot; 19 Sep</div>
+        <div class="intro-talk-title">The State of <span>Cloud Native</span> in India</div>
+        <div class="intro-subtitle">The Good, The Bad & The Unspoken</div>
+        <div class="intro-name">Sagar Utekar</div>
+        <div class="intro-role">Golden Kubestronaut &middot; CNCF Ambassador &middot; SRE @ CrowdStrike</div>
+        <button class="intro-start-btn" onclick="goSlide(1)">Let's Begin &#8594;</button>
+      </div>
+      <div class="intro-right">
+        <img src="img/sagar.jpg" alt="Sagar Utekar" class="intro-photo">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SLIDE 1: KEM CHO GUJARAT ═══════════ -->
+<div class="slide" id="slide-kemcho">
+  <div class="intro-slide">
+    <div style="position:relative; z-index:1; text-align:center; max-width:900px; padding:40px 24px;">
+      <div style="font-size:8rem; font-weight:800; color:#5CE1E6; line-height:1.2;">કેમ છો, ગુજરાત!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SLIDE 2: MAIN CONTENT ═══════════ -->
+<div class="slide" id="slide-main">
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">
+    <img src="img/kcd-gujarat-slide1-img0.png" alt="KCD Gujarat 2026" style="width:80px; height:88px; border-radius:6px;">
+    <div>
+      <h1 style="font-size:1.4rem;">The State of <span>Cloud Native</span> in India</h1>
+    </div>
+  </div>
+  <div class="header-nav">
+    <a href="https://cncf.io" target="_blank"><img src="https://www.cncf.io/wp-content/uploads/2022/07/cncf-white-logo.svg" alt="CNCF" style="height:36px; opacity:0.9;"></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" style="background: url('img/kcd-gujarat-bg.jpg') center 90% / cover no-repeat; padding: 52px 24px 56px; position: relative;">
+  <div style="position:absolute;inset:0;background:rgba(10,22,40,0.55);"></div>
+  <div style="position:relative;z-index:1;">
+    <div style="font-size:0.85rem; font-weight:700; color:#5CE1E6; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Kubernetes Community Day Gujarat 2026</div>
+    <h2 style="color:#fff;">The Good, The Bad & The Unspoken</h2>
+    <p style="color:#C9D8F7; max-width:640px; margin:12px auto 0; font-size:1.05rem;">An honest look at India's cloud-native ecosystem — the wins, the problems, and the things nobody says out loud.</p>
+  </div>
+</div>
+
+<!-- TAB NAVIGATION -->
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="good">The Good</button>
+  <button class="tab-btn" data-tab="bad">The Bad</button>
+  <button class="tab-btn" data-tab="unspoken">The Unspoken</button>
+</div>
+
+<!-- ═══════════ TAB 1: THE GOOD ═══════════ -->
+<div class="tab-page active" id="tab-good">
+
+<!-- ── STAT STRIP ── -->
+<div class="stat-strip">
+  <div class="stat-chip"><div class="stat-num green">4th</div><div class="stat-lbl">Global Rank</div><div class="stat-detail">4.69% of all CNCF contributions — behind US, Germany, UK. France is 0.02% behind.</div></div>
+  <div class="stat-chip"><div class="stat-num blue">478</div><div class="stat-lbl">Kubestronauts</div><div class="stat-detail">All 5 K8s certs (CKA, CKAD, CKS, KCNA, KCSA). 10.8% of global total. #1 country.</div></div>
+  <div class="stat-chip"><div class="stat-num green">42</div><div class="stat-lbl">Golden</div><div class="stat-detail">All 15 CNCF certifications. 42 of 519 globally. 3 are women.</div></div>
+  <div class="stat-chip"><div class="stat-num blue">60+</div><div class="stat-lbl">Maintainers</div><div class="stat-detail">Across 20+ CNCF projects: gRPC, Argo, OTel, Cilium, Kyverno, LitmusChaos, Vitess & more.</div></div>
+  <div class="stat-chip"><div class="stat-num green">11.5K+</div><div class="stat-lbl">CNCF Contributions</div><div class="stat-detail">Commits + PRs across all CNCF projects. Source: CNCF Annual Report 2024.</div></div>
+  <div class="stat-chip"><div class="stat-num blue">3rd</div><div class="stat-lbl">K8s Committers</div><div class="stat-detail">India ranks 3rd globally by committer count. — Priyanka Sharma, CNCF Executive Director.</div></div>
+  <div class="stat-chip"><div class="stat-num green">#1</div><div class="stat-lbl">GSoC Country</div><div class="stat-detail">4,065 Indian students in 15 years — more than US (2,552) and Germany (870) combined. 25% of all GSoC contributors globally.</div></div>
+  <div class="stat-chip"><div class="stat-num blue">25</div><div class="stat-lbl">LFX → Maintainers</div><div class="stat-detail">25 LFX mentees became CNCF maintainers. 3 of top 4 all-time LFX contributors are Indian.</div></div>
+  <div class="stat-chip"><div class="stat-num green">42</div><div class="stat-lbl">Ambassadors</div><div class="stat-detail">CNCF Ambassadors based in India. Community leaders, educators, and builders.</div></div>
+  <div class="stat-chip"><div class="stat-num blue">81%</div><div class="stat-lbl">KubeCon 1st-Timers</div><div class="stat-detail">KubeCon India 2024, Delhi. Highest first-timer rate of ANY KubeCon globally.</div></div>
+  <div class="stat-chip"><div class="stat-num green">2.25M</div><div class="stat-lbl">Cloud Native Devs</div><div class="stat-detail">India has 2.25M cloud native developers — more than China (1.75M). 11% of global 19.9M. — CNCF + SlashData 2026.</div></div>
+  <div class="stat-chip"><div class="stat-num blue">42</div><div class="stat-lbl">Chapters</div><div class="stat-detail">Across 15 states. Not just metros — Pollachi, Bikaner, Hooghly, Ranchi too.</div></div>
+  <div class="stat-chip"><div class="stat-num green">17M+</div><div class="stat-lbl">Indian Devs on GitHub (#2)</div><div class="stat-detail">2nd largest after US. 28% YoY growth. Projected to be #1 by 2028. — GitHub Octoverse 2024.</div></div>
+  <div class="stat-chip"><div class="stat-num blue">7+</div><div class="stat-lbl">KCDs in India</div><div class="stat-detail">Bengaluru, Chennai, Delhi, Pune, Mumbai, Gujarat & more. Community-driven, community-funded.</div></div>
+</div>
+
+<!-- ── CONTRIBUTORS GALLERY ── -->
+<div class="contrib-section">
+  <h3 class="contrib-heading">The People Behind the Numbers</h3>
+  <div class="contrib-gallery" id="contribGallery"></div>
+</div>
+<div class="contrib-bio" id="contribBio" style="display:none;"></div>
+
+
+<!-- ── FILTER BAR ── -->
+<div style="max-width:1440px; margin:0 auto; padding:0 24px 12px;">
+  <div class="filter-bar" id="filterBar">
+    <span class="filter-label">Show</span>
+    <select class="filter-select" id="categoryFilter">
+      <option value="ambassadors">CNCF Ambassadors</option>
+      <option value="chapters">Community Chapters</option>
+      <option value="kubestronauts">Kubestronauts</option>
+      <option value="golden">Golden Kubestronauts</option>
+    </select>
+    <div class="filter-divider"></div>
+    <span class="filter-label">City</span>
+    <select class="filter-select" id="cityFilter">
+      <option value="all">All Cities</option>
+    </select>
+    <div class="filter-divider"></div>
+  </div>
+</div>
+
+<!-- ── MAP (standalone, full-width) ── -->
+<div class="map-standalone">
+  <div class="map-panel" id="mapPanel">
+    <div class="map-svg-wrap" id="mapWrap"></div>
+    <button class="pan-india-btn" id="panIndiaBtn">🇮🇳 All India — Leaders, Projects & Stats <span class="count" id="panIndiaCount"></span></button>
+  </div>
+</div>
+
+<!-- ── MAP RESULTS PANEL ── -->
+<div id="mapResultsPanel" style="display:none; max-width:1440px; margin:16px auto 0; padding:0 24px;">
+  <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <div>
+        <div id="sidebarTitle" style="font-size:1.2rem; font-weight:800; color:#E6EDFB;"></div>
+        <div id="sidebarCount" style="font-size:0.8rem; color:#7C8AA5; margin-top:4px;"></div>
+      </div>
+      <button id="sidebarClose" style="background:none; border:1px solid var(--border); border-radius:8px; padding:6px 14px; color:#B9CCF2; cursor:pointer; font-family:inherit; font-size:0.8rem;">✕ Close</button>
+    </div>
+    <div id="sidebarContent" style="max-height:400px; overflow-y:auto;"></div>
+  </div>
+</div>
+
+<div style="text-align:center; padding:16px 0 8px;">
+  <span style="font-size:0.85rem; color:#B9CCF2;">For the community</span>
+</div>
+
+<section class="chapters-section" id="chaptersGrid" style="display:none;">
+  <h2 id="gridTitle">All CNCF Chapters in India</h2>
+  <p id="gridSubtitle">42 community groups across 15 states.</p>
+  <div class="state-grid" id="stateGrid"></div>
+</section>
+
+</div><!-- /tab-good -->
+
+<div class="tab-page" id="tab-bad" style="display:none;">
+
+<!-- ── SECTION INTRO ── -->
+<div class="bad-section-intro">
+  <h2>The Hard Truths</h2>
+  <p>Numbers that make us uncomfortable — but ignoring them won't make them go away.</p>
+</div>
+
+<!-- ── MAIN IMPACT CARDS (2x2) ── -->
+<div class="bad-grid">
+  <div class="bad-card">
+    <div class="bad-num">Take ≠ Give</div>
+    <div class="bad-title">Corporates Consuming Without Contributing</div>
+    <div class="bad-desc">Thousands of Indian companies run their entire infrastructure on open source — Kubernetes, Prometheus, Envoy. But how many give back? Corporate teams consume without contributing a single line upstream.</div>
+    <div class="bad-quote">"They build billion-dollar products on free software, then won't sponsor a meetup or let their engineers contribute back."</div>
+  </div>
+  <div class="bad-card">
+    <div class="bad-num">5%</div>
+    <div class="bad-title">2.25M Devs, 5% Contributing</div>
+    <div class="bad-desc">India has the world's largest cloud native developer base. Only 2,185 are actively contributing to CNCF projects. The rest are consumers — not builders. We're known upstream for volume, not value.</div>
+    <div class="bad-quote">"Transactional, low-effort PRs risk hurting our reputation upstream."</div>
+  </div>
+  <div class="bad-card">
+    <div class="bad-num">$0</div>
+    <div class="bad-title">Organizer Pay</div>
+    <div class="bad-desc">"How much does CNCF pay you?" Zero. Organizers and volunteers spend their own time, their own money, their own weekends. Nobody's getting rich running meetups.</div>
+    <div class="bad-quote">"We book venues, chase sponsors, set up chairs, and clean up after — all for free. The community runs on people who show up when nobody's watching."</div>
+  </div>
+  <div class="bad-card">
+    <div class="bad-num">4,065</div>
+    <div class="bad-title">Stipend & Vanish</div>
+    <div class="bad-desc">Indian GSoC students in 15 years — #1 globally. But most disappear after the stipend. The bridge that was meant to create lifelong contributors became a toll booth.</div>
+    <div class="bad-quote">"The main hook is the Stipend. After receiving it, we left." — Aayush Saini, Red Hat, vLLM Maintainer</div>
+  </div>
+</div>
+
+<!-- ── SECONDARY CARDS (3-col) ── -->
+<div class="bad-secondary">
+  <div class="bad-chip">
+    <div class="bad-chip-title">AI Spam PRs</div>
+    <div class="bad-chip-desc">Maintainers now close more PRs than they merge. People raising PRs generated by AI without reading a single line of the codebase. Open source maintainers have become spam filters.</div>
+  </div>
+  <div class="bad-chip">
+    <div class="bad-chip-title">Cert Black Market</div>
+    <div class="bad-chip-desc">Exam dumps circulating on Telegram. Five certifications cleared without understanding a single concept. The badge says expert — the interview says otherwise.</div>
+  </div>
+  <div class="bad-chip">
+    <div class="bad-chip-title">Codebase Frustration</div>
+    <div class="bad-chip-desc">New contributors try to learn a massive codebase, get overwhelmed, get frustrated, and leave. Then they jump to another project and repeat the cycle. Na idhar ka, na udhar ka.</div>
+    <div class="bad-chip-quote">"They come with energy, hit a wall of complexity, and silently disappear."</div>
+  </div>
+  <div class="bad-chip">
+    <div class="bad-chip-title">Swag Culture</div>
+    <div class="bad-chip-desc" style="text-align:left;">
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li style="margin-bottom:6px;">KubeCon EU & Japan — halls packed, people standing in sessions</li>
+        <li style="margin-bottom:6px;">India — people fighting over sponsor booths</li>
+        <li style="margin-bottom:6px;">A friend told me attendees looted an entire swag box</li>
+        <li style="color:#f87171; font-weight:600;">When sponsors remember looted tables instead of packed talks — they don't come back</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- /tab-bad -->
+
+<!-- ═══════════ TAB 3: THE UNSPOKEN ═══════════ -->
+<div class="tab-page" id="tab-unspoken" style="display:none;">
+
+<!-- ── SECTION INTRO ── -->
+<div class="unspoken-intro">
+  <h2>What Nobody Says Out Loud</h2>
+  <p>These aren't accusations — they're patterns. And patterns only break when someone names them.</p>
+</div>
+
+<!-- ── FEATURED CARDS (2-col) ── -->
+<div class="unspoken-featured">
+  <div class="unspoken-card">
+    <div class="uc-num">$$$</div>
+    <div class="uc-title">Silent Sponsors</div>
+    <div class="uc-desc">Nobody talks about it, but organizers and mentors silently spend money from their own pockets — paying for someone's conference ticket, covering travel so a first-timer can attend a big event. Because they know how important it is. During layoffs, people need networks. You get a reality check. You meet the right people.</div>
+    <div class="uc-quote">"Speak up, even if you fumble. People will judge — ignore that. The ones who matter will remember you showed up."</div>
+  </div>
+  <div class="unspoken-card">
+    <div class="uc-num">&lt;4%</div>
+    <div class="uc-title">Women in Cloud Native India</div>
+    <div class="uc-desc">Meetups, events, certifications, contributions — women are massively underrepresented everywhere. <strong>Less than 20 of 478</strong> Kubestronauts. <strong>3 of 42</strong> Golden Kubestronauts.</div>
+    <div class="uc-quote">"If the room doesn't look different, we're not building a community — we're building a club."</div>
+  </div>
+  <div class="unspoken-card">
+    <div class="uc-num">1 of ?</div>
+    <div class="uc-title">Speaker Diversity Gap</div>
+    <div class="uc-desc">At CNCG Pune, we reserve at least one speaker slot for women and one for first-time speakers. Most meetups don't do this. If you don't make space on the stage, the stage stays the same faces.</div>
+  </div>
+  <div class="unspoken-card">
+    <div class="uc-num">?</div>
+    <div class="uc-title">CFP Favoritism</div>
+    <div class="uc-desc">Are CFPs always fair? There's talk of organizers selecting friends' proposals over better ones. People who know the right people get the stage. People who don't — never hear back.</div>
+    <div class="uc-quote">"Blind reviews and clear evaluation criteria are the only way to earn trust in the process."</div>
+  </div>
+</div>
+
+<!-- ── BOTTOM CARDS (3-col) ── -->
+<div class="unspoken-bottom" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="unspoken-chip">
+    <div class="uch-title">Burnout Behind Smiles</div>
+    <div class="uch-desc">Organizers and ambassadors are burning out — but they can't say it because the community depends on them. They keep showing up because nobody else will. Nobody asks if they're okay.</div>
+  </div>
+  <div class="unspoken-chip">
+    <div class="uch-title">Vanishing Volunteers</div>
+    <div class="uch-desc">Join the group, add it to LinkedIn, attend one event, vanish. The same 5 people set up chairs and clean up after every single meetup. Nobody else stays.</div>
+  </div>
+  <div class="unspoken-chip">
+    <div class="uch-title">Tier-2 City Invisibility</div>
+    <div class="uch-desc">Everything happens in Bengaluru, Delhi, Pune, Mumbai. Engineers in smaller cities have no meetups, no mentors, no network. They exist — but nobody builds for them.</div>
+  </div>
+  <div class="unspoken-chip">
+    <div class="uch-title">Consumers Who Never Give Back</div>
+    <div class="uch-desc">Companies run production on Kubernetes, Prometheus, Envoy — and never upstream a fix. Attendees show up for the food and swag, skip the talks, and add "KubeCon attendee" to LinkedIn. The community gives endlessly. The give-back ratio is embarrassing.</div>
+  </div>
+  <div class="unspoken-chip" style="grid-column: span 2;">
+    <div class="uch-title">Contribution Is More Than Code</div>
+    <div class="uch-desc">Nobody tells you this — contributing to CNCF and cloud native can be any shape or size. Code, non-code, design, testing, teaching, conducting events, volunteering, social media, attendee management, poster design, website design, speaker management, F&B management, anchoring, CFP reviews, exam development, writing blogs, creating videos, testing features, adding new tests, and a hundred things nobody puts on a resume. If you helped set up one chair at one meetup — you contributed. The ecosystem runs on people who show up, not just people who push code.</div>
+  </div>
+</div>
+
+<!-- ── CLOSING QUOTE ── -->
+<div class="unspoken-quote">
+  <img src="img/kcd-gujarat-slide1-img3.png" alt="" class="divider-img">
+  <div class="quote-text">"We have the talent. We have the numbers. We have the community.<br>What we need is <span class="highlight">each other</span>."</div>
+</div>
+
+</div><!-- /tab-unspoken -->
+
+
+<!-- FOOTER -->
+<footer class=”site-footer” style=”text-align:center; padding:20px;”>
+  <span style="color:#B9CCF2;">For the community</span>
+</footer>
+</div><!-- /slide-main -->
+
+<!-- ═══════════ SLIDE: YOUR MOVE ═══════════ -->
+<div class="slide" id="slide-yourmove">
+  <div style="min-height:100vh; background:var(--bg-gradient); padding:60px 24px 80px;">
+    <div style="max-width:1200px; margin:0 auto;">
+
+      <!-- Section Intro -->
+      <div class="bad-section-intro" style="margin-bottom:36px;">
+        <h2 style="color:#5CE1E6; font-size:2.4rem; font-weight:800;">Your Move</h2>
+        <p style="color:#B9CCF2; font-size:1.1rem; max-width:700px; margin:12px auto 0;">You heard the good, the bad, and the unspoken. Now pick your role — and take one step.</p>
+      </div>
+
+      <!-- Role Cards — row 1 -->
+      <div class="bad-grid">
+        <div class="bad-card" style="border-color:#1e3a6e;">
+          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As an Organizer</div>
+          <div class="bad-desc" style="margin-top:14px;">
+            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Reserve one speaker slot for women, one for first-timers</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Run blind CFP reviews — no names, no companies</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Ask your volunteers if they're okay, not just if the venue is ready</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bad-card" style="border-color:#1e3a6e;">
+          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Maintainer</div>
+          <div class="bad-desc" style="margin-top:14px;">
+            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Write a real "contributing" guide — not a template, a map</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Label issues by complexity so newcomers don't drown</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Review a first-timer's PR with patience, not gatekeeping</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bad-card" style="border-color:#1e3a6e;">
+          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Contributor</div>
+          <div class="bad-desc" style="margin-top:14px;">
+            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Stay after the stipend. Stay after the merged PR.</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Pick one project and commit for 6 months — not 6 repos in 6 weeks</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Read the codebase before raising a PR</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bad-card" style="border-color:#1e3a6e;">
+          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Sponsor / Company</div>
+          <div class="bad-desc" style="margin-top:14px;">
+            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Give your engineers 20% time for upstream contributions</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Sponsor a Tier-2 city meetup, not just Bengaluru</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Fund travel for first-time conference attendees</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role Cards — row 2 -->
+      <div class="bad-grid" style="margin-bottom:40px;">
+        <div class="bad-card" style="border-color:#1e3a6e;">
+          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Student</div>
+          <div class="bad-desc" style="margin-top:14px;">
+            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> GSoC/LFX is the start, not the finish line</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Attend a meetup in your city — or start one</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Submit a CFP. Imposter syndrome lies. Your story matters.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bad-card" style="border-color:#1e3a6e;">
+          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As an Attendee</div>
+          <div class="bad-desc" style="margin-top:14px;">
+            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Stay for the talks, not just the swag table</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Talk to a speaker after their session — it makes their day</li>
+              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Volunteer to help set up or clean up. Once. That's all it takes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Closing Quote -->
+      <div class="unspoken-quote">
+        <img src="img/kcd-gujarat-slide1-img3.png" alt="" class="divider-img">
+        <div class="quote-text" style="color:#5CE1E6;">"The person who submitted her first PR five years ago now governs the entire ecosystem.<br><span class="highlight">Your first PR is waiting.</span>"</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SLIDE: VULTR SPONSOR ═══════════ -->
+<div class="slide" id="slide-vultr">
+  <div class="sponsor-slide">
+    <div class="sponsor-content" style="max-width:1000px;">
+      <div class="sponsor-name" style="font-size:3rem; white-space:nowrap; display:flex; align-items:center; justify-content:center; gap:16px;"><img src="img/vultr-logo.svg" alt="Vultr" style="height:48px; filter:brightness(0) invert(1);"> <span style="color:#60a5fa;">&#x1F499;</span> Developer Communities</div>
+      <div style="margin-top:40px;">
+        <img src="img/vultr-pune-3.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:16px; border:1px solid #1e3a6e; aspect-ratio:16/9; object-fit:cover; margin-bottom:16px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <img src="img/vultr-pune-1.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:16px; border:1px solid #1e3a6e; aspect-ratio:16/10; object-fit:cover;">
+          <img src="img/vultr-pune-2.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:16px; border:1px solid #1e3a6e; aspect-ratio:16/10; object-fit:cover;">
+        </div>
+      </div>
+      <a href="https://www.vultr.com/" target="_blank" class="sponsor-link" style="margin-top:32px;">vultr.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SLIDE: THANK YOU ═══════════ -->
+<div class="slide" id="slide-thankyou">
+  <div class="thankyou-slide">
+    <div class="thankyou-content" style="max-width:800px;">
+      <img src="img/sagar.jpg" alt="Sagar Utekar" class="thankyou-photo">
+      <div class="thankyou-title" style="font-size:3.5rem;">Thank You</div>
+      <div style="font-size:1.6rem; font-weight:800; color:#E6EDFB; line-height:1.5; margin-bottom:24px;">It takes a village to run a community.<br>Every small contribution matters.<br><span style="color:#5CE1E6;">Don't hold back.</span></div>
+      <div class="thankyou-msg" style="font-size:1rem; max-width:650px; margin:0 auto 32px;">Code, posters, blogs, CFP reviews, setting up chairs, or just showing up and staying till the end — every single one of you is the reason this ecosystem breathes. This talk was built by the community, for the community.</div>
+      <div class="thankyou-connect">
+        <a href="https://github.com/sagar2366" target="_blank">GitHub</a>
+        <a href="https://x.com/sagar-utekar" target="_blank">Twitter/X</a>
+        <a href="https://linkedin.com/in/sagar-utekar" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE NAVIGATION ARROWS -->
+<div class="slide-nav" id="slideNav">
+  <button class="slide-arrow" id="prevSlide" onclick="goSlide(currentSlide-1)">&#8592;</button>
+  <button class="slide-arrow" id="nextSlide" onclick="goSlide(currentSlide+1)">&#8594;</button>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<!-- DATA -->
+<script src="data.js"></script>
+
+<!-- APP LOGIC -->
+<script>
+(function() {
+  'use strict';
+
+  // State
+  let activeCity = null;
+
+  // DOM
+  const mapWrap = document.getElementById('mapWrap');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarTitle = document.getElementById('sidebarTitle');
+  const sidebarCount = document.getElementById('sidebarCount');
+  const sidebarContent = document.getElementById('sidebarContent');
+  const sidebarClose = document.getElementById('sidebarClose');
+  const categoryFilter = document.getElementById('categoryFilter');
+  const cityFilter = document.getElementById('cityFilter');
+  const chipBar = document.getElementById('chipBar');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  const tooltip = document.getElementById('tooltip');
+  const statPeople = document.getElementById('statPeople');
+
+  // ─── CHAPTER DATA for grid ──────────────────────
+  const CHAPTER_STATES = [
+    { state: 'Maharashtra', count: 8, chapters: ['Mumbai', 'Pune', 'Thane', 'Nagpur', 'Nashik', 'Chhatrapati Sambhajinagar', 'Jalgaon', 'Kubernetes Pune'] },
+    { state: 'Gujarat', count: 5, chapters: ['Ahmedabad', 'Gandhinagar', 'Rajkot', 'Vadodara', 'Surat'] },
+    { state: 'Tamil Nadu', count: 5, chapters: ['Chennai', 'Coimbatore', 'Tiruchirappalli', 'Madurai', 'Pollachi'] },
+    { state: 'Kerala', count: 5, chapters: ['Kochi', 'Thiruvananthapuram', 'Kozhikode', 'Kottayam', 'Thrissur'] },
+    { state: 'Karnataka', count: 3, chapters: ['Bengaluru', 'Mysuru', 'Platform Eng Bengaluru'] },
+    { state: 'West Bengal', count: 3, chapters: ['Kolkata', 'Durgapur', 'Hooghly'] },
+    { state: 'Uttar Pradesh', count: 3, chapters: ['Lucknow', 'Noida', 'Kanpur'] },
+    { state: 'Rajasthan', count: 2, chapters: ['Jaipur', 'Bikaner'] },
+    { state: 'Delhi', count: 2, chapters: ['New Delhi', 'CN Security India'] },
+    { state: 'Telangana', count: 1, chapters: ['Hyderabad'] },
+    { state: 'Odisha', count: 1, chapters: ['Bhubaneswar'] },
+    { state: 'Chandigarh', count: 1, chapters: ['Chandigarh'] },
+    { state: 'Uttarakhand', count: 1, chapters: ['Dehradun'] },
+    { state: 'Haryana', count: 1, chapters: ['Gurugram'] },
+    { state: 'Jharkhand', count: 1, chapters: ['Ranchi'] },
+  ];
+
+  // ─── INIT ────────────────────────────────────
+  function init() {
+    if (statPeople) statPeople.textContent = ENTITIES.length;
+    loadMap();
+    buildFilters();
+    buildChaptersGrid();
+    bindSearch();
+    bindSidebar();
+    bindPanIndia();
+    bindKeyboard();
+    renderDashboard();
+    renderAllEntities();
+  }
+
+  // ─── PAN-INDIA ───────────────────────────────
+  function bindPanIndia() {
+    const btn = document.getElementById('panIndiaBtn');
+    const countEl = document.getElementById('panIndiaCount');
+    const n = ENTITIES.filter(e => e.city === 'national').length;
+    countEl.textContent = '(' + n + ')';
+    btn.addEventListener('click', () => {
+      activeCity = 'national';
+      cityFilter.value = 'national';
+      clearMapHighlights();
+      renderAllEntities();
+    });
+  }
+
+  // ─── LOAD SVG MAP ────────────────────────────
+  function loadMap() {
+    fetch('india-map.svg')
+      .then(r => r.text())
+      .then(svgText => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(svgText, 'image/svg+xml');
+        const svg = doc.querySelector('svg');
+        if (!svg.getAttribute('viewBox') && svg.getAttribute('viewbox'))
+          svg.setAttribute('viewBox', svg.getAttribute('viewbox'));
+        svg.removeAttribute('fill');
+        svg.removeAttribute('stroke');
+        svg.removeAttribute('stroke-width');
+        svg.removeAttribute('stroke-linecap');
+        svg.removeAttribute('stroke-linejoin');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+        svg.style.maxHeight = '100%';
+
+        // Mark states with data
+        const statesWithData = new Set();
+        Object.values(CITIES).forEach(c => { if (c.state) statesWithData.add(c.state); });
+
+        svg.querySelectorAll('path').forEach(path => {
+          if (statesWithData.has(path.id)) path.classList.add('has-data');
+          path.addEventListener('click', () => onStateClick(path));
+          path.addEventListener('mouseenter', (e) => showTooltip(e, path.getAttribute('name') || path.id));
+          path.addEventListener('mouseleave', hideTooltip);
+        });
+
+        // City dots
+        const cityGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        Object.entries(CITIES).forEach(([cityId, city]) => {
+          if (!city.x || !city.y) return;
+          const count = ENTITIES.filter(e => {
+            if (Array.isArray(e.city)) return e.city.includes(cityId);
+            return e.city === cityId;
+          }).length;
+          if (count === 0) return;
+          const radius = Math.max(8, Math.min(20, 6 + count * 1.2));
+          const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          g.setAttribute('class', 'city-dot');
+          g.setAttribute('data-city', cityId);
+
+          // Pulse ring
+          const pr = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          pr.setAttribute('cx', city.x); pr.setAttribute('cy', city.y);
+          pr.setAttribute('r', radius); pr.setAttribute('class', 'pulse-ring');
+          pr.setAttribute('fill', 'none'); pr.setAttribute('stroke', 'var(--blue-500)');
+          pr.setAttribute('stroke-width', '2');
+          pr.style.transformOrigin = city.x + 'px ' + city.y + 'px';
+          g.appendChild(pr);
+
+          // BG
+          const bg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          bg.setAttribute('cx', city.x); bg.setAttribute('cy', city.y);
+          bg.setAttribute('r', radius + 4); bg.setAttribute('class', 'dot-bg');
+          g.appendChild(bg);
+
+          // Core
+          const core = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          core.setAttribute('cx', city.x); core.setAttribute('cy', city.y);
+          core.setAttribute('r', radius); core.setAttribute('class', 'dot-core');
+          g.appendChild(core);
+
+          // Count
+          const ct = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          ct.setAttribute('x', city.x); ct.setAttribute('y', city.y);
+          ct.setAttribute('class', 'city-count');
+          ct.textContent = count;
+          g.appendChild(ct);
+
+          // Golden ring for Ahmedabad
+          if (cityId === 'ahmedabad') {
+            const gr = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            gr.setAttribute('cx', city.x); gr.setAttribute('cy', city.y);
+            gr.setAttribute('r', radius); gr.setAttribute('class', 'golden-ring');
+            gr.style.transformOrigin = city.x + 'px ' + city.y + 'px';
+            g.appendChild(gr);
+          }
+
+          g.addEventListener('click', (e) => { e.stopPropagation(); onCityClick(cityId); });
+          g.addEventListener('mouseenter', (e) => showTooltip(e, city.name + ' (' + count + ')'));
+          g.addEventListener('mouseleave', hideTooltip);
+          cityGroup.appendChild(g);
+
+          // Label
+          const lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          lbl.setAttribute('x', city.x + radius + 6);
+          lbl.setAttribute('y', city.y + 4);
+          lbl.setAttribute('class', 'city-label');
+          lbl.textContent = city.name;
+          cityGroup.appendChild(lbl);
+        });
+
+        svg.appendChild(cityGroup);
+        mapWrap.innerHTML = '';
+        mapWrap.appendChild(svg);
+      });
+  }
+
+  // ─── FILTERS ─────────────────────────────────
+  function buildFilters() {
+    // City dropdown
+    const cityEntries = Object.entries(CITIES)
+      .map(([id, c]) => ({ id, name: c.name, count: ENTITIES.filter(e => e.city === id).length }))
+      .filter(c => c.count > 0)
+      .sort((a, b) => b.count - a.count);
+    cityEntries.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.name + ' (' + c.count + ')';
+      cityFilter.appendChild(opt);
+    });
+
+    categoryFilter.addEventListener('change', () => {
+      const panel = document.getElementById('mapResultsPanel');
+      if (categoryFilter.value !== 'all' || cityFilter.value !== 'all') { if (panel) panel.style.display = 'block'; }
+      renderAllEntities(); renderDashboard(); updateCityDots(); updateBottomGrid(); updateMapStateHighlights();
+    });
+    cityFilter.addEventListener('change', () => {
+      const v = cityFilter.value;
+      const panel = document.getElementById('mapResultsPanel');
+      clearMapHighlights();
+      if (v !== 'all') {
+        activeCity = v;
+        if (panel) panel.style.display = 'block';
+        const dot = document.querySelector('.city-dot[data-city="' + v + '"]');
+        if (dot) dot.classList.add('active');
+        const city = CITIES[v];
+        if (city && city.state) {
+          const sp = document.getElementById(city.state);
+          if (sp) sp.classList.add('state-active');
+        }
+      } else {
+        activeCity = null;
+        if (panel) panel.style.display = 'none';
+      }
+      renderAllEntities();
+      renderDashboard();
+      updateBottomGrid();
+    });
+
+  }
+
+  function updateChipStates() {
+    // chips removed — no-op
+  }
+
+  function clearMapHighlights() {
+    document.querySelectorAll('.city-dot').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.map-svg-wrap svg path').forEach(p => p.classList.remove('state-active'));
+  }
+
+  // ─── RENDER ENTITIES ─────────────────────────
+  function renderAllEntities() {
+    const catVal = categoryFilter.value;
+    const cityVal = cityFilter.value;
+    let entities = ENTITIES;
+
+    if (cityVal !== 'all') {
+      entities = entities.filter(e => {
+        if (Array.isArray(e.city)) return e.city.includes(cityVal);
+        return e.city === cityVal;
+      });
+    }
+    if (catVal === 'chapters') entities = entities.filter(e => e.category === 'community');
+    else if (catVal === 'ambassadors') entities = entities.filter(e => e.category === 'ambassadors');
+    else if (catVal === 'kubestronauts') entities = entities.filter(e => e.id.startsWith('ks-') || e.id === 'kubestronaut');
+    else if (catVal === 'golden') entities = entities.filter(e => e.id.startsWith('gk-') || e.id === 'kubestronaut');
+
+    const cityName = cityVal === 'all' ? 'All India' : (CITIES[cityVal]?.name || cityVal);
+    const filterLabels = { all: '', chapters: ' Chapters', ambassadors: ' Ambassadors', kubestronauts: ' Kubestronauts', golden: ' Golden Kubestronauts' };
+    sidebarTitle.textContent = cityName + (filterLabels[catVal] || '');
+    renderEntities(entities);
+    updateChipStates();
+  }
+
+  function updateCityDots() {
+    const catVal = categoryFilter.value;
+    document.querySelectorAll('.city-dot').forEach(dot => {
+      const cid = dot.dataset.city;
+      let ce = ENTITIES.filter(e => e.city === cid);
+      if (catVal === 'chapters') ce = ce.filter(e => e.category === 'community');
+      else if (catVal === 'ambassadors') ce = ce.filter(e => e.category === 'ambassadors');
+      else if (catVal === 'kubestronauts') ce = ce.filter(e => e.id.startsWith('ks-') || e.id === 'kubestronaut');
+      else if (catVal === 'golden') ce = ce.filter(e => e.id.startsWith('gk-') || e.id === 'kubestronaut');
+      const ct = dot.querySelector('.city-count');
+      if (ct) {
+        if (catVal === 'all') { ct.textContent = ce.length; ct.style.display = ''; }
+        else { ct.style.display = 'none'; }
+      }
+      dot.style.opacity = ce.length === 0 ? '0.15' : '1';
+    });
+  }
+
+  function onStateClick(pathEl) {
+    const stateId = pathEl.id;
+    const citiesInState = Object.entries(CITIES).filter(([_, c]) => c.state === stateId);
+    if (citiesInState.length === 1) {
+      onCityClick(citiesInState[0][0]);
+    } else if (citiesInState.length > 1) {
+      // Show all from state
+      const ids = citiesInState.map(([id]) => id);
+      const ents = ENTITIES.filter(e => {
+        const c = Array.isArray(e.city) ? e.city : [e.city];
+        return c.some(x => ids.includes(x));
+      });
+      const stateName = pathEl.getAttribute('name') || stateId;
+      sidebarTitle.textContent = stateName;
+      renderEntities(ents);
+    }
+    clearMapHighlights();
+    pathEl.classList.add('state-active');
+  }
+
+  function onCityClick(cityId) {
+    activeCity = cityId;
+    cityFilter.value = cityId;
+    clearMapHighlights();
+    const dot = document.querySelector('.city-dot[data-city="' + cityId + '"]');
+    if (dot) dot.classList.add('active');
+    const city = CITIES[cityId];
+    if (city && city.state) {
+      const sp = document.getElementById(city.state);
+      if (sp) sp.classList.add('state-active');
+    }
+    renderAllEntities();
+  }
+
+  function renderEntities(entities) {
+    const panel = document.getElementById('mapResultsPanel');
+    if (panel) panel.style.display = 'block';
+    sidebarCount.textContent = entities.length + ' ' + (entities.length === 1 ? 'entity' : 'entities');
+
+    if (entities.length === 0) {
+      const catVal = categoryFilter.value;
+      const filterName = { golden: 'Golden Kubestronauts', chapters: 'Chapters', kubestronauts: 'Kubestronauts' }[catVal] || 'results';
+      const cityName = activeCity ? (CITIES[activeCity]?.name || '') : '';
+      sidebarContent.innerHTML =
+        '<div class="welcome">' +
+          '<div class="arrow">🔍</div>' +
+          '<h3>No ' + filterName + ' here</h3>' +
+          '<p>' + (cityName ? 'No <b>' + filterName + '</b> in <b>' + cityName + '</b>.' : 'No results found.') + '</p>' +
+          '<button class="show-all-btn" onclick="document.getElementById(\'categoryFilter\').value=\'all\';document.getElementById(\'categoryFilter\').dispatchEvent(new Event(\'change\'));">Show All</button>' +
+        '</div>';
+      return;
+    }
+
+    // Group by category
+    const groups = {};
+    entities.forEach(e => { if (!groups[e.category]) groups[e.category] = []; groups[e.category].push(e); });
+    const catOrder = ['leaders', 'maintainers', 'projects', 'ambassadors', 'companies', 'education', 'community', 'diversity'];
+
+    sidebarContent.innerHTML = catOrder
+      .filter(cat => groups[cat])
+      .map(cat => {
+        const c = CATEGORIES[cat];
+        return '<div class="cat-group">' +
+          '<div class="cat-group-title" style="color:' + c.color + '">' +
+            '<span class="cat-dot" style="background:' + c.color + '"></span>' +
+            c.label + ' (' + groups[cat].length + ')' +
+          '</div>' +
+          groups[cat].map(e => renderCard(e, c)).join('') +
+        '</div>';
+      }).join('');
+
+    sidebarContent.querySelectorAll('.entity-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        // Don't toggle card when clicking a hyperlink
+        if (e.target.closest('a')) return;
+        const was = card.classList.contains('expanded');
+        sidebarContent.querySelectorAll('.entity-card').forEach(c => c.classList.remove('expanded'));
+        if (!was) card.classList.add('expanded');
+      });
+    });
+  }
+
+  function parseKubestronautNames(entity) {
+    if (entity.id.startsWith('ks-')) {
+      const m = entity.description.match(/CNCF\):<br><br>(.+)/);
+      if (m) return m[1].replace(/\.$/, '').replace(/, and more\.?$/, '').split(', ').map(n => n.trim()).filter(Boolean);
+    }
+    if (entity.id.startsWith('gk-')) {
+      const m = entity.description.match(/India:<br><br>([\s\S]+?)(<br><br>|$)/);
+      if (m) return m[1].split('<br>').map(l => l.replace(/^[•\s]+/, '').replace(/<\/?[bi]>/g, '').replace(/<i>[^<]*<\/i>/g, '').trim()).filter(n => n && n.length > 2);
+    }
+    return null;
+  }
+
+  function renderCard(entity, cat) {
+    const links = [];
+    if (entity.links) {
+      if (entity.links.github) links.push('<a href="https://github.com/' + entity.links.github + '" target="_blank">GitHub</a>');
+      if (entity.links.twitter) links.push('<a href="https://twitter.com/' + entity.links.twitter + '" target="_blank">𝕏</a>');
+      if (entity.links.web) links.push('<a href="' + entity.links.web + '" target="_blank">Web</a>');
+    }
+
+    // Special rendering for Kubestronaut / Golden city cards — name list instead of comma blob
+    const isKsOrGk = entity.id.startsWith('ks-') || entity.id.startsWith('gk-');
+    const names = isKsOrGk ? parseKubestronautNames(entity) : null;
+    const emoji = entity.id.startsWith('gk-') ? '🏅' : '🚀';
+    let detailHtml = '';
+    if (names && names.length > 0) {
+      detailHtml =
+        '<div class="ks-name-grid">' +
+          names.map(n => '<div class="ks-name-chip">' + emoji + ' ' + n + '</div>').join('') +
+        '</div>' +
+        (entity.highlight ? '<div class="highlight">"' + entity.highlight + '"</div>' : '') +
+        (links.length ? '<div class="links">' + links.join('') + '</div>' : '');
+    } else {
+      detailHtml =
+        (entity.description ? '<div class="description">' + entity.description + '</div>' : '') +
+        (entity.highlight ? '<div class="highlight">"' + entity.highlight + '"</div>' : '') +
+        (links.length ? '<div class="links">' + links.join('') + '</div>' : '');
+    }
+
+    return '<div class="entity-card" style="border-left-color:' + cat.color + '" data-id="' + entity.id + '">' +
+      '<div class="card-top">' +
+        '<div class="symbol-badge" style="background:' + cat.color + '">' + entity.symbol + '</div>' +
+        '<div class="card-info">' +
+          '<div class="card-name">' + entity.name + '</div>' +
+          '<div class="card-org">' + (entity.org || '') + '</div>' +
+          '<div class="card-title">' + (entity.title || '') + '</div>' +
+        '</div>' +
+        '<span class="card-chevron">›</span>' +
+      '</div>' +
+      '<div class="card-detail">' + detailHtml + '</div>' +
+    '</div>';
+  }
+
+  function showEntityDetail(entity) {
+    const cat = CATEGORIES[entity.category];
+    sidebarTitle.textContent = entity.name;
+    sidebarCount.textContent = cat.label;
+    sidebarContent.innerHTML = renderCard(entity, cat);
+    const card = sidebarContent.querySelector('.entity-card');
+    if (card) card.classList.add('expanded');
+  }
+
+  // ─── DASHBOARD CHARTS ─────────────────────────
+  function renderDashboard() {
+    if (!document.getElementById('dashCategoryBody')) return; // dashboard removed
+    const cityVal = cityFilter.value;
+    const catVal = categoryFilter.value;
+    const cityName = cityVal !== 'all' ? (CITIES[cityVal]?.name || cityVal) : 'All India';
+
+    // Filter entities by city
+    let ents = ENTITIES;
+    if (cityVal !== 'all') {
+      ents = ents.filter(e => {
+        const c = Array.isArray(e.city) ? e.city : [e.city];
+        return c.includes(cityVal);
+      });
+    }
+
+    // ── Card 1: Category Donut ──
+    const catOrder = ['leaders','maintainers','projects','ambassadors','companies','education','community','diversity'];
+    const catColors = ['#2563eb','#059669','#d97706','#7c3aed','#dc2626','#ca8a04','#0891b2','#db2777'];
+    const catCounts = catOrder.map(cat => ents.filter(e => e.category === cat).length);
+    const total = catCounts.reduce((s, v) => s + v, 0);
+
+    // Build conic-gradient
+    let gradParts = [];
+    let cumPct = 0;
+    catCounts.forEach((count, i) => {
+      if (count === 0) return;
+      const pct = (count / Math.max(total, 1)) * 100;
+      gradParts.push(catColors[i] + ' ' + cumPct.toFixed(1) + '% ' + (cumPct + pct).toFixed(1) + '%');
+      cumPct += pct;
+    });
+    if (gradParts.length === 0) gradParts.push('var(--border) 0% 100%');
+
+    const legendItems = catOrder.map((cat, i) => {
+      if (catCounts[i] === 0) return '';
+      return '<div class="donut-legend-item">' +
+        '<span class="donut-legend-dot" style="background:' + catColors[i] + '"></span>' +
+        CATEGORIES[cat].label.split(' ')[0] +
+        '<span class="donut-legend-val">' + catCounts[i] + '</span></div>';
+    }).filter(Boolean).join('');
+
+    document.getElementById('dashCategoryBody').innerHTML =
+      '<div class="donut-wrap">' +
+        '<div class="donut" style="background:conic-gradient(' + gradParts.join(',') + ');' +
+          '-webkit-mask:radial-gradient(circle,transparent 34px,#000 35px);mask:radial-gradient(circle,transparent 34px,#000 35px)">' +
+          '<div class="donut-hole">' + total + '</div>' +
+        '</div>' +
+        '<div class="donut-legend">' + legendItems + '</div>' +
+      '</div>';
+
+    // ── Card 2: Kubestronauts by City (bar chart) ──
+    const ksData = [
+      { city: 'Bengaluru', count: 119 },
+      { city: 'Pune', count: 55 },
+      { city: 'Hyderabad', count: 43 },
+      { city: 'Delhi NCR', count: 30 },
+      { city: 'Mumbai', count: 29 },
+      { city: 'Chennai', count: 24 },
+    ];
+    const maxKs = ksData[0].count;
+    const barColors = ['blue','green','purple','amber','cyan','pink'];
+    const ksHighlight = cityVal !== 'all' ? (CITIES[cityVal]?.name || '') : '';
+
+    document.getElementById('dashKubestronautsBody').innerHTML =
+      '<div class="bar-chart">' +
+        ksData.map((d, i) => {
+          const isActive = ksHighlight && d.city.toLowerCase().includes(ksHighlight.toLowerCase().split('/')[0].trim());
+          return '<div class="bar-row">' +
+            '<span class="bar-label" style="' + (isActive ? 'color:var(--blue-600);font-weight:700' : '') + '">' + d.city + '</span>' +
+            '<div class="bar-track">' +
+              '<div class="bar-fill ' + barColors[i % barColors.length] + '" style="width:' + ((d.count / maxKs) * 100).toFixed(0) + '%;' +
+              (isActive ? 'opacity:1' : 'opacity:0.8') + '"></div>' +
+            '</div>' +
+            '<span class="bar-val">' + d.count + '</span>' +
+          '</div>';
+        }).join('') +
+        '<div style="font-size:0.6rem;color:var(--text-400);margin-top:4px;text-align:right">+ 178 more across India · 478 total</div>' +
+      '</div>';
+
+    // ── Card 3: Golden Kubestronauts (ring chart) ──
+    var goldenIndia = 42, goldenGlobal = 519;
+    var goldenPct = ((goldenIndia / goldenGlobal) * 100).toFixed(1);
+    var circumference = 2 * Math.PI * 32;
+    var goldenDash = (goldenIndia / goldenGlobal) * circumference;
+
+    document.getElementById('dashGoldenBody').innerHTML =
+      '<div class="ring-wrap">' +
+        '<svg class="ring-svg" viewBox="0 0 80 80">' +
+          '<circle cx="40" cy="40" r="32" fill="none" stroke="#1e3a6e" stroke-width="10"/>' +
+          '<circle cx="40" cy="40" r="32" fill="none" stroke="#ca8a04" stroke-width="10" ' +
+            'stroke-dasharray="' + goldenDash.toFixed(1) + ' ' + (circumference - goldenDash).toFixed(1) + '" ' +
+            'stroke-dashoffset="' + (circumference * 0.25).toFixed(1) + '" stroke-linecap="round"/>' +
+          '<text x="40" y="37" text-anchor="middle" font-size="14" font-weight="800" fill="#1e293b">' + goldenIndia + '</text>' +
+          '<text x="40" y="50" text-anchor="middle" font-size="7" fill="#64748b">of ' + goldenGlobal + '</text>' +
+        '</svg>' +
+        '<div class="ring-stats">' +
+          '<div class="ring-stat-val">' + goldenPct + '%</div>' +
+          '<div class="ring-stat-label">of global Golden Kubestronauts</div>' +
+          '<div class="ring-stat-sub">All 15 CNCF certs + LFCS</div>' +
+          '<div style="font-size:0.6rem;color:var(--text-400);margin-top:4px">🇮🇳 4th country globally</div>' +
+        '</div>' +
+      '</div>';
+
+    // ── Card 4: CNCF Chapters by State (bar chart) ──
+    const chapData = CHAPTER_STATES.slice(0, 6);
+    const maxChap = chapData[0].count;
+
+    document.getElementById('dashChaptersBody').innerHTML =
+      '<div class="bar-chart">' +
+        chapData.map((s, i) => {
+          return '<div class="bar-row">' +
+            '<span class="bar-label">' + s.state.substring(0, 10) + '</span>' +
+            '<div class="bar-track">' +
+              '<div class="bar-fill cyan" style="width:' + ((s.count / maxChap) * 100).toFixed(0) + '%"></div>' +
+            '</div>' +
+            '<span class="bar-val">' + s.count + '</span>' +
+          '</div>';
+        }).join('') +
+        '<div style="font-size:0.6rem;color:var(--text-400);margin-top:4px;text-align:right">42 chapters · 15 states</div>' +
+      '</div>';
+
+    // ── Card 5: India vs World ──
+    document.getElementById('dashGlobalBody').innerHTML =
+      '<div class="metric-row"><span class="metric-big">4th</span><span class="metric-unit">globally</span></div>' +
+      '<div class="metric-sub">' +
+        '<strong>478</strong> of 4,427 Kubestronauts · <strong>10.8%</strong><br>' +
+        '<strong>42</strong> of 519 Golden · <strong>8.1%</strong><br>' +
+        '<strong>4.69%</strong> of all CNCF contributions<br>' +
+        '<strong>2nd</strong> largest contributor country (after US)' +
+      '</div>';
+
+    // ── Card 6: Open Source Activity + Mentorship ──
+    document.getElementById('dashActivityBody').innerHTML =
+      '<div class="activity-list">' +
+        '<div class="activity-row"><span class="activity-icon">🔀</span><span class="activity-val">1,173+</span> merged PRs in k/k from Indian maintainers</div>' +
+        '<div class="activity-row"><span class="activity-icon">📬</span><span class="activity-val">9</span> open PRs right now (kubernetes org)</div>' +
+        '<div class="activity-row"><span class="activity-icon">🎓</span><span class="activity-val">GSoC #1</span> India = #1 country all-time (40-50%)</div>' +
+        '<div class="activity-row"><span class="activity-icon">🚀</span><span class="activity-val">25</span> LFX mentees → CNCF maintainers</div>' +
+        '<div class="activity-row"><span class="activity-icon">📈</span><span class="activity-val">40K</span> LFX contributions in 2025 (4× since 2021)</div>' +
+      '</div>' +
+      '<div style="font-size:0.55rem;color:var(--text-400);margin-top:6px">Source: GitHub API, CNCF, LFX · Sep 2026</div>';
+  }
+
+  // ─── CHAPTERS GRID (dynamic) ──────────────
+  function buildChaptersGrid() {
+    updateBottomGrid(); // initial render
+  }
+
+  function updateBottomGrid() {
+    const catVal = categoryFilter.value;
+    const cityVal = cityFilter.value;
+    const gridTitle = document.getElementById('gridTitle');
+    const gridSubtitle = document.getElementById('gridSubtitle');
+    const grid = document.getElementById('stateGrid');
+
+    if (catVal === 'kubestronauts') {
+      // Show Kubestronauts by city — filtered if a city is selected
+      let ksEntities = ENTITIES.filter(e => e.id.startsWith('ks-')).sort((a, b) => {
+        const countA = parseInt(a.title) || 0;
+        const countB = parseInt(b.title) || 0;
+        return countB - countA;
+      });
+      if (cityVal !== 'all') {
+        ksEntities = ksEntities.filter(e => e.city === cityVal);
+      }
+      const cityName = cityVal !== 'all' ? (CITIES[cityVal]?.name || cityVal) : 'India';
+      const totalNames = ksEntities.reduce((sum, e) => {
+        const m = e.description.match(/CNCF\):<br><br>(.+)/);
+        return sum + (m ? m[1].replace(/\.$/, '').split(', ').filter(n => n.trim()).length : 0);
+      }, 0);
+      gridTitle.textContent = '🚀 ' + totalNames + ' Kubestronauts' + (cityVal !== 'all' ? ' in ' + cityName : ' across India');
+      gridSubtitle.innerHTML = 'All 5 K8s certifications (CKA, CKAD, CKS, KCNA, KCSA). Verified from <a href="https://www.cncf.io/training/kubestronaut/" target="_blank">CNCF</a>.';
+
+      if (ksEntities.length === 0) {
+        grid.innerHTML = '<div class="state-card"><h3>No Kubestronauts found</h3><ul><li>Try selecting a different city or "All Cities"</li></ul></div>';
+      } else {
+        grid.innerHTML = ksEntities.map(e => {
+          const nameMatch = e.description.match(/CNCF\):<br><br>(.+)/);
+          const names = nameMatch ? nameMatch[1].replace(/\.$/, '').replace(/, and more\.?$/, '').split(', ').filter(n => n.trim()) : [];
+          const cn = CITIES[e.city]?.name || e.city;
+          return '<div class="state-card">' +
+            '<h3>' + cn + ' <span class="badge">' + names.length + '</span></h3>' +
+            '<ul>' + names.map(n => '<li>🚀 ' + n.trim() + '</li>').join('') + '</ul>' +
+          '</div>';
+        }).join('');
+      }
+
+    } else if (catVal === 'golden') {
+      // Show Golden Kubestronauts by city — filtered if a city is selected
+      let gkEntities = ENTITIES.filter(e => e.id.startsWith('gk-')).sort((a, b) => {
+        const countA = parseInt(a.title) || 0;
+        const countB = parseInt(b.title) || 0;
+        return countB - countA;
+      });
+      if (cityVal !== 'all') {
+        gkEntities = gkEntities.filter(e => e.city === cityVal);
+      }
+      const cityName = cityVal !== 'all' ? (CITIES[cityVal]?.name || cityVal) : 'India';
+      const totalGk = gkEntities.reduce((sum, e) => {
+        const m = e.description.match(/India:<br><br>([\s\S]+?)(<br><br>|$)/);
+        if (!m) return sum;
+        return sum + m[1].split('<br>').map(l => l.replace(/^[•\s]+/, '').replace(/<\/?[bi]>/g, '').replace(/<i>[^<]*<\/i>/g, '').trim()).filter(n => n && n.length > 2).length;
+      }, 0);
+      gridTitle.textContent = '🏅 ' + totalGk + ' Golden Kubestronauts' + (cityVal !== 'all' ? ' in ' + cityName : ' across India');
+      gridSubtitle.innerHTML = 'All 15 CNCF certifications + LFCS. Verified from <a href="https://www.cncf.io/training/kubestronaut/?_sfm_lf_person_golden=1" target="_blank">CNCF</a>.';
+
+      if (gkEntities.length === 0) {
+        grid.innerHTML = '<div class="state-card"><h3>No Golden Kubestronauts found</h3><ul><li>Try selecting a different city or "All Cities"</li></ul></div>';
+      } else {
+        grid.innerHTML = gkEntities.map(e => {
+          const nameMatch = e.description.match(/India:<br><br>([\s\S]+?)(<br><br>|$)/);
+          let names = [];
+          if (nameMatch) {
+            names = nameMatch[1].split('<br>').map(line => {
+              return line.replace(/^[•\s]+/, '').replace(/<\/?[bi]>/g, '').replace(/<i>[^<]*<\/i>/g, '').replace(/\s*—.*$/, '').trim();
+            }).filter(n => n && n.length > 2);
+          }
+          const cn = CITIES[e.city]?.name || e.city;
+          return '<div class="state-card">' +
+            '<h3>' + cn + ' <span class="badge">' + names.length + '</span></h3>' +
+            '<ul>' + names.map(n => '<li>🏅 ' + n + '</li>').join('') + '</ul>' +
+          '</div>';
+        }).join('');
+      }
+
+    } else if (catVal === 'chapters') {
+      // Show CNCF chapters — filtered by city if selected
+      let chaptersData = CHAPTER_STATES;
+      if (cityVal !== 'all') {
+        const cityObj = CITIES[cityVal];
+        if (cityObj) {
+          const stateId = cityObj.state;
+          // Map state ID to state name
+          const stateMap = {};
+          CHAPTER_STATES.forEach(s => {
+            const matchingCities = Object.entries(CITIES).filter(([_, c]) => {
+              const sName = s.state.toLowerCase();
+              const statePath = document.getElementById(c.state);
+              const pathName = statePath ? (statePath.getAttribute('name') || '').toLowerCase() : '';
+              return pathName.includes(sName) || sName.includes(cityObj.name.toLowerCase().split('/')[0].trim());
+            });
+          });
+          // Simpler: match by city name appearing in chapter names
+          const cn = cityObj.name.split('/')[0].trim().toLowerCase();
+          chaptersData = CHAPTER_STATES.filter(s =>
+            s.chapters.some(c => c.toLowerCase().includes(cn)) ||
+            s.state.toLowerCase().includes(cn)
+          );
+        }
+      }
+      const cityName = cityVal !== 'all' ? (CITIES[cityVal]?.name || cityVal) : 'India';
+      const totalChapters = chaptersData.reduce((s, c) => s + c.count, 0);
+      gridTitle.textContent = '🩵 ' + totalChapters + ' CNCF Chapters' + (cityVal !== 'all' ? ' near ' + cityName : ' in India');
+      gridSubtitle.innerHTML = 'Community groups across India';
+      if (chaptersData.length === 0) {
+        grid.innerHTML = '<div class="state-card"><h3>No chapters found</h3><ul><li>Try selecting a different city or "All Cities"</li></ul></div>';
+      } else {
+        grid.innerHTML = chaptersData.map(s =>
+          '<div class="state-card">' +
+            '<h3>CNCF ' + s.state + ' <span class="badge">' + s.count + '</span></h3>' +
+            '<ul>' + s.chapters.map(c => '<li>🩵 CNCF ' + c + '</li>').join('') + '</ul>' +
+          '</div>'
+        ).join('');
+      }
+
+    } else {
+      // "All" — show overview with all categories, filtered by city
+      const cityName = cityVal !== 'all' ? (CITIES[cityVal]?.name || cityVal) : 'India';
+      gridTitle.textContent = (cityVal !== 'all' ? cityName + "'s" : "India's") + ' Cloud Native Ecosystem';
+      gridSubtitle.innerHTML = 'Leaders, maintainers, projects, companies, and communities. Use the dropdown above to explore by category.';
+      const catOrder = ['leaders', 'maintainers', 'projects', 'ambassadors', 'companies', 'education', 'community', 'diversity'];
+      grid.innerHTML = catOrder.map(cat => {
+        const c = CATEGORIES[cat];
+        let ents = ENTITIES.filter(e => e.category === cat);
+        if (cityVal !== 'all') {
+          ents = ents.filter(e => {
+            const ec = Array.isArray(e.city) ? e.city : [e.city];
+            return ec.includes(cityVal);
+          });
+        }
+        if (ents.length === 0) return '';
+        const topNames = ents.slice(0, 8).map(e => e.name);
+        return '<div class="state-card">' +
+          '<h3 style="color:' + c.color + '">' + c.icon + ' ' + c.label + ' <span class="badge">' + ents.length + '</span></h3>' +
+          '<ul>' + topNames.map(n => '<li style="color:' + c.color + '">' + n + '</li>').join('') +
+          (ents.length > 8 ? '<li style="color:var(--text-400)">... and ' + (ents.length - 8) + ' more</li>' : '') +
+          '</ul>' +
+        '</div>';
+      }).filter(Boolean).join('');
+    }
+  }
+
+  // ─── HIGHLIGHT MAP STATES based on filter ──
+  function updateMapStateHighlights() {
+    const catVal = categoryFilter.value;
+    // Reset all state fills
+    document.querySelectorAll('.map-svg-wrap svg path').forEach(p => {
+      p.classList.remove('state-active');
+      // Re-check has-data based on filter
+      const stateId = p.id;
+      const citiesInState = Object.entries(CITIES).filter(([_, c]) => c.state === stateId).map(([id]) => id);
+      let stateEnts = ENTITIES.filter(e => {
+        const c = Array.isArray(e.city) ? e.city : [e.city];
+        return c.some(x => citiesInState.includes(x));
+      });
+      if (catVal === 'chapters') stateEnts = stateEnts.filter(e => e.category === 'community');
+      else if (catVal === 'kubestronauts') stateEnts = stateEnts.filter(e => e.id.startsWith('ks-'));
+      else if (catVal === 'golden') stateEnts = stateEnts.filter(e => e.id.startsWith('gk-'));
+
+      if (stateEnts.length > 0) {
+        p.classList.add('has-data');
+      } else {
+        p.classList.remove('has-data');
+      }
+    });
+  }
+
+  // ─── SEARCH ──────────────────────────────────
+  function bindSearch() {
+    if (!searchInput || !searchResults) return; // search bar removed
+    let debounce;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        const q = searchInput.value.trim().toLowerCase();
+        if (q.length < 2) { searchResults.classList.remove('show'); return; }
+        const matches = ENTITIES.filter(e =>
+          e.name.toLowerCase().includes(q) ||
+          (e.org && e.org.toLowerCase().includes(q)) ||
+          (e.title && e.title.toLowerCase().includes(q)) ||
+          (e.description && e.description.toLowerCase().includes(q))
+        ).slice(0, 10);
+        if (!matches.length) { searchResults.classList.remove('show'); return; }
+        searchResults.innerHTML = matches.map(e => {
+          const cat = CATEGORIES[e.category];
+          return '<div class="search-result-item" data-id="' + e.id + '">' +
+            '<div class="sr-symbol" style="background:' + cat.color + '">' + e.symbol + '</div>' +
+            '<div><div class="sr-name">' + e.name + '</div><div class="sr-meta">' + (e.org || '') + ' · ' + cat.label + '</div></div>' +
+          '</div>';
+        }).join('');
+        searchResults.classList.add('show');
+        searchResults.querySelectorAll('.search-result-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const entity = ENTITIES.find(e => e.id === item.dataset.id);
+            if (entity) { showEntityDetail(entity); searchResults.classList.remove('show'); searchInput.value = ''; }
+          });
+        });
+      }, 150);
+    });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.search-wrap')) searchResults.classList.remove('show'); });
+  }
+
+  // ─── SIDEBAR ─────────────────────────────────
+  function bindSidebar() {
+    if (!sidebarClose) return;
+    sidebarClose.addEventListener('click', () => {
+      const panel = document.getElementById('mapResultsPanel');
+      if (panel) panel.style.display = 'none';
+      activeCity = null;
+      cityFilter.value = 'all';
+      categoryFilter.value = 'all';
+      clearMapHighlights();
+      renderAllEntities();
+    });
+  }
+
+  // ─── KEYBOARD ────────────────────────────────
+  function bindKeyboard() {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (searchResults) searchResults.classList.remove('show');
+        if (searchInput) searchInput.value = '';
+      }
+    });
+  }
+
+  // ─── TOOLTIP ─────────────────────────────────
+  function showTooltip(e, text) {
+    tooltip.textContent = text;
+    tooltip.classList.add('show');
+    positionTooltip(e);
+  }
+  function hideTooltip() { tooltip.classList.remove('show'); }
+  function positionTooltip(e) {
+    tooltip.style.left = (e.clientX + 12) + 'px';
+    tooltip.style.top = (e.clientY - 10) + 'px';
+  }
+  document.addEventListener('mousemove', (e) => {
+    if (tooltip.classList.contains('show')) positionTooltip(e);
+  });
+
+  // ─── TAB SWITCHING ──────────────────────────
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-page').forEach(p => {
+        p.classList.remove('active');
+        p.style.display = 'none';
+      });
+      btn.classList.add('active');
+      const page = document.getElementById('tab-' + tabId);
+      if (page) {
+        page.classList.add('active');
+        page.style.display = 'block';
+      }
+    });
+  });
+
+
+  // ─── STAT CHIP CLICK-TO-EXPAND ─────────────
+  function bindStatChips() {
+    document.querySelectorAll('.stat-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const wasExpanded = chip.classList.contains('expanded');
+        // Close all others
+        document.querySelectorAll('.stat-chip.expanded').forEach(c => c.classList.remove('expanded'));
+        // Toggle this one
+        if (!wasExpanded) chip.classList.add('expanded');
+      });
+    });
+  }
+
+  // ─── FEATURED CONTRIBUTORS GALLERY ────────────
+  const FEATURED_CONTRIBUTORS = [
+    { id: 'nikhita', github: 'nikhita', shortRole: 'CNCF TOC Vice Chair' },
+    { id: 'dims', github: 'dims', shortRole: '873 PRs in k/k' },
+    { id: 'priyanka-saggu', github: 'priyankasaggu11929', shortRole: 'K8s Release Lead' },
+    { id: 'faseela', github: 'kfaseela', shortRole: 'CNCF TOC, Istio Steering' },
+    { id: 'nabarun', github: 'palnabarun', shortRole: 'K8s Steering Emeritus' },
+    { id: 'divya-mohan', github: 'divya-mohan0209', shortRole: 'SIG Docs Chair' },
+    { id: 'saiyam', github: 'saiyam1814', shortRole: 'CNCF TAG Chair' },
+    { id: 'sonali', github: 'cerebro1', shortRole: 'Co-chair KubeCon India 2026', photo: 'img/sonali.jpeg' },
+    { id: 'hrittik', github: 'hrittikhere', shortRole: 'CNCF Ambassador' },
+    { id: 'sandeep-kanabar', github: 'sandeepkanabar', shortRole: 'CNCF Deaf/HoH WG' },
+    { id: 'nitish', github: 'nitishfy', shortRole: 'ArgoCD Maintainer, Akuity' },
+    { id: 'ram-iyengar', github: 'ramiyengar', shortRole: 'Cloud Foundry, Educator' },
+    { id: 'atulpriya', github: 'techmaharaj', shortRole: 'Paralus Maintainer' },
+    { id: 'sreeram', github: 'sreeram-venkitesh', shortRole: 'K8s Enhancements Lead, 7 Releases' },
+    { id: 'dipesh', github: 'dipesh-rawat', shortRole: 'K8s v1.37 Release Lead' },
+    { id: 'rajas', github: 'rajaskakodkar', shortRole: 'CNCF TAG Tech Lead' },
+  ];
+
+  function renderContribGallery() {
+    const gallery = document.getElementById('contribGallery');
+    if (!gallery) return;
+    gallery.innerHTML = FEATURED_CONTRIBUTORS.map(fc => {
+      const ent = ENTITIES.find(e => e.id === fc.id);
+      const name = ent ? ent.name : fc.id;
+      const org = ent ? (ent.org || '') : '';
+      const photoUrl = fc.photo || ('https://github.com/' + fc.github + '.png?size=160');
+      return '<div class="contrib-card" data-fc-id="' + fc.id + '">' +
+        '<img class="contrib-photo" src="' + photoUrl + '" alt="' + name + '" loading="lazy" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22><rect fill=%22%23e5e7eb%22 width=%2280%22 height=%2280%22 rx=%2240%22/><text x=%2240%22 y=%2248%22 text-anchor=%22middle%22 font-size=%2228%22 fill=%22%2394a3b8%22>' + name.charAt(0) + '</text></svg>\'">' +
+        '<div class="contrib-name">' + name + '</div>' +
+        '<div class="contrib-role">' + fc.shortRole + '</div>' +
+        (org ? '<div class="contrib-org">' + org + '</div>' : '') +
+      '</div>';
+    }).join('');
+
+    // Click handlers
+    gallery.querySelectorAll('.contrib-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const fcId = card.dataset.fcId;
+        const bioPanel = document.getElementById('contribBio');
+        const wasActive = card.classList.contains('active');
+
+        // Clear all active
+        gallery.querySelectorAll('.contrib-card').forEach(c => c.classList.remove('active'));
+
+        if (wasActive) {
+          bioPanel.style.display = 'none';
+          bioPanel.innerHTML = '';
+          return;
+        }
+
+        card.classList.add('active');
+        const fc = FEATURED_CONTRIBUTORS.find(f => f.id === fcId);
+        const ent = ENTITIES.find(e => e.id === fcId);
+        if (!ent) { bioPanel.style.display = 'none'; return; }
+
+        const bullets = ent.description ? ent.description.split('. ').filter(s => s.trim()).map(s => s.replace(/\.$/, '')) : [];
+        const linksHtml = [];
+        if (ent.links) {
+          if (ent.links.github) linksHtml.push('<a href="https://github.com/' + ent.links.github + '" target="_blank">GitHub</a>');
+          if (ent.links.twitter) linksHtml.push('<a href="https://twitter.com/' + ent.links.twitter + '" target="_blank">Twitter</a>');
+          if (ent.links.linkedin) linksHtml.push('<a href="' + ent.links.linkedin + '" target="_blank">LinkedIn</a>');
+        }
+
+        bioPanel.style.display = 'flex';
+        bioPanel.innerHTML = '<div class="contrib-bio-inner">' +
+          '<button class="contrib-bio-close" title="Close">&times;</button>' +
+          '<div class="contrib-bio-left">' +
+            '<img src="https://github.com/' + fc.github + '.png?size=200" alt="' + ent.name + '">' +
+            '<div class="bio-name">' + ent.name + '</div>' +
+            '<div class="bio-title">' + (ent.title || fc.shortRole) + '</div>' +
+          '</div>' +
+          '<div class="contrib-bio-right">' +
+            '<ul class="bio-bullets">' + bullets.slice(0, 5).map(b => '<li>' + b + '</li>').join('') + '</ul>' +
+            (ent.highlight ? '<div class="bio-highlight">' + ent.highlight + '</div>' : '') +
+            (linksHtml.length ? '<div class="bio-links">' + linksHtml.join('') + '</div>' : '') +
+          '</div>' +
+        '</div>';
+
+        // Close on X button
+        bioPanel.querySelector('.contrib-bio-close').addEventListener('click', (e) => {
+          e.stopPropagation();
+          bioPanel.style.display = 'none';
+          bioPanel.innerHTML = '';
+          gallery.querySelectorAll('.contrib-card').forEach(c => c.classList.remove('active'));
+        });
+        // Close on backdrop click
+        bioPanel.addEventListener('click', (e) => {
+          if (e.target === bioPanel) {
+            bioPanel.style.display = 'none';
+            bioPanel.innerHTML = '';
+            gallery.querySelectorAll('.contrib-card').forEach(c => c.classList.remove('active'));
+          }
+        });
+      });
+    });
+  }
+
+  // Launch
+  if (typeof ENTITIES !== 'undefined') { init(); renderContribGallery(); bindStatChips(); }
+  else mapWrap.innerHTML = '<div class="welcome"><h3>Error: data.js not loaded</h3></div>';
+})();
+</script>
+
+<script>
+// ── Slide Navigation ──
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+const prevBtn = document.getElementById('prevSlide');
+const nextBtn = document.getElementById('nextSlide');
+const slideNav = document.getElementById('slideNav');
+
+function goSlide(n) {
+  if (n < 0 || n >= slides.length) return;
+  slides[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  window.scrollTo(0, 0);
+  updateSlideNav();
+}
+
+function updateSlideNav() {
+  prevBtn.disabled = (currentSlide === 0);
+  nextBtn.disabled = (currentSlide === slides.length - 1);
+  // Hide nav arrows on intro slide
+  slideNav.style.display = (currentSlide === 0) ? 'none' : 'flex';
+  // Hide global logo on main content slide (header has its own)
+  var globalLogo = document.querySelector('.global-logo');
+  if (globalLogo) {
+    var mainIdx = Array.from(slides).findIndex(function(s) { return s.id === 'slide-main'; });
+    globalLogo.style.display = (currentSlide === mainIdx) ? 'none' : 'flex';
+  }
+}
+
+updateSlideNav();
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goSlide(currentSlide + 1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); goSlide(currentSlide - 1); }
+});
+
+// ── Ripple tap effect ──
+(function() {
+  var selectors = '.tab-btn, .slide-arrow, .intro-start-btn, .bad-card, .bad-chip, .unspoken-card, .unspoken-chip, .sponsor-link, .thankyou-connect a, .stat-chip, .contrib-card';
+  // Add ripple-target class to all interactive elements
+  document.querySelectorAll(selectors).forEach(function(el) {
+    el.classList.add('ripple-target');
+  });
+  // Create ripple on click/touch
+  document.addEventListener('click', function(e) {
+    var target = e.target.closest('.ripple-target');
+    if (!target) return;
+    var rect = target.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height) * 2;
+    var ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+    target.appendChild(ripple);
+    ripple.addEventListener('animationend', function() { ripple.remove(); });
+  });
+})();
+</script>
+</body>
+</html>
