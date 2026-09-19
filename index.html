@@ -1419,6 +1419,92 @@ a:hover { text-decoration: underline; }
 }
 
 /* ═══════════════════════════════════════════════════════════ */
+/*  FLIP BOOK — Your Move page-turn cards                       */
+/* ═══════════════════════════════════════════════════════════ */
+.flip-book {
+  position: relative; max-width: 700px; margin: 0 auto 32px;
+  perspective: 1200px; padding: 0 24px;
+}
+.flip-card {
+  display: none; backface-visibility: hidden;
+  background: linear-gradient(135deg, #0d1a33 0%, #132042 100%);
+  border: 1px solid #1e3a6e; border-radius: 18px;
+  padding: 48px 40px; position: relative; overflow: hidden;
+  transform-origin: left center;
+}
+.flip-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #5CE1E6, #2563eb, transparent);
+}
+.flip-card.active { display: block; }
+.flip-card .flip-title {
+  font-size: 2.2rem; font-weight: 800; color: #5CE1E6;
+  margin-bottom: 20px; line-height: 1.2;
+}
+.flip-card .flip-bullets {
+  list-style: none; padding: 0; margin: 0;
+}
+.flip-card .flip-bullets li {
+  font-size: 1.15rem; color: #E6EDFB; line-height: 2.2;
+  padding-left: 28px; position: relative;
+}
+.flip-card .flip-bullets li::before {
+  content: '▸'; position: absolute; left: 0; color: #5CE1E6; font-weight: 700; font-size: 1.2rem;
+}
+
+/* Forward flip */
+.flip-card.flip-out { display: block; animation: pageFlipOut 0.45s ease-in forwards; }
+.flip-card.flip-in  { display: block; animation: pageFlipIn 0.45s ease-out forwards; }
+@keyframes pageFlipOut {
+  0%   { transform: rotateY(0deg); opacity: 1; }
+  100% { transform: rotateY(-90deg); opacity: 0; }
+}
+@keyframes pageFlipIn {
+  0%   { transform: rotateY(90deg); opacity: 0; }
+  100% { transform: rotateY(0deg); opacity: 1; }
+}
+
+/* Reverse flip */
+.flip-card.flip-out-rev { display: block; animation: pageFlipOutRev 0.45s ease-in forwards; }
+.flip-card.flip-in-rev  { display: block; animation: pageFlipInRev 0.45s ease-out forwards; }
+@keyframes pageFlipOutRev {
+  0%   { transform: rotateY(0deg); opacity: 1; }
+  100% { transform: rotateY(90deg); opacity: 0; }
+}
+@keyframes pageFlipInRev {
+  0%   { transform: rotateY(-90deg); opacity: 0; }
+  100% { transform: rotateY(0deg); opacity: 1; }
+}
+
+.flip-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px; margin-top: 28px;
+}
+.flip-prev, .flip-next {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(92,225,230,0.08); border: 1px solid rgba(92,225,230,0.3);
+  color: #5CE1E6; font-size: 1.6rem; cursor: pointer;
+  transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.flip-prev:hover, .flip-next:hover {
+  background: rgba(92,225,230,0.18); border-color: #5CE1E6;
+  transform: scale(1.08);
+}
+.flip-prev:disabled, .flip-next:disabled {
+  opacity: 0.3; cursor: default; transform: none;
+}
+.flip-counter {
+  font-size: 1.05rem; color: #B9CCF2; font-weight: 700; letter-spacing: 0.05em;
+}
+
+@media (max-width: 1280px) {
+  .flip-card { padding: 32px 28px; }
+  .flip-card .flip-title { font-size: 1.6rem; margin-bottom: 14px; }
+  .flip-card .flip-bullets li { font-size: 0.95rem; line-height: 2; padding-left: 22px; }
+  .flip-prev, .flip-next { width: 42px; height: 42px; font-size: 1.3rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════ */
 /*  TAB 4 - The Future (cyan accent, hopeful theme)             */
 /* ═══════════════════════════════════════════════════════════ */
 .future-hero-v2 {
@@ -1745,7 +1831,8 @@ a:hover { text-decoration: underline; }
 /* ── Vultr slide ── */
 .sponsor-slide {
   display: flex; align-items: center; justify-content: center;
-  min-height: 100vh; background: var(--bg-gradient);
+  min-height: 100vh; max-height: 100vh; overflow: hidden;
+  background: var(--bg-gradient);
 }
 .sponsor-content {
   text-align: center; max-width: 700px; padding: 40px 24px;
@@ -2119,71 +2206,60 @@ a:hover { text-decoration: underline; }
         <p style="color:#B9CCF2; font-size:1.1rem; max-width:700px; margin:12px auto 0;">You heard the good, the bad, and the unspoken. Now pick your role - and take one step.</p>
       </div>
 
-      <!-- Role Cards - row 1 -->
-      <div class="bad-grid">
-        <div class="bad-card" style="border-color:#1e3a6e;">
-          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As an Organizer</div>
-          <div class="bad-desc" style="margin-top:14px;">
-            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Reserve one speaker slot for women, one for first-timers</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Run blind CFP reviews - no names, no companies</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Ask your volunteers if they're okay, not just if the venue is ready</li>
-            </ul>
-          </div>
+      <!-- Flip Book Cards -->
+      <div class="flip-book" id="flipBook">
+        <div class="flip-card active" data-card="0">
+          <div class="flip-title">As an Organizer</div>
+          <ul class="flip-bullets">
+            <li>Reserve one speaker slot for women, one for first-timers</li>
+            <li>Run blind CFP reviews - no names, no companies</li>
+            <li>Ask your volunteers if they're okay, not just if the venue is ready</li>
+          </ul>
         </div>
-        <div class="bad-card" style="border-color:#1e3a6e;">
-          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Maintainer</div>
-          <div class="bad-desc" style="margin-top:14px;">
-            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Write a real "contributing" guide - not a template, a map</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Label issues by complexity so newcomers don't drown</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Review a first-timer's PR with patience, not gatekeeping</li>
-            </ul>
-          </div>
+        <div class="flip-card" data-card="1">
+          <div class="flip-title">As a Maintainer</div>
+          <ul class="flip-bullets">
+            <li>Write a real "contributing" guide - not a template, a map</li>
+            <li>Label issues by complexity so newcomers don't drown</li>
+            <li>Review a first-timer's PR with patience, not gatekeeping</li>
+          </ul>
         </div>
-        <div class="bad-card" style="border-color:#1e3a6e;">
-          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Contributor</div>
-          <div class="bad-desc" style="margin-top:14px;">
-            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Stay after the stipend. Stay after the merged PR.</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Pick one project and commit for 6 months - not 6 repos in 6 weeks</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Read the codebase before raising a PR</li>
-            </ul>
-          </div>
+        <div class="flip-card" data-card="2">
+          <div class="flip-title">As a Contributor</div>
+          <ul class="flip-bullets">
+            <li>Stay after the stipend. Stay after the merged PR.</li>
+            <li>Pick one project and commit for 6 months - not 6 repos in 6 weeks</li>
+            <li>Read the codebase before raising a PR</li>
+          </ul>
         </div>
-        <div class="bad-card" style="border-color:#1e3a6e;">
-          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Sponsor / Company</div>
-          <div class="bad-desc" style="margin-top:14px;">
-            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Give your engineers 20% time for upstream contributions</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Sponsor a Tier-2 city meetup, not just Bengaluru</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Fund travel for first-time conference attendees</li>
-            </ul>
-          </div>
+        <div class="flip-card" data-card="3">
+          <div class="flip-title">As a Sponsor / Company</div>
+          <ul class="flip-bullets">
+            <li>Give your engineers 20% time for upstream contributions</li>
+            <li>Sponsor a Tier-2 city meetup, not just Bengaluru</li>
+            <li>Fund travel for first-time conference attendees</li>
+          </ul>
         </div>
-      </div>
-
-      <!-- Role Cards - row 2 -->
-      <div class="bad-grid" style="margin-bottom:40px;">
-        <div class="bad-card" style="border-color:#1e3a6e;">
-          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As a Student</div>
-          <div class="bad-desc" style="margin-top:14px;">
-            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> GSoC/LFX is the start, not the finish line</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Attend a meetup in your city - or start one</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Submit a CFP. Imposter syndrome lies. Your story matters.</li>
-            </ul>
-          </div>
+        <div class="flip-card" data-card="4">
+          <div class="flip-title">As a Student</div>
+          <ul class="flip-bullets">
+            <li>GSoC/LFX is the start, not the finish line</li>
+            <li>Attend a meetup in your city - or start one</li>
+            <li>Submit a CFP. Imposter syndrome lies. Your story matters.</li>
+          </ul>
         </div>
-        <div class="bad-card" style="border-color:#1e3a6e;">
-          <div class="bad-num" style="color:#5CE1E6; font-size:2rem;">As an Attendee</div>
-          <div class="bad-desc" style="margin-top:14px;">
-            <ul style="list-style:none; padding:0; margin:0; line-height:2;">
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Stay for the talks, not just the swag table</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Talk to a speaker after their session - it makes their day</li>
-              <li style="padding-left:18px; position:relative;"><span style="position:absolute;left:0;color:#5CE1E6;font-weight:700;">—</span> Volunteer to help set up or clean up. Once. That's all it takes.</li>
-            </ul>
-          </div>
+        <div class="flip-card" data-card="5">
+          <div class="flip-title">As an Attendee</div>
+          <ul class="flip-bullets">
+            <li>Stay for the talks, not just the swag table</li>
+            <li>Talk to a speaker after their session - it makes their day</li>
+            <li>Volunteer to help set up or clean up. Once. That's all it takes.</li>
+          </ul>
+        </div>
+        <div class="flip-nav">
+          <button class="flip-prev ripple-target" id="flipPrev" disabled>&#8249;</button>
+          <span class="flip-counter" id="flipCounter">1 / 6</span>
+          <button class="flip-next ripple-target" id="flipNext">&#8250;</button>
         </div>
       </div>
 
@@ -2200,16 +2276,16 @@ a:hover { text-decoration: underline; }
 <!-- ═══════════ SLIDE: VULTR SPONSOR ═══════════ -->
 <div class="slide" id="slide-vultr">
   <div class="sponsor-slide">
-    <div class="sponsor-content" style="max-width:1000px;">
-      <div class="sponsor-name" style="font-size:3rem; white-space:nowrap; display:flex; align-items:center; justify-content:center; gap:16px;"><img src="img/vultr-logo.svg" alt="Vultr" style="height:48px; filter:brightness(0) invert(1);"> <span style="color:#60a5fa;">&#x1F499;</span> Developer Communities</div>
-      <div style="margin-top:40px;">
-        <img src="img/vultr-pune-3.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:16px; border:1px solid #1e3a6e; aspect-ratio:16/9; object-fit:cover; margin-bottom:16px;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-          <img src="img/vultr-pune-1.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:16px; border:1px solid #1e3a6e; aspect-ratio:16/10; object-fit:cover;">
-          <img src="img/vultr-pune-2.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:16px; border:1px solid #1e3a6e; aspect-ratio:16/10; object-fit:cover;">
+    <div class="sponsor-content" style="max-width:900px;">
+      <div class="sponsor-name" style="font-size:2.4rem; white-space:nowrap; display:flex; align-items:center; justify-content:center; gap:16px;"><img src="img/vultr-logo.svg" alt="Vultr" style="height:40px; filter:brightness(0) invert(1);"> <span style="color:#60a5fa;">&#x1F499;</span> Developer Communities</div>
+      <div style="margin-top:16px;">
+        <img src="img/vultr-pune-3.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:14px; border:1px solid #1e3a6e; max-height:38vh; object-fit:cover; margin-bottom:12px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <img src="img/vultr-pune-1.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:14px; border:1px solid #1e3a6e; max-height:26vh; object-fit:cover;">
+          <img src="img/vultr-pune-2.jpg" alt="Cloud Native Day Pune x Vultr" style="width:100%; border-radius:14px; border:1px solid #1e3a6e; max-height:26vh; object-fit:cover;">
         </div>
       </div>
-      <a href="https://www.vultr.com/" target="_blank" class="sponsor-link" style="margin-top:32px;">vultr.com</a>
+      <a href="https://www.vultr.com/" target="_blank" class="sponsor-link" style="margin-top:16px;">vultr.com</a>
     </div>
   </div>
 </div>
@@ -3221,8 +3297,64 @@ a:hover { text-decoration: underline; }
     });
   }
 
+  // ─── FLIP BOOK (Your Move slide) ────────────
+  function initFlipBook() {
+    const flipCards = document.querySelectorAll('.flip-card');
+    const prevBtn = document.getElementById('flipPrev');
+    const nextBtn = document.getElementById('flipNext');
+    const counter = document.getElementById('flipCounter');
+    if (!flipCards.length || !prevBtn || !nextBtn) return;
+
+    let flipIndex = 0;
+    let flipping = false;
+
+    function updateNav() {
+      counter.textContent = (flipIndex + 1) + ' / ' + flipCards.length;
+      prevBtn.disabled = (flipIndex === 0);
+      nextBtn.disabled = (flipIndex === flipCards.length - 1);
+    }
+
+    nextBtn.addEventListener('click', function() {
+      if (flipping || flipIndex >= flipCards.length - 1) return;
+      flipping = true;
+      var old = flipCards[flipIndex];
+      flipIndex++;
+      var next = flipCards[flipIndex];
+      old.classList.add('flip-out');
+      old.addEventListener('animationend', function() {
+        old.classList.remove('active', 'flip-out');
+        flipping = false;
+      }, { once: true });
+      next.classList.add('active', 'flip-in');
+      next.addEventListener('animationend', function() {
+        next.classList.remove('flip-in');
+      }, { once: true });
+      updateNav();
+    });
+
+    prevBtn.addEventListener('click', function() {
+      if (flipping || flipIndex <= 0) return;
+      flipping = true;
+      var old = flipCards[flipIndex];
+      flipIndex--;
+      var next = flipCards[flipIndex];
+      old.classList.add('flip-out-rev');
+      old.addEventListener('animationend', function() {
+        old.classList.remove('active', 'flip-out-rev');
+        flipping = false;
+      }, { once: true });
+      next.classList.add('active', 'flip-in-rev');
+      next.addEventListener('animationend', function() {
+        next.classList.remove('flip-in-rev');
+      }, { once: true });
+      updateNav();
+    });
+
+    updateNav();
+  }
+
   // Launch
-  if (typeof ENTITIES !== 'undefined') { init(); renderContribGallery(); bindStatChips(); }
+  if (typeof ENTITIES !== 'undefined') { init(); renderContribGallery(); bindStatChips(); initFlipBook(); }
   else mapWrap.innerHTML = '<div class="welcome"><h3>Error: data.js not loaded</h3></div>';
 })();
 </script>
