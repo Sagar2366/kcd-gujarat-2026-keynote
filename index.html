@@ -1398,9 +1398,10 @@ a:hover { text-decoration: underline; }
 
 .contrib-marquee {
   display: flex; gap: 16px; width: max-content;
-  animation: marqueeScroll 30s linear infinite;
+  animation: marqueeScroll 55s linear infinite;
 }
 .contrib-marquee:hover { animation-play-state: paused; }
+.contrib-marquee.paused { animation-play-state: paused; }
 
 @keyframes marqueeScroll {
   0%   { transform: translateX(0); }
@@ -3152,6 +3153,7 @@ a:hover { text-decoration: underline; }
         if (wasActive) {
           bioPanel.style.display = 'none';
           bioPanel.innerHTML = '';
+          gallery.classList.remove('paused');
           return;
         }
 
@@ -3168,11 +3170,16 @@ a:hover { text-decoration: underline; }
           if (ent.links.linkedin) linksHtml.push('<a href="' + ent.links.linkedin + '" target="_blank">LinkedIn</a>');
         }
 
+        const bioPhotoUrl = fc.photo || ('https://github.com/' + fc.github + '.png?size=200');
+
+        // Pause marquee while bio is open
+        gallery.classList.add('paused');
+
         bioPanel.style.display = 'flex';
         bioPanel.innerHTML = '<div class="contrib-bio-inner">' +
           '<button class="contrib-bio-close" title="Close">&times;</button>' +
           '<div class="contrib-bio-left">' +
-            '<img src="https://github.com/' + fc.github + '.png?size=200" alt="' + ent.name + '">' +
+            '<img src="' + bioPhotoUrl + '" alt="' + ent.name + '">' +
             '<div class="bio-name">' + ent.name + '</div>' +
             '<div class="bio-title">' + (ent.title || fc.shortRole) + '</div>' +
           '</div>' +
@@ -3189,6 +3196,7 @@ a:hover { text-decoration: underline; }
           bioPanel.style.display = 'none';
           bioPanel.innerHTML = '';
           gallery.querySelectorAll('.contrib-card').forEach(c => c.classList.remove('active'));
+          gallery.classList.remove('paused');
         });
         // Close on backdrop click
         bioPanel.addEventListener('click', (e) => {
@@ -3196,6 +3204,7 @@ a:hover { text-decoration: underline; }
             bioPanel.style.display = 'none';
             bioPanel.innerHTML = '';
             gallery.querySelectorAll('.contrib-card').forEach(c => c.classList.remove('active'));
+            gallery.classList.remove('paused');
           }
         });
       });
