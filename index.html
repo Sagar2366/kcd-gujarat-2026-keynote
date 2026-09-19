@@ -1048,8 +1048,8 @@ a:hover { text-decoration: underline; }
 @media (max-width: 1023px) { .good-stories .story-grid { grid-template-columns: 1fr; } }
 /* ── Map standalone ── */
 .map-standalone { max-width: 1440px; margin: 20px auto 0; padding: 0 24px; }
-.map-standalone .map-panel { height: auto; min-height: 320px; max-height: none; overflow: visible; position: relative; }
-.map-standalone .map-panel .map-svg-wrap { min-height: 320px; max-height: 50vh; }
+.map-standalone .map-panel { height: auto; min-height: 420px; max-height: none; overflow: visible; position: relative; }
+.map-standalone .map-panel .map-svg-wrap { min-height: 420px; }
 
 /* Filter bar inside map */
 .map-filter-overlay {
@@ -1063,10 +1063,10 @@ a:hover { text-decoration: underline; }
 .map-filter-overlay .filter-select { font-size: 0.72rem; padding: 4px 8px; }
 .map-filter-overlay .filter-divider { height: 20px; }
 
-/* Results panel inside map */
+/* Results panel inside map - below filter */
 .map-results-overlay {
-  position: absolute; bottom: 12px; right: 12px; z-index: 10;
-  width: 380px; max-height: 360px; overflow-y: auto;
+  position: absolute; top: 52px; right: 12px; z-index: 10;
+  width: 380px; max-height: 55vh; overflow-y: auto;
   background: rgba(10,22,40,0.92); backdrop-filter: blur(8px);
   border: 1px solid var(--border); border-radius: 12px;
   padding: 14px 16px; font-size: 0.8rem;
