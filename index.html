@@ -1729,6 +1729,10 @@ a:hover { text-decoration: underline; }
 .global-logo {
   position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 60;
   display: flex; align-items: center; gap: 10px;
+  transition: left 0.3s ease, transform 0.3s ease;
+}
+.global-logo.corner {
+  left: 20px; transform: none;
 }
 .global-logo img { width: 96px; height: 106px; border-radius: 8px; }
 
@@ -3244,6 +3248,12 @@ function updateSlideNav() {
   if (globalLogo) {
     var mainIdx = Array.from(slides).findIndex(function(s) { return s.id === 'slide-main'; });
     globalLogo.style.display = (currentSlide === mainIdx) ? 'none' : 'flex';
+    // Center logo on intro/kemcho, top-left corner on other slides
+    if (currentSlide <= 1) {
+      globalLogo.classList.remove('corner');
+    } else {
+      globalLogo.classList.add('corner');
+    }
   }
 }
 
