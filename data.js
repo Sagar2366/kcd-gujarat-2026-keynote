@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-//  India's Cloud Native Ecosystem — Data Layer
+//  India's Cloud Native Ecosystem - Data Layer
 //  KCD Gujarat 2026 · Ahmedabad · Sep 19, 2026
 // ═══════════════════════════════════════════════════════════
 
@@ -33,7 +33,7 @@ const CITIES = {
 };
 
 // ═══════════════════════════════════════════════════════════
-//  ENTITIES — 120+ people, projects, companies, communities
+//  ENTITIES - 120+ people, projects, companies, communities
 // ═══════════════════════════════════════════════════════════
 
 const ENTITIES = [
@@ -46,14 +46,14 @@ const ENTITIES = [
     category: 'leaders', city: 'bangalore', org: 'Broadcom',
     title: 'CNCF TOC Vice Chair (emeritus), K8s Steering, KubeCon Chair',
     description: 'Engineering Manager at Broadcom, Bangalore. From GSoC contributor → K8s Steering Committee → CNCF TOC Vice Chair → KubeCon India Chair. Created tech-conferences-india (714⭐).',
-    highlight: 'When an Indian engineer sits on the TOC that governs 230+ CNCF projects — that\'s not consumption. That\'s leadership.',
+    highlight: 'When an Indian engineer sits on the TOC that governs 230+ CNCF projects - that\'s not consumption. That\'s leadership.',
     links: { github: 'nikhita', twitter: 'TheNikhita' },
   },
   {
     id: 'nabarun', name: 'Nabarun Pal', symbol: 'Np',
     category: 'ambassadors', city: 'bangalore', org: 'Broadcom',
     description: 'Principal SWE at Broadcom, IIT Roorkee grad. First Indian to lead a Kubernetes release (v1.21). SIG ContribEx Chair. K8s GitHub Admin. Featured in Times of India twice. KubeCon India 2024 keynote.',
-    highlight: 'Unity in Diversity — KubeCon India 2024 keynote by Nabarun.',
+    highlight: 'Unity in Diversity - KubeCon India 2024 keynote by Nabarun.',
     links: { github: 'palnabarun', twitter: 'theonlynabarun' },
   },
   {
@@ -77,7 +77,7 @@ const ENTITIES = [
     category: 'leaders', city: 'national', org: 'Nvidia',
     title: 'K8s Steering, SIG Architecture Chair, containerd maintainer',
     description: 'India-born, one of the earliest and most influential K8s contributors globally. Decades of OSS (Apache, OpenStack → K8s). Arctic Code Vault + Mars 2020 Contributor.',
-    highlight: 'From Apache to Kubernetes to Mars — Dims has been building open source before it was cool.',
+    highlight: 'From Apache to Kubernetes to Mars - Dims has been building open source before it was cool.',
     links: { github: 'dims' },
   },
   {
@@ -124,7 +124,7 @@ const ENTITIES = [
     id: 'ab-periasamy', name: 'AB Periasamy', symbol: 'AB',
     category: 'leaders', city: 'chennai', org: 'MinIO',
     title: 'GlusterFS founder → MinIO CEO',
-    description: 'From Tamil Nadu. Annamalai University grad. Founded GlusterFS (acquired by Red Hat), then MinIO — widely used object storage in cloud native.',
+    description: 'From Tamil Nadu. Annamalai University grad. Founded GlusterFS (acquired by Red Hat), then MinIO - widely used object storage in cloud native.',
     highlight: 'Two globally used open-source storage projects from one person from Tamil Nadu.',
     links: {},
   },
@@ -133,7 +133,7 @@ const ENTITIES = [
     category: 'leaders', city: 'national', org: 'Red Hat',
     title: 'K8s SIG Storage Chair',
     description: 'Confirmed via K8s sigs.yaml. Leading one of the most critical Kubernetes SIGs.',
-    highlight: 'Chairing K8s SIG Storage — the infrastructure layer everything depends on.',
+    highlight: 'Chairing K8s SIG Storage - the infrastructure layer everything depends on.',
     links: {},
   },
 
@@ -169,7 +169,7 @@ const ENTITIES = [
     category: 'maintainers', city: 'bangalore', org: 'Red Hat',
     title: 'K8s SIG Instrumentation Co-Chair, Prometheus maintainer',
     description: 'CNCF Ambassador. Dual leadership: K8s SIG + CNCF project maintainer simultaneously.',
-    highlight: 'Chairing a K8s SIG and maintaining Prometheus — dual leadership.',
+    highlight: 'Chairing a K8s SIG and maintaining Prometheus - dual leadership.',
     links: { github: 'PranshuSrivastava' },
   },
   {
@@ -184,7 +184,7 @@ const ENTITIES = [
     id: 'rohit-agrawal', name: 'Rohit Agrawal', symbol: 'Ra',
     category: 'maintainers', city: 'national', org: 'Databricks',
     title: 'Envoy Senior Maintainer + Security Team, Argo Rollouts reviewer',
-    description: 'Cross-project superstar — Envoy Senior Maintainer AND Argo Rollouts reviewer simultaneously. Extremely rare dual maintainership.',
+    description: 'Cross-project superstar - Envoy Senior Maintainer AND Argo Rollouts reviewer simultaneously. Extremely rare dual maintainership.',
     highlight: 'One of the very few people maintaining TWO major CNCF projects simultaneously.',
     links: {},
   },
@@ -192,7 +192,7 @@ const ENTITIES = [
     id: 'prem-saraswat', name: 'Prem Saraswat', symbol: 'Pm',
     category: 'maintainers', city: 'national', org: 'Red Hat',
     title: 'Thanos Core Maintainer',
-    description: 'Core maintainer of Thanos — highly available Prometheus setup used by the largest enterprises.',
+    description: 'Core maintainer of Thanos - highly available Prometheus setup used by the largest enterprises.',
     highlight: 'Core maintainer of Thanos.',
     links: {},
   },
@@ -208,8 +208,8 @@ const ENTITIES = [
     id: 'rama-chavali', name: 'Rama Chavali', symbol: 'Rc',
     category: 'maintainers', city: 'national', org: 'Salesforce',
     title: 'Istio WG Networking Lead',
-    description: 'Leading the Networking Working Group in Istio — one of the largest CNCF service mesh projects.',
-    highlight: 'Leading Istio networking — the service mesh that powers enterprise microservices.',
+    description: 'Leading the Networking Working Group in Istio - one of the largest CNCF service mesh projects.',
+    highlight: 'Leading Istio networking - the service mesh that powers enterprise microservices.',
     links: {},
   },
   {
@@ -224,8 +224,8 @@ const ENTITIES = [
     id: 'soumya-ghosh', name: 'Soumya Ghosh Dastidar', symbol: 'Sg',
     category: 'maintainers', city: 'national', org: 'Intuit',
     title: 'Argo CD Approver',
-    description: 'Part of the strong Indian presence in the Argo project — 14+ active and alumni contributors.',
-    highlight: 'Indian engineers are deeply embedded in Argo — 14+ contributors.',
+    description: 'Part of the strong Indian presence in the Argo project - 14+ active and alumni contributors.',
+    highlight: 'Indian engineers are deeply embedded in Argo - 14+ contributors.',
     links: {},
   },
 
@@ -236,7 +236,7 @@ const ENTITIES = [
     id: 'kyverno', name: 'Kyverno', symbol: 'Ky',
     category: 'projects', city: 'national', org: 'Nirmata',
     title: 'K8s-native policy engine · CNCF Graduated 🎓',
-    description: 'Created by Nirmata (Jim Bugwadia, Indian-origin). CNCF Graduated (Mar 2026) — same level as Kubernetes, Prometheus, Envoy. 7M+ monthly downloads, 3,711 contributors.',
+    description: 'Created by Nirmata (Jim Bugwadia, Indian-origin). CNCF Graduated (Mar 2026) - same level as Kubernetes, Prometheus, Envoy. 7M+ monthly downloads, 3,711 contributors.',
     highlight: 'This is what "created in India, trusted globally" looks like.',
     links: { github: 'kyverno/kyverno', web: 'https://kyverno.io' },
   },
@@ -260,7 +260,7 @@ const ENTITIES = [
     id: 'openebs', name: 'OpenEBS', symbol: 'Oe',
     category: 'projects', city: 'bangalore', org: 'DataCore (ex-MayaData)',
     title: 'K8s storage · CNCF Sandbox 📦',
-    description: 'Created in Bangalore. First commit Aug 2016 — one of the oldest K8s storage projects. Kiran Mova (founder). 1,055 contributors. Est. value $116.7M.',
+    description: 'Created in Bangalore. First commit Aug 2016 - one of the oldest K8s storage projects. Kiran Mova (founder). 1,055 contributors. Est. value $116.7M.',
     highlight: 'One of the oldest Kubernetes storage projects, born in Bangalore.',
     links: { github: 'openebs/openebs' },
   },
@@ -269,7 +269,7 @@ const ENTITIES = [
     category: 'projects', city: 'national', org: 'TrueFoundry',
     title: 'K8s scale-to-zero · CNCF Sandbox 📦 (Jan 2026)',
     description: 'Founded by IIT alumni: Nikunj Bajaj (ex-Facebook ML Lead), Abhishek Choudhary (ex-Facebook Sr Staff), Anuraag Gutgutia (ex-WorldQuant VP). K8s-native scale-to-zero with smart proxy. Community meetings at 19:00 IST.',
-    highlight: 'The newest India-born CNCF project — scale-to-zero for Kubernetes.',
+    highlight: 'The newest India-born CNCF project - scale-to-zero for Kubernetes.',
     links: { github: 'truefoundry/kubelasti' },
   },
   {
@@ -285,7 +285,7 @@ const ENTITIES = [
     category: 'projects', city: 'bangalore', org: 'Cloudnatively Services',
     title: 'Rust-based observability · CNCF Landscape',
     description: 'Bengaluru-based. Rust-based, OTel-native observability. Note: Landscape listing, not official Sandbox project.',
-    highlight: 'Rust-based observability — made in Bengaluru.',
+    highlight: 'Rust-based observability - made in Bengaluru.',
     links: { github: 'parseablehq/parseable' },
   },
 
@@ -297,7 +297,7 @@ const ENTITIES = [
     category: 'leaders', city: 'chandigarh', org: 'vCluster / Kubesimplify',
     title: 'TAG OpRes Chair, Kubestronaut, KubeCon India 2026 Program Chair',
     description: 'Founded Kubesimplify (100K+ community, 50K+ YouTube). TAG Operational Resilience Chair. 5 open-source tools. The most visible cloud-native advocate in India.',
-    highlight: 'From content creator to TAG Chair — Saiyam built India\'s biggest cloud-native community.',
+    highlight: 'From content creator to TAG Chair - Saiyam built India\'s biggest cloud-native community.',
     links: { github: 'saiyam1814', twitter: 'saiyampathak' },
   },
   {
@@ -305,7 +305,7 @@ const ENTITIES = [
     category: 'ambassadors', city: 'kolkata', org: 'vCluster Labs',
     title: 'KubeCon Program Committee, MCP Dev Summit keynote',
     description: 'Multiple KubeCon Program Committee roles. Keynote speaker at MCP Dev Summit.',
-    highlight: 'On the KubeCon Program Committee — deciding what the world sees on stage.',
+    highlight: 'On the KubeCon Program Committee - deciding what the world sees on stage.',
     links: { github: 'hrittikhere' },
   },
   {
@@ -313,7 +313,7 @@ const ENTITIES = [
     category: 'ambassadors', city: 'mumbai', org: 'motia',
     title: 'CNCF Marketing Chair 2025, Google DevExpert, Docker Captain',
     description: 'Organizer KCD UK, KCD Mumbai, DevOpsDays Bengaluru. Triple community hat: CNCF Ambassador + Google DevExpert + Docker Captain.',
-    highlight: 'CNCF Marketing Chair — shaping how the world sees cloud native.',
+    highlight: 'CNCF Marketing Chair - shaping how the world sees cloud native.',
     links: { github: 'ghumare64' },
   },
   {
@@ -329,7 +329,7 @@ const ENTITIES = [
     category: 'ambassadors', city: 'chandigarh', org: 'MetalBear',
     title: 'K8s Contributor Award, cert-manager & Kyverno contributor',
     description: 'K8s 1.25 CI Signal Lead. cert-manager and Kyverno contributor from Chandigarh.',
-    highlight: 'Chandigarh\'s open-source pipeline keeps producing — Arsh is proof.',
+    highlight: 'Chandigarh\'s open-source pipeline keeps producing - Arsh is proof.',
     links: {},
   },
   {
@@ -352,7 +352,7 @@ const ENTITIES = [
     id: 'sagar-utekar', name: 'Sagar Utekar', symbol: 'Su',
     category: 'ambassadors', city: 'pune', org: 'CrowdStrike',
     title: 'CNCF Ambassador, Golden Kubestronaut, KCD Gujarat 2026 Speaker',
-    description: 'Site Reliability & Cloud Engineer at CrowdStrike, Pune. CNCF Ambassador. Golden Kubestronaut — passed all 15 CNCF certifications + LFCS. Speaker at KCD Gujarat 2026. 7+ years in SRE, platform engineering, and infrastructure automation.',
+    description: 'Site Reliability & Cloud Engineer at CrowdStrike, Pune. CNCF Ambassador. Golden Kubestronaut - passed all 15 CNCF certifications + LFCS. Speaker at KCD Gujarat 2026. 7+ years in SRE, platform engineering, and infrastructure automation.',
     highlight: 'Golden Kubestronaut, CNCF Ambassador, and your keynote speaker today at KCD Gujarat 2026.',
     links: {},
   },
@@ -361,7 +361,7 @@ const ENTITIES = [
     category: 'leaders', city: 'mumbai', org: 'InfraCloud',
     title: 'Sr. Developer Advocate, Co-chair KubeCon India 2026, CNCF Ambassador',
     description: 'Co-chairing KubeCon India 2026. CNCG Organizer @ Women in Cloud Native. Keynote Speaker at KubeCon India. Author of LFS255 (Linux Foundation). Outreachy 2022 alumna.',
-    highlight: 'From Outreachy intern to KubeCon India Co-chair and Keynote Speaker — building the path for women in cloud native.',
+    highlight: 'From Outreachy intern to KubeCon India Co-chair and Keynote Speaker - building the path for women in cloud native.',
     links: { github: 'cerebro1' },
   },
   {
@@ -409,7 +409,7 @@ const ENTITIES = [
     category: 'ambassadors', city: 'kerala', org: 'Stackgenie.io',
     title: 'CNCG Trivandrum lead, devopsmalayalam.io co-founder',
     description: 'Co-founded devopsmalayalam.io, leads CNCF Trivandrum chapter. Organized 100+ events from Kerala.',
-    highlight: '100+ events from Kerala — proving cloud native happens everywhere in India.',
+    highlight: '100+ events from Kerala - proving cloud native happens everywhere in India.',
     links: {},
   },
   {
@@ -424,8 +424,8 @@ const ENTITIES = [
     id: 'kaiwalya', name: 'Kaiwalya Koparkar', symbol: 'Kp',
     category: 'ambassadors', city: 'nashik', org: 'Gravitee.io',
     title: 'Founded Cloud Native Nashik',
-    description: 'Founded the CNCF chapter in Nashik — a Tier-2 city. KCNA/CKA/CKAD certified.',
-    highlight: 'Cloud native doesn\'t live only in metros — Nashik proves it.',
+    description: 'Founded the CNCF chapter in Nashik - a Tier-2 city. KCNA/CKA/CKAD certified.',
+    highlight: 'Cloud native doesn\'t live only in metros - Nashik proves it.',
     links: {},
   },
   {
@@ -441,7 +441,7 @@ const ENTITIES = [
     category: 'ambassadors', city: 'jaipur', org: 'Student',
     title: 'CNCF Jaipur lead organizer, GSoC + LFX mentee (Kyverno)',
     description: 'Student leading Jaipur\'s CNCF chapter. GSoC and LFX mentee on Kyverno.',
-    highlight: 'A student running Jaipur\'s cloud-native chapter — the grassroots engine.',
+    highlight: 'A student running Jaipur\'s cloud-native chapter - the grassroots engine.',
     links: {},
   },
   {
@@ -449,7 +449,7 @@ const ENTITIES = [
     category: 'ambassadors', city: 'kerala', org: 'Independent',
     title: 'FOSS contributor since 2001, first KCD + DevOpsDays in Kerala',
     description: 'Organized the first KCD and DevOpsDays in Kerala. FOSS contributor for 25+ years.',
-    highlight: '25 years in open source — organized Kerala\'s first KCD and DevOpsDays.',
+    highlight: '25 years in open source - organized Kerala\'s first KCD and DevOpsDays.',
     links: {},
   },
   {
@@ -488,7 +488,7 @@ const ENTITIES = [
     category: 'leaders', city: 'chennai', org: 'Cloud Foundry',
     title: 'Cloud Foundry advocate, cross-ecosystem bridge',
     description: 'From Chennai. Bridges Cloud Foundry and CNCF communities. A connector across ecosystems.',
-    highlight: 'Bridging ecosystems — Cloud Foundry meets CNCF in Chennai.',
+    highlight: 'Bridging ecosystems - Cloud Foundry meets CNCF in Chennai.',
     links: {},
   },
   {
@@ -496,7 +496,7 @@ const ENTITIES = [
     category: 'maintainers', city: 'national', org: 'Akuity',
     title: 'ArgoCD Maintainer, CNCF Ambassador, LFX Kubernetes 2023',
     description: 'Maintainer of ArgoCD (CNCF graduated). Engineering at Akuity. CNCF Ambassador. LFX mentee turned Kubernetes contributor in 2023. Based in Punjab.',
-    highlight: 'From LFX mentee to ArgoCD maintainer — shipping one of the most widely deployed GitOps tools in the CNCF ecosystem.',
+    highlight: 'From LFX mentee to ArgoCD maintainer - shipping one of the most widely deployed GitOps tools in the CNCF ecosystem.',
     links: { github: 'nitishfy' },
   },
 
@@ -508,14 +508,14 @@ const ENTITIES = [
     category: 'companies', city: 'pune', org: 'Vishal Biyani & Girish Shilamkar',
     title: 'India\'s first K8s partner (2017), Fission, Botkube',
     description: 'Founded in Pune. India\'s first K8s partner. 51 CKAs, 19 CKADs, 4 CKS holders. Created Fission (serverless). Won Stratus Award 2023.',
-    highlight: 'India\'s first Kubernetes partner — and still leading.',
+    highlight: 'India\'s first Kubernetes partner - and still leading.',
     links: { web: 'https://infracloud.io' },
   },
   {
     id: 'nirmata', name: 'Nirmata', symbol: 'Nm',
     category: 'companies', city: 'national', org: 'Jim Bugwadia (Indian-origin)',
     title: 'Created Kyverno (CNCF Graduated)',
-    description: 'Indian-origin founder. Created Kyverno — 7M+ monthly downloads, CNCF Graduated.',
+    description: 'Indian-origin founder. Created Kyverno - 7M+ monthly downloads, CNCF Graduated.',
     highlight: 'The company behind the only India-born CNCF Graduated project.',
     links: { web: 'https://nirmata.com' },
   },
@@ -540,13 +540,13 @@ const ENTITIES = [
     category: 'companies', city: 'bangalore', org: 'Tanmai Gopal & Rajoshi Ghosh',
     title: 'Instant GraphQL APIs, $135M+ raised, CNCF Landscape',
     description: 'Bangalore/SF. Co-founded by Tanmai Gopal & Rajoshi Ghosh. $135M+ raised. Hasura GraphQL Engine → instant GraphQL APIs. Millions of developers.',
-    highlight: 'From Bangalore to millions of developers worldwide — Hasura put India on the GraphQL map.',
+    highlight: 'From Bangalore to millions of developers worldwide - Hasura put India on the GraphQL map.',
     links: { github: 'hasura/graphql-engine' },
   },
   {
     id: 'zerodha', name: 'Zerodha', symbol: 'Zr',
     category: 'companies', city: 'bangalore', org: '',
-    title: 'India\'s largest broker — deliberately anti-cloud, self-hosted',
+    title: 'India\'s largest broker - deliberately anti-cloud, self-hosted',
     description: 'Uses Prometheus/Grafana/VictoriaMetrics self-hosted. No K8s. "Simple scales." India\'s most admired eng team for doing more with less.',
     highlight: 'Proof that cloud-native thinking matters even when you don\'t use K8s.',
     links: {},
@@ -564,7 +564,7 @@ const ENTITIES = [
     category: 'companies', city: 'bangalore', org: '',
     title: 'Created KubeArmor (CNCF Sandbox)',
     description: 'India-based. Created KubeArmor. 9 of 11 maintainers are Indian.',
-    highlight: 'The company behind KubeArmor — 9 of 11 maintainers are Indian.',
+    highlight: 'The company behind KubeArmor - 9 of 11 maintainers are Indian.',
     links: {},
   },
   {
@@ -580,7 +580,7 @@ const ENTITIES = [
     category: 'companies', city: 'national', org: 'Kalaari-backed',
     title: 'AI CloudOps startup',
     description: 'AI-powered cloud operations. Backed by Kalaari Capital.',
-    highlight: 'India\'s next wave — AI meets cloud operations.',
+    highlight: 'India\'s next wave - AI meets cloud operations.',
     links: {},
   },
   {
@@ -588,7 +588,7 @@ const ENTITIES = [
     category: 'companies', city: 'national', org: 'Founded 2025',
     title: 'AI SRE startup',
     description: 'Founded in 2025. AI-powered site reliability engineering.',
-    highlight: 'AI SRE — the newest addition to India\'s cloud-native startup scene.',
+    highlight: 'AI SRE - the newest addition to India\'s cloud-native startup scene.',
     links: {},
   },
 
@@ -599,7 +599,7 @@ const ENTITIES = [
     id: 'gsoc', name: 'GSoC India', symbol: 'GS',
     category: 'education', city: 'national', org: 'Google',
     title: 'India = #1 country ALL-TIME in GSoC participation',
-    description: '2018 peak: 605 Indian students accepted — 6x more than the USA (104). Top institutions: IIT Roorkee (35), IIIT Hyderabad (32), BITS Pilani (23). ~40-50% of all GSoC participants globally.',
+    description: '2018 peak: 605 Indian students accepted - 6x more than the USA (104). Top institutions: IIT Roorkee (35), IIIT Hyderabad (32), BITS Pilani (23). ~40-50% of all GSoC participants globally.',
     highlight: 'India sends more GSoC contributors than any other country in the world. 6x the USA.',
     links: { web: 'https://summerofcode.withgoogle.com' },
   },
@@ -615,14 +615,14 @@ const ENTITIES = [
     id: 'kubestronaut', name: 'Kubestronaut Program', symbol: 'Kb',
     category: 'education', city: 'national', org: 'CNCF',
     title: '478 Indian Kubestronauts of 4,427 globally · 42 Golden Kubestronauts of 519 globally',
-    description: '~11% of all Kubestronauts worldwide are Indian (478 of 4,427). India has 42 Golden Kubestronauts out of 519 globally (~8%) — people who passed ALL 15 CNCF certs + LFCS.<br><br><b>🏅 Golden Kubestronauts by city:</b> Bengaluru (13) · Chennai/TN (9) · Pune (7) · Mumbai (5) · Delhi/NCR (3) · Kolkata (1) · Jaipur (1) · Nashik (1) · Kerala (1) · Odisha (1)<br><br><b>🚀 Kubestronauts by city:</b> Bengaluru (119) · Pune (55) · Hyderabad (43) · Delhi NCR (30) · Mumbai (29) · Chennai (24) · Kerala (10) · Ahmedabad (9) · Jaipur (5) · Kolkata (4)<br><br>Select "Kubestronauts by City" in the filter to see every name.',
-    highlight: '42 Golden Kubestronauts from India — people who passed ALL 15 CNCF certifications. That\'s 8% of the world\'s Golden Kubestronauts.',
+    description: '~11% of all Kubestronauts worldwide are Indian (478 of 4,427). India has 42 Golden Kubestronauts out of 519 globally (~8%) - people who passed ALL 15 CNCF certs + LFCS.<br><br><b>🏅 Golden Kubestronauts by city:</b> Bengaluru (13) · Chennai/TN (9) · Pune (7) · Mumbai (5) · Delhi/NCR (3) · Kolkata (1) · Jaipur (1) · Nashik (1) · Kerala (1) · Odisha (1)<br><br><b>🚀 Kubestronauts by city:</b> Bengaluru (119) · Pune (55) · Hyderabad (43) · Delhi NCR (30) · Mumbai (29) · Chennai (24) · Kerala (10) · Ahmedabad (9) · Jaipur (5) · Kolkata (4)<br><br>Select "Kubestronauts by City" in the filter to see every name.',
+    highlight: '42 Golden Kubestronauts from India - people who passed ALL 15 CNCF certifications. That\'s 8% of the world\'s Golden Kubestronauts.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
     id: 'certifications', name: 'CNCF Certifications', symbol: 'Cr',
     category: 'education', city: 'national', org: 'CNCF / Linux Foundation',
-    title: 'CKA, CKAD, CKS, KCNA, KCSA — India leading globally',
+    title: 'CKA, CKAD, CKS, KCNA, KCSA - India leading globally',
     description: 'Only 6% of Indian orgs report "not started" on CN adoption (vs 18% Japan). India has the highest cloud-native maturity score in Asia.',
     highlight: 'Only 6% of Indian organizations haven\'t started their cloud-native journey.',
     links: {},
@@ -632,7 +632,7 @@ const ENTITIES = [
     category: 'education', city: 'national', org: 'Mumshad Mannambeth',
     title: '1M+ learners, CNCF-KodeKloud India training partnership',
     description: 'Founded by Mumshad Mannambeth (Indian-origin). 1M+ learners. CNCF-KodeKloud India training partnership (Aug 2025).',
-    highlight: 'One million learners — KodeKloud made K8s education accessible.',
+    highlight: 'One million learners - KodeKloud made K8s education accessible.',
     links: { web: 'https://kodekloud.com' },
   },
   {
@@ -647,41 +647,41 @@ const ENTITIES = [
     id: 'outreachy', name: 'Outreachy India', symbol: 'Ou',
     category: 'education', city: 'national', org: 'Outreachy',
     title: '5 confirmed Indian interns on CNCF projects',
-    description: 'Prakriti Bansal (2018, Jaeger — India\'s first), Vishakha Nihore (2019), Harshita Srinivas (2021 → became mentor in 18 months!), Pridhi Arora (2022 — career re-entry after 5-year gap), sakshi (2023).',
+    description: 'Prakriti Bansal (2018, Jaeger - India\'s first), Vishakha Nihore (2019), Harshita Srinivas (2021 → became mentor in 18 months!), Pridhi Arora (2022 - career re-entry after 5-year gap), sakshi (2023).',
     highlight: 'Harshita: intern in 2021, mentor by 2022. Pridhi: 5-year career gap, self-taught Python, got into OTel.',
     links: {},
   },
 
   // ────────────────────────────────────────────────────────
-  //  🚀 KUBESTRONAUTS — by city (436 of 4,427 globally)
+  //  🚀 KUBESTRONAUTS - by city (436 of 4,427 globally)
   //  All 5 K8s certifications · ~10% of global total
   // ────────────────────────────────────────────────────────
   {
-    id: 'ks-bangalore', name: 'Kubestronauts — Bengaluru', symbol: 'SB',
+    id: 'ks-bangalore', name: 'Kubestronauts - Bengaluru', symbol: 'SB',
     category: 'education', city: 'bangalore', org: 'CNCF',
     title: '119 Kubestronauts · More than most countries',
     description: '<b>🚀 119 Kubestronauts from Bengaluru</b> (verified from CNCF):<br><br>Yaswanth Mylamuri, Yash Gandhi, Vishal Singh Mehra, Vino Alex, Vijay Nag, Vijay V, Vedaraju Sai Krishna, Venkatesh, Vamsi Krishna Sethu, Vaidhiyanathan R, Umashankar Sankaranarayanan, Tarak Nath Sinha, Sunil Hari, Sunil Kumar Shetty, Suhel Multani, Sudarshan Km, Srinath Kesav Nallamalli, Shubham Pawar, Shivam Sourav Jha, Shivanathan Ganapathy, Shishir Khandelwal, Shirish Hirekodi, Shashank T, Sharath Chandra Balla, Sayed Imran, Sathishkumar Natesan, Saravanan R Seenivasan, Sankarshan Mukhopadhyay, Sanjit Kumar, Sameer Paranjpye, Samantha Deshpande, Salauddin Shaik, Sai Prasanna, Rishi Jain, Ripunjay Chauhan, Reshma Abdul Rahman, Ravishankar Chavare, Ravikiran Srinivasulu, Ravi Mishra, Rasik Jain, Rakshitha A C, Rakesh Korukonda, Prerana Kambli, Pranav Kumbhar, Ponraj, Neeraj Kumar Pandey, Naveen Chakravarthy Balasubramaniyan, Naseer Pasha Kaginelli, Narayan S, Munwar Shariff, Mohan V B, Mishana Shah, Md Rehan, Keshav Kushwaha, Karuna Kumari, Kandukuri Pradeep, Jain Abraham, Jayalakshmi V, Gv Lakshmi Narasimha Rao, Hemanth S, Gowtham Muthukrishnan, Gopikrishnan Sasikumar, Gokul B, Dhananjay Ghogre, Deepak Rai, Chirag Dave, Charanjit Singh, Bingi Narasimha Karthik, Biswarup Mukherjee, Arvind Kapse, Ashish Tiwari, Ashok N, Arunkumar Gururaj, Arnab Mitra, Anshul Gupta, Ankit Srivastava, Ananth Kumar Ede, Amit Yadav, Amitha Pulijala, Anil Kumar Gona, Achyutha Mithra, and more.',
-    highlight: 'Bengaluru alone has 119 Kubestronauts — more than most entire countries.',
+    highlight: 'Bengaluru alone has 119 Kubestronauts - more than most entire countries.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-pune', name: 'Kubestronauts — Pune', symbol: 'SP',
+    id: 'ks-pune', name: 'Kubestronauts - Pune', symbol: 'SP',
     category: 'education', city: 'pune', org: 'CNCF',
     title: '55 Kubestronauts · Pune',
     description: '<b>🚀 55 Kubestronauts from Pune</b> (verified from CNCF):<br><br>Yash Vilas Mahakal, Waseem Ahammed T K, Vivek Dabas, Vishal Anarase, Vishwambar Manchewar, Vijay Rana, Unmesh Shailendra Kadam, Tabish Athar, Swapnil Patil, Swarup Kulkarni, Suraj Pudale, Sunil Mohite, Shubhangi Deshmukh, Shikha Priyedarshi, Shahzad Ali Ahmad, Sayan Kumar Moitra, Saumya Pruthi, Sanket Dhopeshwarkar, Sameer Mene, Sagar Utekar, Sachin Torane, Rutik Meshram, Rushikesh Butala, Rohit Yadav, Rajeev Singh, Rahul Chaudhari, Prateek Jain, Prathamesh Musale, Pooja Kamath, Pavan Joshi, Nithin Reddy Manda, Mohan Tupe, Mayur Tendulkar, Mangesh Lad, Mahim Agarwal, Krunal Amin, Ketan Kelkar, Kaivalya Koparkar, Jayesh Srivastava, Jaydeep Pokale, Harish Jain, Girish Pandey, Ganesh Koli, Chris Jaimon, Bharat Kunal, Bhagyashri Shinde, Avishkar Thakur, Ashutosh Bodake, Aravind Putrevu, Apurva Bhandari, Amay Jain, Amit Gujar, Aman Khandelia, Ajay Shelar, Abhijeet Singh.',
-    highlight: '55 Kubestronauts from Pune — India\'s quiet certification powerhouse.',
+    highlight: '55 Kubestronauts from Pune - India\'s quiet certification powerhouse.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-hyderabad', name: 'Kubestronauts — Hyderabad', symbol: 'SH',
+    id: 'ks-hyderabad', name: 'Kubestronauts - Hyderabad', symbol: 'SH',
     category: 'education', city: 'hyderabad', org: 'CNCF',
     title: '43 Kubestronauts · Hyderabad',
     description: '<b>🚀 43 Kubestronauts from Hyderabad</b> (verified from CNCF):<br><br>Vishwa Nageshwar Kodumagulla, Vishnu Vardhan Duvuri, Tulasinadh Vaka, Tilak Raj Chandan, Thejo Bhanu Pratap Koonisetty, Sudha Koushik Bodla, Subham Saha, Subhash Chandra Budde, Sri Venkata Surya Teja Ayyagari, Sivananda Reddy Pothu, Shubham Kumar, Satish Murru, Saikrishna Gorantla, Ravichandra Cheetala, Ravi Teja Maddikuntla, Prithvi Naik, Pappu Praveen Kumar, Padma Sri, Nithin Naidu Maddilety, Naveen Kumar B, Mohan Konala, Mohammed Adnan Ali, Mahesh Gude, Lokesh Kannan, Kritika Singh, Harish Thota, Gurucharan Subramani, Devi Sai Srinivas Peri, Deepak Sharma, Chandrasekhar Narala, Bhupender Rajput, Bhaskar Naidu, Bhargav Patel, Ashish Rajan, Arun Kumar Ayyagari, Aravind Peddi, Anupam Bhandari, Ankit Tiwari, Aman Kumar, Aditya Kishore Mishra, Adnan Shaikh, Abhishek Koserwal, Abhijeet Kasurde.',
-    highlight: '43 Kubestronauts from Hyderabad — the upcoming KubeCon 2026 host city.',
+    highlight: '43 Kubestronauts from Hyderabad - the upcoming KubeCon 2026 host city.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-mumbai', name: 'Kubestronauts — Mumbai', symbol: 'SM',
+    id: 'ks-mumbai', name: 'Kubestronauts - Mumbai', symbol: 'SM',
     category: 'education', city: 'mumbai', org: 'CNCF',
     title: '29 Kubestronauts · Mumbai Metro',
     description: '<b>🚀 29 Kubestronauts from Mumbai metro</b> (verified from CNCF):<br><br>Yatin Puthran, Vivek Kumar Mishra, Vishwajeet Mishra, Talha Juikar, Sumir Broota, Shubham H. Chaudhari, Sanjay Sachdev, Rohit Ravirao Dalal, Rhegisan Jebas, Ratan Singh Kalakoti, Ramya D, Ramanuj Dad, Pratul Singh, Prathamesh More, Prasad Patole, Niranjan Desai, Mangesh Pachkale, Manmohan Mirkar, Labhesh Hase, Krishna Shah, Kiran Mane, Husain Bohra, Aman Pasi, Amey Gavane, Anand Sinha, Anil Lad, Anurag Pathak, Dhawal Jogi, Deepak Bhatia.',
@@ -689,15 +689,15 @@ const ENTITIES = [
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-chennai', name: 'Kubestronauts — Chennai', symbol: 'SC',
+    id: 'ks-chennai', name: 'Kubestronauts - Chennai', symbol: 'SC',
     category: 'education', city: 'chennai', org: 'CNCF',
     title: '24 Kubestronauts · Chennai / Tamil Nadu',
     description: '<b>🚀 24 Kubestronauts from Chennai / Tamil Nadu</b> (verified from CNCF):<br><br>Vinothkumar Kuppusamy, Venkatesh Ravichandran, Thiyagarajan Elangovan, Thanigaivelan Sendoorpandiyan, Sujay Kumar J, Subash P, Shaenmugapriyan S, Sakthi Namasivayam, Roach A, Ragavendra Vigneshwaran R, Prabhu Jayakumar, Paramaguru Subramaniyam, Paranitharan Kalaiselvan, Oliver Paul K, Lavanya Anbalagan, Kumar Soundarajan, Kumaran K, Keba Stalin Britto J, Gnana Salten S, Dillibabu Sampath, Ashok M, Anand Shanmugam, Akhilesh Tiwari, Santhosh Nc.',
-    highlight: '24 Kubestronauts from Tamil Nadu — not just Chennai.',
+    highlight: '24 Kubestronauts from Tamil Nadu - not just Chennai.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-delhi', name: 'Kubestronauts — Delhi NCR', symbol: 'SD',
+    id: 'ks-delhi', name: 'Kubestronauts - Delhi NCR', symbol: 'SD',
     category: 'education', city: 'delhi', org: 'CNCF',
     title: '30 Kubestronauts · Delhi + Noida + Gurugram',
     description: '<b>🚀 30 Kubestronauts from Delhi NCR</b> (verified from CNCF):<br><br>Vivek Yadav, Vinod Kumar, Sumit Kaur, Sourav Bera, Siddharth Sharma, Shubhasis Mathur, Shubham Gupta, Shubham Vashishtha, Sandeep Kumar Aggarwal, Sanchit Raj, Sahil Anand, Rishabh Singh, Ranjeet Singh, Rajneesh Kumar Jha, Preetu Sharma, Praveen Kumar, Pratap Singh, Prabhjot Singh Bharaj, Nitin Kaushik, Mohit Sharma, Mohd Atif Raza, Mayank Rawat, Manish Kumar, Kumar Ashwin, Himanshu Kumar, Harsh Gupta, Deepak Sharma, Avinash Reddy Paladugu, Aashish Chaurasiya, Abhinav Tiwari.',
@@ -705,31 +705,31 @@ const ENTITIES = [
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-ahmedabad', name: 'Kubestronauts — Ahmedabad', symbol: 'SA',
+    id: 'ks-ahmedabad', name: 'Kubestronauts - Ahmedabad', symbol: 'SA',
     category: 'education', city: 'ahmedabad', org: 'CNCF',
     title: '9 Kubestronauts · Ahmedabad',
     description: '<b>🚀 9 Kubestronauts from Ahmedabad</b> (verified from CNCF):<br><br>Saurabh Kadam, Sanket Tarun Shah, Sanjay Chauhan, Ronak Padhya, Kaivalya Shah, Ishan Mahadevia, Bhargav Parmar, Arvind Singh, Aditya Krishnakumar.',
-    highlight: '9 Kubestronauts from Ahmedabad — Gujarat is growing!',
+    highlight: '9 Kubestronauts from Ahmedabad - Gujarat is growing!',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-kolkata', name: 'Kubestronauts — Kolkata', symbol: 'SK',
+    id: 'ks-kolkata', name: 'Kubestronauts - Kolkata', symbol: 'SK',
     category: 'education', city: 'kolkata', org: 'CNCF',
     title: '4 Kubestronauts · Kolkata',
     description: '<b>🚀 4 Kubestronauts from Kolkata</b> (verified from CNCF):<br><br>Suman Chakraborty, Sayantan Karmakar, Sanjoy Gorai, Rajat Agarwal.',
-    highlight: '4 Kubestronauts from Kolkata — East India represents.',
+    highlight: '4 Kubestronauts from Kolkata - East India represents.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-jaipur', name: 'Kubestronauts — Jaipur', symbol: 'SJ',
+    id: 'ks-jaipur', name: 'Kubestronauts - Jaipur', symbol: 'SJ',
     category: 'education', city: 'jaipur', org: 'CNCF',
     title: '5 Kubestronauts · Jaipur',
     description: '<b>🚀 5 Kubestronauts from Jaipur</b> (verified from CNCF):<br><br>Vikas Verma, Milind Verma, Gaurank Goyal, Anubhav Mandarwal, Aditya Pancholi.',
-    highlight: '5 Kubestronauts from Jaipur — certifications don\'t need metros.',
+    highlight: '5 Kubestronauts from Jaipur - certifications don\'t need metros.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'ks-kerala', name: 'Kubestronauts — Kerala', symbol: 'SL',
+    id: 'ks-kerala', name: 'Kubestronauts - Kerala', symbol: 'SL',
     category: 'education', city: 'kerala', org: 'CNCF',
     title: '10 Kubestronauts · Kerala',
     description: '<b>🚀 10 Kubestronauts from Kerala</b> (verified from CNCF):<br><br>Unni P, Suneesh Kumar, Sreejith Anujan, Sanju Raj, Sachin K Vaikan, Joobin P Nihas, Hima Hussain, Hassim Naseef Mukkanni, Dhanesh Kumar, Ansil H.',
@@ -738,22 +738,22 @@ const ENTITIES = [
   },
 
   // ────────────────────────────────────────────────────────
-  //  🎯 INVISIBLE CONTRIBUTIONS — roles people don't see
+  //  🎯 INVISIBLE CONTRIBUTIONS - roles people don't see
   //  Program Committee, Release Team, Exam Developers, etc.
   // ────────────────────────────────────────────────────────
   {
     id: 'program-committee', name: 'KubeCon Program Committee', symbol: 'PC',
     category: 'leaders', city: 'national', org: 'CNCF',
     title: 'Indians reviewing, selecting, and shaping KubeCon talks',
-    description: 'Multiple Indians serve on the KubeCon Program Committee every year — selecting talks, reviewing CFPs, and shaping what the world sees on stage. Known members: Hrittik Roy (Program Committee), Saiyam Pathak (KubeCon India 2026 Program Chair), Nikhita Raghunath (KubeCon Chair), Sonali Srivastava (KubeCon India 2026 Co-Chair), Atulpriya Sharma (KubeCon India 2025 Co-Chair).',
-    highlight: 'Indians don\'t just speak at KubeCon — they decide what gets spoken about.',
+    description: 'Multiple Indians serve on the KubeCon Program Committee every year - selecting talks, reviewing CFPs, and shaping what the world sees on stage. Known members: Hrittik Roy (Program Committee), Saiyam Pathak (KubeCon India 2026 Program Chair), Nikhita Raghunath (KubeCon Chair), Sonali Srivastava (KubeCon India 2026 Co-Chair), Atulpriya Sharma (KubeCon India 2025 Co-Chair).',
+    highlight: 'Indians don\'t just speak at KubeCon - they decide what gets spoken about.',
     links: {},
   },
   {
-    id: 'release-team', name: 'K8s Release Team — India', symbol: 'RT',
+    id: 'release-team', name: 'K8s Release Team - India', symbol: 'RT',
     category: 'leaders', city: 'national', org: 'Kubernetes',
     title: 'Indians shipping Kubernetes releases to the world',
-    description: 'Multiple Indians on the K8s release team across versions:<br>• Priyanka Saggu — v1.29 Release Lead<br>• Vyom Yadav — v1.34 Release Lead<br>• Nabarun Pal — v1.21 Release Lead<br>• Satyam Soni — Release team since v1.30<br>• Arsh Sharma — v1.25 CI Signal Lead<br><br>Every K8s release that runs your production clusters has Indian fingerprints on it.',
+    description: 'Multiple Indians on the K8s release team across versions:<br>• Priyanka Saggu - v1.29 Release Lead<br>• Vyom Yadav - v1.34 Release Lead<br>• Nabarun Pal - v1.21 Release Lead<br>• Satyam Soni - Release team since v1.30<br>• Arsh Sharma - v1.25 CI Signal Lead<br><br>Every K8s release that runs your production clusters has Indian fingerprints on it.',
     highlight: 'When Kubernetes ships a new version, Indian engineers are on the release team making it happen.',
     links: {},
   },
@@ -761,7 +761,7 @@ const ENTITIES = [
     id: 'exam-developers', name: 'Certification Exam Developers', symbol: 'ED',
     category: 'education', city: 'national', org: 'CNCF / Linux Foundation',
     title: 'Indians writing the CKA, CKAD, CKS, KCNA exams',
-    description: 'Indian contributors help develop and maintain CNCF certification exams. Divya Mohan co-created the KCNA exam. Fazlur Rahman Khan authors official CKA/CKAD/CKS courses at the Linux Foundation — the first LF technical trainer based in India.<br><br>The exams millions study for? Indians write them.',
+    description: 'Indian contributors help develop and maintain CNCF certification exams. Divya Mohan co-created the KCNA exam. Fazlur Rahman Khan authors official CKA/CKAD/CKS courses at the Linux Foundation - the first LF technical trainer based in India.<br><br>The exams millions study for? Indians write them.',
     highlight: 'The CKA exam you studied for? Indians helped write it.',
     links: {},
   },
@@ -770,108 +770,108 @@ const ENTITIES = [
     category: 'leaders', city: 'national', org: 'CNCF',
     title: 'Indians reviewing proposals and speaking at global conferences',
     description: 'Indians serve as CFP reviewers, track chairs, and speakers at KubeCon, IstioCon, PromCon, and other CNCF events. They review hundreds of proposals, mentor first-time speakers, and shape the global cloud-native conversation. This invisible work is what makes conferences inclusive and high-quality.',
-    highlight: 'Behind every great KubeCon talk — there\'s a reviewer who made it better. Many are Indian.',
+    highlight: 'Behind every great KubeCon talk - there\'s a reviewer who made it better. Many are Indian.',
     links: {},
   },
   {
     id: 'sig-contributors', name: 'SIG & WG Contributors', symbol: 'WG',
     category: 'maintainers', city: 'national', org: 'Kubernetes',
     title: 'Indians contributing to K8s SIGs and Working Groups',
-    description: 'Indians contribute across Kubernetes SIGs:<br>• SIG Architecture — Dims (Chair)<br>• SIG Storage — Hemant Kumar (Chair), Humble Chirammal<br>• SIG Instrumentation — Pranshu Srivastava (Co-Chair)<br>• SIG Docs — Divya Mohan (Co-Chair)<br>• SIG ContribEx — Nabarun Pal, Madhav Jivrajani<br>• SIG Node, SIG Network, SIG Auth — multiple Indian contributors<br><br>The governance layer of Kubernetes has deep Indian representation.',
-    highlight: 'Indians chair 4+ Kubernetes SIGs — the working groups that decide how K8s evolves.',
+    description: 'Indians contribute across Kubernetes SIGs:<br>• SIG Architecture - Dims (Chair)<br>• SIG Storage - Hemant Kumar (Chair), Humble Chirammal<br>• SIG Instrumentation - Pranshu Srivastava (Co-Chair)<br>• SIG Docs - Divya Mohan (Co-Chair)<br>• SIG ContribEx - Nabarun Pal, Madhav Jivrajani<br>• SIG Node, SIG Network, SIG Auth - multiple Indian contributors<br><br>The governance layer of Kubernetes has deep Indian representation.',
+    highlight: 'Indians chair 4+ Kubernetes SIGs - the working groups that decide how K8s evolves.',
     links: {},
   },
   {
     id: 'gsoc-mentors', name: 'GSoC & LFX Mentors from India', symbol: 'ME',
     category: 'education', city: 'national', org: 'CNCF / Google',
     title: 'Indians mentoring the next generation of contributors',
-    description: 'India is #1 in GSoC participation AND has a growing mentor base:<br>• Shivay Lamba — GSoC Admin & Mentor (Jenkins, Kubeflow)<br>• Vyom Yadav — LFX mentor after being a mentee<br>• Harshita Srinivas — Outreachy intern in 2021, mentor by 2022<br>• Ronit Banerjee — GSoC Mentor at DBpedia<br>• Shivanshu Raj Shrivastava — GSoC Mentor<br><br>The flywheel: mentee → contributor → maintainer → mentor.',
-    highlight: 'India doesn\'t just produce GSoC participants — it produces GSoC mentors.',
+    description: 'India is #1 in GSoC participation AND has a growing mentor base:<br>• Shivay Lamba - GSoC Admin & Mentor (Jenkins, Kubeflow)<br>• Vyom Yadav - LFX mentor after being a mentee<br>• Harshita Srinivas - Outreachy intern in 2021, mentor by 2022<br>• Ronit Banerjee - GSoC Mentor at DBpedia<br>• Shivanshu Raj Shrivastava - GSoC Mentor<br><br>The flywheel: mentee → contributor → maintainer → mentor.',
+    highlight: 'India doesn\'t just produce GSoC participants - it produces GSoC mentors.',
     links: {},
   },
 
   // ────────────────────────────────────────────────────────
-  //  🏅 GOLDEN KUBESTRONAUTS — by city (42 total)
+  //  🏅 GOLDEN KUBESTRONAUTS - by city (42 total)
   //  All 15 CNCF certs + LFCS · 42 of 519 globally from India
   // ────────────────────────────────────────────────────────
   {
-    id: 'gk-bangalore', name: 'Golden Kubestronauts — Bengaluru', symbol: 'GB',
+    id: 'gk-bangalore', name: 'Golden Kubestronauts - Bengaluru', symbol: 'GB',
     category: 'education', city: 'bangalore', org: 'CNCF',
     title: '13 Golden Kubestronauts · Karnataka region',
-    description: '<b>🏅 13 Golden Kubestronauts from Karnataka:</b><br><br>• Achyutha Mithra — First Security Islami Bank<br>• Akash Singh — Sabi<br>• Bingi Narasimha Karthik — Adobe<br>• Keshav Kushwaha — AMD India<br>• Krishna Kumar U — Boeing India<br>• Pramodh Kumar M — DevTools <i>(Chikmagalur)</i><br>• Rahul Kumar — McKinsey<br>• Rakesh Korukonda — HPE<br>• Ramkumar Nagaraj — Adobe India<br>• Sayed Imran — Convin<br>• Vijay Nag — Morgan Stanley<br>• Vinay Kumar S G <i>(Shivamogga)</i><br>• Yaswanth Mylamuri — Mitsubishi Electric<br><br>Bengaluru alone has 116 Kubestronauts — more than most countries.',
-    highlight: '13 Golden Kubestronauts from Karnataka — the most of any Indian state. Adobe, HPE, McKinsey, Morgan Stanley — world-class orgs, Indian talent.',
+    description: '<b>🏅 13 Golden Kubestronauts from Karnataka:</b><br><br>• Achyutha Mithra - First Security Islami Bank<br>• Akash Singh - Sabi<br>• Bingi Narasimha Karthik - Adobe<br>• Keshav Kushwaha - AMD India<br>• Krishna Kumar U - Boeing India<br>• Pramodh Kumar M - DevTools <i>(Chikmagalur)</i><br>• Rahul Kumar - McKinsey<br>• Rakesh Korukonda - HPE<br>• Ramkumar Nagaraj - Adobe India<br>• Sayed Imran - Convin<br>• Vijay Nag - Morgan Stanley<br>• Vinay Kumar S G <i>(Shivamogga)</i><br>• Yaswanth Mylamuri - Mitsubishi Electric<br><br>Bengaluru alone has 116 Kubestronauts - more than most countries.',
+    highlight: '13 Golden Kubestronauts from Karnataka - the most of any Indian state. Adobe, HPE, McKinsey, Morgan Stanley - world-class orgs, Indian talent.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-chennai', name: 'Golden Kubestronauts — Tamil Nadu', symbol: 'GT',
+    id: 'gk-chennai', name: 'Golden Kubestronauts - Tamil Nadu', symbol: 'GT',
     category: 'education', city: 'chennai', org: 'CNCF',
     title: '9 Golden Kubestronauts · Tamil Nadu region',
-    description: '<b>🏅 9 Golden Kubestronauts from Tamil Nadu:</b><br><br>• Ashok M — DigitalOcean <i>(Chennai)</i><br>• Dillibabu Sampath <i>(Chennai)</i><br>• Gnana Salten S — HPE <i>(Tirunelveli)</i><br>• Keba Stalin Britto J — HPE <i>(Paramakudi)</i><br>• Kumar Soundarajan — Fidelity Investments <i>(Chennai)</i><br>• Lavanya Anbalagan — Bedag Informatik <i>(Chennai)</i><br>• Mathivanan Anbalagan — SFEIR<br>• Paramaguru S — Archimedis Digital <i>(Chennai)</i><br>• Santhosh Nc — Thoughtworks <i>(Erode)</i><br><br>Not just Chennai — Golden Kubestronauts from Tirunelveli, Paramakudi, and Erode. Cloud native reaches deep into Tamil Nadu.',
-    highlight: '9 Golden Kubestronauts from across Tamil Nadu — not just metros. Tirunelveli, Paramakudi, Erode — cloud native is everywhere.',
+    description: '<b>🏅 9 Golden Kubestronauts from Tamil Nadu:</b><br><br>• Ashok M - DigitalOcean <i>(Chennai)</i><br>• Dillibabu Sampath <i>(Chennai)</i><br>• Gnana Salten S - HPE <i>(Tirunelveli)</i><br>• Keba Stalin Britto J - HPE <i>(Paramakudi)</i><br>• Kumar Soundarajan - Fidelity Investments <i>(Chennai)</i><br>• Lavanya Anbalagan - Bedag Informatik <i>(Chennai)</i><br>• Mathivanan Anbalagan - SFEIR<br>• Paramaguru S - Archimedis Digital <i>(Chennai)</i><br>• Santhosh Nc - Thoughtworks <i>(Erode)</i><br><br>Not just Chennai - Golden Kubestronauts from Tirunelveli, Paramakudi, and Erode. Cloud native reaches deep into Tamil Nadu.',
+    highlight: '9 Golden Kubestronauts from across Tamil Nadu - not just metros. Tirunelveli, Paramakudi, Erode - cloud native is everywhere.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-pune', name: 'Golden Kubestronauts — Pune', symbol: 'GP',
+    id: 'gk-pune', name: 'Golden Kubestronauts - Pune', symbol: 'GP',
     category: 'education', city: 'pune', org: 'CNCF',
     title: '7 Golden Kubestronauts · Pune',
-    description: '<b>🏅 7 Golden Kubestronauts from Pune:</b><br><br>• Chris Jaimon — Armor Defense<br>• Mayur Tendulkar — Rapid Circle<br>• Rahul Chaudhari<br>• <b>Sagar Utekar — CrowdStrike</b> 👈 <i>That\'s me!</i><br>• Sameer Mene — Persistent Systems<br>• Shikha Priyedarshi — Microsoft<br>• Vishal Anarase — Mirantis<br><br>Pune — India\'s quiet powerhouse. 7 people who passed ALL 15 CNCF certifications.',
-    highlight: '7 Golden Kubestronauts from Pune — including your speaker today! CrowdStrike, Microsoft, Persistent Systems, Mirantis.',
+    description: '<b>🏅 7 Golden Kubestronauts from Pune:</b><br><br>• Chris Jaimon - Armor Defense<br>• Mayur Tendulkar - Rapid Circle<br>• Rahul Chaudhari<br>• <b>Sagar Utekar - CrowdStrike</b> 👈 <i>That\'s me!</i><br>• Sameer Mene - Persistent Systems<br>• Shikha Priyedarshi - Microsoft<br>• Vishal Anarase - Mirantis<br><br>Pune - India\'s quiet powerhouse. 7 people who passed ALL 15 CNCF certifications.',
+    highlight: '7 Golden Kubestronauts from Pune - including your speaker today! CrowdStrike, Microsoft, Persistent Systems, Mirantis.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-mumbai', name: 'Golden Kubestronauts — Mumbai', symbol: 'GM',
+    id: 'gk-mumbai', name: 'Golden Kubestronauts - Mumbai', symbol: 'GM',
     category: 'education', city: 'mumbai', org: 'CNCF',
     title: '5 Golden Kubestronauts · Mumbai Metro',
-    description: '<b>🏅 5 Golden Kubestronauts from Mumbai Metro:</b><br><br>• Aman Pasi — Dassault Systemes <i>(Navi Mumbai)</i><br>• Labhesh Hase <i>(Mumbai)</i><br>• Manmohan Mirkar <i>(Thane)</i><br>• Sanjay Sachdev — Red Hat <i>(Mumbai)</i><br>• Vivek Kumar Mishra — Thoughtworks <i>(Mumbai)</i><br><br>Mumbai, Navi Mumbai, Thane — the financial capital is also a Golden Kubestronaut hub.',
-    highlight: '5 Golden Kubestronauts from the Mumbai metro region — Red Hat, Dassault, Thoughtworks.',
+    description: '<b>🏅 5 Golden Kubestronauts from Mumbai Metro:</b><br><br>• Aman Pasi - Dassault Systemes <i>(Navi Mumbai)</i><br>• Labhesh Hase <i>(Mumbai)</i><br>• Manmohan Mirkar <i>(Thane)</i><br>• Sanjay Sachdev - Red Hat <i>(Mumbai)</i><br>• Vivek Kumar Mishra - Thoughtworks <i>(Mumbai)</i><br><br>Mumbai, Navi Mumbai, Thane - the financial capital is also a Golden Kubestronaut hub.',
+    highlight: '5 Golden Kubestronauts from the Mumbai metro region - Red Hat, Dassault, Thoughtworks.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-delhi', name: 'Golden Kubestronauts — Delhi/NCR', symbol: 'GD',
+    id: 'gk-delhi', name: 'Golden Kubestronauts - Delhi/NCR', symbol: 'GD',
     category: 'education', city: 'delhi', org: 'CNCF',
     title: '3 Golden Kubestronauts · Delhi NCR',
-    description: '<b>🏅 3 Golden Kubestronauts from Delhi NCR:</b><br><br>• Aashish Chaurasiya — Vultr <i>(New Delhi)</i><br>• Sahil Anand — Microsoft <i>(New Delhi)</i><br>• Vivek Yadav — UKG <i>(Noida)</i><br><br>The national capital region with 3 Golden Kubestronauts across Delhi and Noida.',
-    highlight: '3 Golden Kubestronauts in the Delhi NCR region — Vultr, Microsoft, UKG.',
+    description: '<b>🏅 3 Golden Kubestronauts from Delhi NCR:</b><br><br>• Aashish Chaurasiya - Vultr <i>(New Delhi)</i><br>• Sahil Anand - Microsoft <i>(New Delhi)</i><br>• Vivek Yadav - UKG <i>(Noida)</i><br><br>The national capital region with 3 Golden Kubestronauts across Delhi and Noida.',
+    highlight: '3 Golden Kubestronauts in the Delhi NCR region - Vultr, Microsoft, UKG.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-kolkata', name: 'Golden Kubestronaut — Kolkata', symbol: 'GK',
+    id: 'gk-kolkata', name: 'Golden Kubestronaut - Kolkata', symbol: 'GK',
     category: 'education', city: 'kolkata', org: 'CNCF',
     title: '1 Golden Kubestronaut · Kolkata',
-    description: '<b>🏅 Golden Kubestronaut from Kolkata:</b><br><br>• Sayantan Karmakar — Motorola Solutions<br><br>East India\'s Golden Kubestronaut — proving cloud native thrives beyond the western and southern metros.',
-    highlight: 'Kolkata\'s Golden Kubestronaut — Sayantan Karmakar at Motorola Solutions.',
+    description: '<b>🏅 Golden Kubestronaut from Kolkata:</b><br><br>• Sayantan Karmakar - Motorola Solutions<br><br>East India\'s Golden Kubestronaut - proving cloud native thrives beyond the western and southern metros.',
+    highlight: 'Kolkata\'s Golden Kubestronaut - Sayantan Karmakar at Motorola Solutions.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-jaipur', name: 'Golden Kubestronaut — Jaipur', symbol: 'GJ',
+    id: 'gk-jaipur', name: 'Golden Kubestronaut - Jaipur', symbol: 'GJ',
     category: 'education', city: 'jaipur', org: 'CNCF',
     title: '1 Golden Kubestronaut · Jaipur',
     description: '<b>🏅 Golden Kubestronaut from Jaipur:</b><br><br>• Vikas Verma<br><br>Rajasthan on the Golden Kubestronaut map. Tier-2 cities are rising.',
-    highlight: 'Jaipur has a Golden Kubestronaut — cloud native doesn\'t live only in metros.',
+    highlight: 'Jaipur has a Golden Kubestronaut - cloud native doesn\'t live only in metros.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-nashik', name: 'Golden Kubestronaut — Nashik', symbol: 'GN',
+    id: 'gk-nashik', name: 'Golden Kubestronaut - Nashik', symbol: 'GN',
     category: 'education', city: 'nashik', org: 'CNCF',
     title: '1 Golden Kubestronaut · Nashik',
-    description: '<b>🏅 Golden Kubestronaut from Nashik:</b><br><br>• Umesh Pagar<br><br>A Golden Kubestronaut from Nashik — a Tier-2 city. ALL 15 CNCF certifications. This is the grassroots story.',
-    highlight: 'Nashik has a Golden Kubestronaut — 15 certifications from a Tier-2 city.',
+    description: '<b>🏅 Golden Kubestronaut from Nashik:</b><br><br>• Umesh Pagar<br><br>A Golden Kubestronaut from Nashik - a Tier-2 city. ALL 15 CNCF certifications. This is the grassroots story.',
+    highlight: 'Nashik has a Golden Kubestronaut - 15 certifications from a Tier-2 city.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-kerala', name: 'Golden Kubestronaut — Kerala', symbol: 'GL',
+    id: 'gk-kerala', name: 'Golden Kubestronaut - Kerala', symbol: 'GL',
     category: 'education', city: 'kerala', org: 'CNCF',
     title: '1 Golden Kubestronaut · Kerala',
-    description: '<b>🏅 Golden Kubestronaut from Kerala:</b><br><br>• Hassim Naseef Mukkanni — Nixora <i>(Kannur)</i><br><br>Not Kochi or Trivandrum — Kannur! Cloud native reaching every corner of Kerala.',
-    highlight: 'A Golden Kubestronaut from Kannur, Kerala — not just the big cities.',
+    description: '<b>🏅 Golden Kubestronaut from Kerala:</b><br><br>• Hassim Naseef Mukkanni - Nixora <i>(Kannur)</i><br><br>Not Kochi or Trivandrum - Kannur! Cloud native reaching every corner of Kerala.',
+    highlight: 'A Golden Kubestronaut from Kannur, Kerala - not just the big cities.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
   {
-    id: 'gk-odisha', name: 'Golden Kubestronaut — Odisha', symbol: 'GO',
+    id: 'gk-odisha', name: 'Golden Kubestronaut - Odisha', symbol: 'GO',
     category: 'education', city: 'national', org: 'CNCF',
     title: '1 Golden Kubestronaut · Rourkela, Odisha',
-    description: '<b>🏅 Golden Kubestronaut from Odisha:</b><br><br>• Baikuntha Bana Bihari Sahoo — Lloyds Technology Centre <i>(Rourkela)</i><br><br>Rourkela, Odisha — a steel city with a Golden Kubestronaut. This is India\'s depth.',
-    highlight: 'A Golden Kubestronaut from Rourkela, Odisha — India\'s cloud native depth.',
+    description: '<b>🏅 Golden Kubestronaut from Odisha:</b><br><br>• Baikuntha Bana Bihari Sahoo - Lloyds Technology Centre <i>(Rourkela)</i><br><br>Rourkela, Odisha - a steel city with a Golden Kubestronaut. This is India\'s depth.',
+    highlight: 'A Golden Kubestronaut from Rourkela, Odisha - India\'s cloud native depth.',
     links: { web: 'https://www.cncf.io/training/kubestronaut/' },
   },
 
@@ -890,8 +890,8 @@ const ENTITIES = [
     id: 'kubecon-blr', name: 'KubeDay India 2023', symbol: 'KB',
     category: 'community', city: 'bangalore', org: 'CNCF',
     title: 'First KubeCon-style event in India · Bengaluru 2023',
-    description: 'KubeDay India 2023 in Bengaluru — the event that started India\'s KubeCon journey. Where it all began.',
-    highlight: 'Bengaluru — where India\'s KubeCon journey started.',
+    description: 'KubeDay India 2023 in Bengaluru - the event that started India\'s KubeCon journey. Where it all began.',
+    highlight: 'Bengaluru - where India\'s KubeCon journey started.',
     links: {},
   },
   {
@@ -899,7 +899,7 @@ const ENTITIES = [
     category: 'community', city: 'delhi', org: 'CNCF',
     title: 'KubeCon + CloudNativeCon India · Delhi 2024',
     description: 'The first full KubeCon + CloudNativeCon India. Co-chaired by Nikhita Raghunath and Divya Mohan. Delhi NCR.',
-    highlight: 'First full KubeCon India — co-chaired by two Indian women.',
+    highlight: 'First full KubeCon India - co-chaired by two Indian women.',
     links: {},
   },
   {
@@ -907,15 +907,15 @@ const ENTITIES = [
     category: 'community', city: 'mumbai', org: 'CNCF',
     title: '3,200+ attendees · 800 orgs · 60% first-timers · Mumbai 2025',
     description: '3,200+ attendees, 800 unique organizations, 60% first-timers. The largest cloud-native event in India to date.',
-    highlight: '3,200 attendees, 60% first-timers — Mumbai 2025 proved India is hungry for cloud native.',
+    highlight: '3,200 attendees, 60% first-timers - Mumbai 2025 proved India is hungry for cloud native.',
     links: {},
   },
   {
     id: 'kubecon-hyd', name: 'KubeCon India 2026', symbol: 'KH',
     category: 'community', city: 'hyderabad', org: 'CNCF',
     title: 'KubeCon + CloudNativeCon India · Hyderabad 2026',
-    description: 'The next edition of KubeCon India — coming to Hyderabad.',
-    highlight: 'KubeCon India keeps moving to new cities — Hyderabad is next.',
+    description: 'The next edition of KubeCon India - coming to Hyderabad.',
+    highlight: 'KubeCon India keeps moving to new cities - Hyderabad is next.',
     links: {},
   },
   {
@@ -923,13 +923,13 @@ const ENTITIES = [
     category: 'community', city: 'national', org: 'CNCF',
     title: '42 confirmed CNCF Ambassadors from India',
     description: 'From TAG Chairs to chapter organizers, from Tier-1 cities to Nashik and Jaipur. The broadest ambassador network in Asia.',
-    highlight: '42 ambassadors. Not just in metros — Nashik, Jaipur, Trivandrum, Ahmedabad.',
+    highlight: '42 ambassadors. Not just in metros - Nashik, Jaipur, Trivandrum, Ahmedabad.',
     links: {},
   },
   {
     id: 'chapters', name: '42 CNCF Chapters', symbol: 'Ch',
     category: 'community', city: 'national', org: 'CNCF',
-    title: '42 chapters across 15 states — more than most countries combined',
+    title: '42 chapters across 15 states - more than most countries combined',
     description: '<b>42 CNCF community groups across 15 Indian states</b> (source: <a href="https://cncg.in" target="_blank">cncg.in</a>):<br><br>🏆 <b>Maharashtra (8):</b> Mumbai, Pune, Thane, Nagpur, Nashik, Chhatrapati Sambhajinagar, Jalgaon, K8s Pune<br>🏆 <b>Gujarat (5):</b> Ahmedabad, Gandhinagar, Rajkot, Vadodara, Surat<br>🏆 <b>Tamil Nadu (5):</b> Chennai, Coimbatore, Tiruchirappalli, Madurai, Pollachi<br>🏆 <b>Kerala (5):</b> Kochi, Thiruvananthapuram, Kozhikode, Kottayam, Thrissur<br>• <b>Karnataka (3):</b> Bengaluru, Mysuru, Platform Eng Bengaluru<br>• <b>West Bengal (3):</b> Kolkata, Durgapur, Hooghly<br>• <b>Uttar Pradesh (3):</b> Lucknow, Noida, Kanpur<br>• <b>Rajasthan (2):</b> Jaipur, Bikaner<br>• <b>Delhi (2):</b> New Delhi, CN Security India<br>• <b>Telangana:</b> Hyderabad<br>• <b>Odisha:</b> Bhubaneswar<br>• <b>Chandigarh:</b> Chandigarh<br>• <b>Uttarakhand:</b> Dehradun<br>• <b>Haryana:</b> Gurugram<br>• <b>Jharkhand:</b> Ranchi',
     highlight: 'This isn\'t top-down. This is grassroots. 42 chapters in 15 states deciding they care. Gujarat alone has 5!',
     links: { web: 'https://cncg.in' },
@@ -947,7 +947,7 @@ const ENTITIES = [
     category: 'community', city: 'pune', org: 'CNCF',
     title: '2 chapters: Pune, Kubernetes Pune + KCD Pune',
     description: '2 CNCF chapters (source: cncg.in): CNCF Pune and Kubernetes Pune. Regular meetups. KCD Pune has been held multiple times.',
-    highlight: 'Pune — 2 CNCF chapters, regular meetups, and KCDs.',
+    highlight: 'Pune - 2 CNCF chapters, regular meetups, and KCDs.',
     links: { web: 'https://pune.cncg.in' },
   },
   {
@@ -962,8 +962,8 @@ const ENTITIES = [
     id: 'cncg-chennai', name: 'CNCF Tamil Nadu Chapters', symbol: 'CT',
     category: 'community', city: 'chennai', org: 'CNCF',
     title: '5 chapters: Chennai, Coimbatore, Trichy, Madurai, Pollachi',
-    description: '5 CNCF chapters across Tamil Nadu (source: cncg.in). Chennai hosts regular meetups and KCDs. Cloud native reaching deep into the state — Pollachi and Trichy have their own chapters!',
-    highlight: '5 CNCF chapters in Tamil Nadu alone — not just Chennai. Pollachi has a chapter!',
+    description: '5 CNCF chapters across Tamil Nadu (source: cncg.in). Chennai hosts regular meetups and KCDs. Cloud native reaching deep into the state - Pollachi and Trichy have their own chapters!',
+    highlight: '5 CNCF chapters in Tamil Nadu alone - not just Chennai. Pollachi has a chapter!',
     links: { web: 'https://chennai.cncg.in' },
   },
   {
@@ -979,7 +979,7 @@ const ENTITIES = [
     category: 'community', city: 'kerala', org: 'CNCF',
     title: '5 chapters: Kochi, Trivandrum, Kozhikode, Kottayam, Thrissur',
     description: '5 CNCF chapters across Kerala (source: cncg.in). KCD Kerala and DevOpsDays Kerala organized by Sreejith Anujan. 100+ events from the state.',
-    highlight: '5 CNCF chapters in Kerala — cloud native from Kochi to Kozhikode.',
+    highlight: '5 CNCF chapters in Kerala - cloud native from Kochi to Kozhikode.',
     links: { web: 'https://kochi.cncg.in' },
   },
   {
@@ -987,7 +987,7 @@ const ENTITIES = [
     category: 'community', city: 'kolkata', org: 'CNCF',
     title: '3 chapters: Kolkata, Durgapur, Hooghly',
     description: '3 CNCF chapters in West Bengal (source: cncg.in). Ronit Banerjee leads Cloud Native Hooghly. KCD Kolkata has been held.',
-    highlight: '3 CNCF chapters in West Bengal — East India represents.',
+    highlight: '3 CNCF chapters in West Bengal - East India represents.',
     links: { web: 'https://kolkata.cncg.in' },
   },
   {
@@ -1003,7 +1003,7 @@ const ENTITIES = [
     category: 'community', city: 'jaipur', org: 'CNCF',
     title: '2 chapters: Jaipur, Bikaner',
     description: '2 CNCF chapters in Rajasthan (source: cncg.in): Jaipur and Bikaner. Led by Swastik Gour and Aditya Soni.',
-    highlight: 'Bikaner has a CNCF chapter — cloud native truly everywhere in India.',
+    highlight: 'Bikaner has a CNCF chapter - cloud native truly everywhere in India.',
     links: { web: 'https://jaipur.cncg.in' },
   },
   {
@@ -1011,7 +1011,7 @@ const ENTITIES = [
     category: 'community', city: 'chandigarh', org: 'CNCF',
     title: '1 chapter + regular meetups',
     description: 'CNCF Chandigarh chapter (source: cncg.in). Home to Saiyam Pathak (TAG Chair), Vyom Yadav (K8s Release Lead), and Arsh Sharma.',
-    highlight: 'Chandigarh — small city, massive cloud-native output.',
+    highlight: 'Chandigarh - small city, massive cloud-native output.',
     links: { web: 'https://chandigarh.cncg.in' },
   },
   {
@@ -1035,7 +1035,7 @@ const ENTITIES = [
     category: 'community', city: 'ahmedabad', org: 'CNCF Chapter',
     title: '5 chapters: Ahmedabad, Gandhinagar, Rajkot, Vadodara, Surat',
     description: '5 CNCF community groups in Gujarat (source: cncg.in): Ahmedabad, Gandhinagar, Rajkot, Vadodara, Surat. The most chapters in any western Indian state.',
-    highlight: 'Gujarat has 5 CNCF chapters — more than most countries.',
+    highlight: 'Gujarat has 5 CNCF chapters - more than most countries.',
     links: { web: 'https://ahmedabad.cncg.in' },
   },
   {
@@ -1043,7 +1043,7 @@ const ENTITIES = [
     category: 'community', city: 'nashik', org: 'CNCF',
     title: '1 chapter · founded by Kaiwalya Koparkar',
     description: 'CNCF Nashik chapter (source: cncg.in). Founded by Kaiwalya Koparkar. A Tier-2 city with its own CNCF chapter.',
-    highlight: 'Nashik — proof that cloud native doesn\'t need a metro city.',
+    highlight: 'Nashik - proof that cloud native doesn\'t need a metro city.',
     links: { web: 'https://nashik.cncg.in' },
   },
 
@@ -1054,16 +1054,16 @@ const ENTITIES = [
     id: 'wicn', name: 'Women in Cloud Native', symbol: 'Wi',
     category: 'diversity', city: 'national', org: 'CNCF Community Group',
     title: 'Led by Sonali Srivastava (InfraCloud), strong India presence',
-    description: 'Sonali Srivastava co-chairs KubeCon India AND leads WiCN globally. Shikha Priyedarshi (Pune) — Kubestronaut. Growing community across India.',
+    description: 'Sonali Srivastava co-chairs KubeCon India AND leads WiCN globally. Shikha Priyedarshi (Pune) - Kubestronaut. Growing community across India.',
     highlight: 'The best ecosystems aren\'t just big. They\'re inclusive.',
     links: {},
   },
   {
     id: 'dhhc', name: 'DHHC Community', symbol: 'DH',
     category: 'diversity', city: 'national', org: 'CNCF',
-    title: 'Deaf and Hard of Hearing Community — accessibility in cloud native',
+    title: 'Deaf and Hard of Hearing Community - accessibility in cloud native',
     description: 'CNCF DHHC community group. Making cloud native accessible to everyone.',
-    highlight: 'Inclusion means everyone — including the Deaf and Hard of Hearing community.',
+    highlight: 'Inclusion means everyone - including the Deaf and Hard of Hearing community.',
     links: {},
   },
   {
@@ -1071,7 +1071,7 @@ const ENTITIES = [
     category: 'diversity', city: 'national', org: 'CNCF / Dan Kohn Fund',
     title: 'Funding Indian attendees to participate in KubeCon',
     description: 'KubeCon diversity scholarships and Dan Kohn Scholarship. Enabling access for underrepresented communities.',
-    highlight: 'Removing barriers — because the next Nikhita might not afford a conference ticket.',
+    highlight: 'Removing barriers - because the next Nikhita might not afford a conference ticket.',
     links: {},
   },
 
@@ -1091,7 +1091,7 @@ const ENTITIES = [
     category: 'education', city: 'chandigarh', org: 'Saiyam Pathak + Saloni Narang',
     title: '100K+ community, 50K+ YouTube, 5 open-source tools',
     description: 'Founded by Saiyam Pathak. Co-run with Saloni Narang. 5 open-source tools: KIAC, SRELens, kubectl-upgrade, ing-switch, memwarden.',
-    highlight: '100,000+ people learning cloud native — from Chandigarh.',
+    highlight: '100,000+ people learning cloud native - from Chandigarh.',
     links: { web: 'https://kubesimplify.com' },
   },
   {
@@ -1131,22 +1131,22 @@ const ENTITIES = [
     category: 'maintainers', city: 'bangalore', org: 'Broadcom',
     title: 'CNCF TAG Tech Lead, K8s Release Team',
     description: 'Software Engineer at Broadcom. CNCF TAG tech lead. Active in Kubernetes Release Team and SIG Release. Contour contributor.',
-    highlight: 'From contributor to TAG tech lead — proving Indians don\'t just use K8s, they ship it.',
+    highlight: 'From contributor to TAG tech lead - proving Indians don\'t just use K8s, they ship it.',
     links: { github: 'rajaskakodkar' },
   },
   {
     id: 'dipesh', name: 'Dipesh Rawat', symbol: 'Dr',
     category: 'leaders', city: 'national', org: 'IBM',
     title: 'K8s v1.37 Release Lead, SIG Docs Tech Lead, CNCF Ambassador',
-    description: 'Kubernetes v1.37 Release Lead — the person steering the next K8s release. Release Team member since v1.31. SIG Docs Tech Lead. CNCF Ambassador and Kubestronaut. Software Developer at IBM.',
-    highlight: 'From Release Team member to Release Lead in 6 versions — that\'s what showing up consistently looks like.',
+    description: 'Kubernetes v1.37 Release Lead - the person steering the next K8s release. Release Team member since v1.31. SIG Docs Tech Lead. CNCF Ambassador and Kubestronaut. Software Developer at IBM.',
+    highlight: 'From Release Team member to Release Lead in 6 versions - that\'s what showing up consistently looks like.',
     links: { github: 'dipesh-rawat', twitter: 'dipesh_rawat' },
   },
   {
     id: 'sreeram', name: 'Sreeram Venkitesh', symbol: 'Sv',
     category: 'leaders', city: 'national', org: 'DigitalOcean',
     title: 'K8s v1.31 Enhancements Lead, Release Team v1.29-v1.35',
-    description: 'Kubernetes v1.31 Enhancements Lead — managed 100+ feature enhancements through a major release. 7 consecutive K8s releases on the release team (v1.29-v1.35). LWKD newsletter contributor for 2+ years. 20+ talks across 6 countries including KubeCon EU. Senior SWE at DigitalOcean (Managed K8s). From Kerala.',
+    description: 'Kubernetes v1.31 Enhancements Lead - managed 100+ feature enhancements through a major release. 7 consecutive K8s releases on the release team (v1.29-v1.35). LWKD newsletter contributor for 2+ years. 20+ talks across 6 countries including KubeCon EU. Senior SWE at DigitalOcean (Managed K8s). From Kerala.',
     highlight: '7 consecutive Kubernetes releases on the release team, from Kerala to KubeCon stages worldwide.',
     links: { github: 'sreeram-venkitesh', twitter: 'sreeramvnkitesh' },
   },
@@ -1154,7 +1154,7 @@ const ENTITIES = [
     id: 'rajani', name: 'Rajani Ekunde', symbol: 'Re',
     category: 'leaders', city: 'bangalore', org: 'GlobalLogic',
     description: 'Senior SRE at GlobalLogic, Bengaluru. AWS Community Builder. Creator of 90DaysOfDevOps repo (73+ stars). Writes on eBPF observability, cloud security with Neo4j, and AI agents for infrastructure ops. Ex-TCS.',
-    highlight: 'From TCS to building eBPF observability tools and cloud security graphs — the next generation of Indian SREs.',
+    highlight: 'From TCS to building eBPF observability tools and cloud security graphs - the next generation of Indian SREs.',
     links: { github: 'rajani103', twitter: 'misalpav' },
   },
   // ── Missing ambassadors from official CNCF list (42 total for India) ──
@@ -1266,7 +1266,7 @@ const ENTITIES = [
 ];
 
 // ═══════════════════════════════════════════════════════════
-//  PERIODIC TABLE — 7 cols × 7 rows (including header)
+//  PERIODIC TABLE - 7 cols × 7 rows (including header)
 //  Matches the PPTX layout for KCD Gujarat 2026
 //  Each cell is an entity ID or null for empty
 // ═══════════════════════════════════════════════════════════
