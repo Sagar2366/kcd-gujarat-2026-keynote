@@ -1423,7 +1423,7 @@ a:hover { text-decoration: underline; }
 /* ═══════════════════════════════════════════════════════════ */
 .flip-book {
   position: relative; max-width: 700px; margin: 0 auto 32px;
-  perspective: 1200px; padding: 0 24px;
+  padding: 0 24px;
 }
 .flip-card {
   display: none; backface-visibility: hidden;
@@ -1452,32 +1452,28 @@ a:hover { text-decoration: underline; }
   content: '▸'; position: absolute; left: 0; color: #5CE1E6; font-weight: 700; font-size: 1.2rem;
 }
 
-/* Forward flip */
-.flip-card.flip-out { display: block; animation: pageFlipOut 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-.flip-card.flip-in  { display: block; animation: pageFlipIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; animation-delay: 0.15s; }
-@keyframes pageFlipOut {
-  0%   { transform: perspective(1200px) rotateY(0deg) scale(1); opacity: 1; box-shadow: 0 0 0 rgba(0,0,0,0); }
-  40%  { transform: perspective(1200px) rotateY(-45deg) scale(0.96); opacity: 0.8; box-shadow: -20px 0 40px rgba(0,0,0,0.3); }
-  100% { transform: perspective(1200px) rotateY(-90deg) scale(0.92); opacity: 0; box-shadow: -30px 0 50px rgba(0,0,0,0); }
+/* Forward */
+.flip-card.flip-out { display: block; animation: cardFadeOut 0.3s ease forwards; }
+.flip-card.flip-in  { display: block; animation: cardFadeIn 0.3s ease forwards; }
+@keyframes cardFadeOut {
+  0%   { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-30px); }
 }
-@keyframes pageFlipIn {
-  0%   { transform: perspective(1200px) rotateY(60deg) scale(0.92); opacity: 0; box-shadow: 20px 0 40px rgba(0,0,0,0.3); }
-  60%  { transform: perspective(1200px) rotateY(10deg) scale(0.98); opacity: 0.9; box-shadow: 5px 0 20px rgba(0,0,0,0.15); }
-  100% { transform: perspective(1200px) rotateY(0deg) scale(1); opacity: 1; box-shadow: 0 0 0 rgba(0,0,0,0); }
+@keyframes cardFadeIn {
+  0%   { opacity: 0; transform: translateX(30px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
-/* Reverse flip */
-.flip-card.flip-out-rev { display: block; animation: pageFlipOutRev 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-.flip-card.flip-in-rev  { display: block; animation: pageFlipInRev 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; animation-delay: 0.15s; }
-@keyframes pageFlipOutRev {
-  0%   { transform: perspective(1200px) rotateY(0deg) scale(1); opacity: 1; box-shadow: 0 0 0 rgba(0,0,0,0); }
-  40%  { transform: perspective(1200px) rotateY(45deg) scale(0.96); opacity: 0.8; box-shadow: 20px 0 40px rgba(0,0,0,0.3); }
-  100% { transform: perspective(1200px) rotateY(90deg) scale(0.92); opacity: 0; box-shadow: 30px 0 50px rgba(0,0,0,0); }
+/* Reverse */
+.flip-card.flip-out-rev { display: block; animation: cardFadeOutRev 0.3s ease forwards; }
+.flip-card.flip-in-rev  { display: block; animation: cardFadeInRev 0.3s ease forwards; }
+@keyframes cardFadeOutRev {
+  0%   { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(30px); }
 }
-@keyframes pageFlipInRev {
-  0%   { transform: perspective(1200px) rotateY(-60deg) scale(0.92); opacity: 0; box-shadow: -20px 0 40px rgba(0,0,0,0.3); }
-  60%  { transform: perspective(1200px) rotateY(-10deg) scale(0.98); opacity: 0.9; box-shadow: -5px 0 20px rgba(0,0,0,0.15); }
-  100% { transform: perspective(1200px) rotateY(0deg) scale(1); opacity: 1; box-shadow: 0 0 0 rgba(0,0,0,0); }
+@keyframes cardFadeInRev {
+  0%   { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 .flip-nav {
