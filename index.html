@@ -358,11 +358,14 @@ a:hover { text-decoration: underline; }
 .city-dot.active circle.dot-bg { fill: rgba(37, 99, 235, 0.3); }
 .city-dot.active circle.dot-core { fill: #1d4ed8; }
 .city-label {
-  fill: var(--text-600);
+  fill: #0f172a;
   font-size: 11px;
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   pointer-events: none;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.6);
+  stroke-width: 3px;
 }
 .city-count {
   display: none;
@@ -946,12 +949,12 @@ a:hover { text-decoration: underline; }
   cursor: pointer; position: relative; overflow: hidden;
 }
 .stat-chip:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: #bfdbfe; }
-.stat-chip.expanded { background: linear-gradient(135deg, #0E2A52 0%, #1a3a6e 100%); border-color: #5CE1E6; box-shadow: 0 8px 24px rgba(92,225,230,0.15); }
+.stat-chip.expanded { background: linear-gradient(135deg, #0E2A52 0%, #1a3a6e 100%); border-color: #5CE1E6; box-shadow: 0 0 30px rgba(92,225,230,0.25); transform: scale(1.08); z-index: 5; position: relative; }
 .stat-chip .stat-num {
   font-size: 3.6rem; font-weight: 800; line-height: 1; letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums; transition: transform 0.3s;
+  font-variant-numeric: tabular-nums; transition: all 0.4s;
 }
-.stat-chip.expanded .stat-num { transform: scale(0.85); }
+.stat-chip.expanded .stat-num { transform: scale(1.1); }
 .stat-chip .stat-num.green { color: #5CE1E6; }
 .stat-chip .stat-num.blue { color: #60a5fa; }
 .stat-chip .stat-lbl {
@@ -1045,8 +1048,29 @@ a:hover { text-decoration: underline; }
 @media (max-width: 1023px) { .good-stories .story-grid { grid-template-columns: 1fr; } }
 /* ── Map standalone ── */
 .map-standalone { max-width: 1440px; margin: 20px auto 0; padding: 0 24px; }
-.map-standalone .map-panel { height: auto; min-height: 600px; max-height: none; overflow: visible; }
-.map-standalone .map-panel .map-svg-wrap { min-height: 600px; }
+.map-standalone .map-panel { height: auto; min-height: 420px; max-height: none; overflow: visible; position: relative; }
+.map-standalone .map-panel .map-svg-wrap { min-height: 420px; }
+
+/* Filter bar inside map */
+.map-filter-overlay {
+  position: absolute; top: 12px; right: 12px; z-index: 10;
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(10,22,40,0.85); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 8px 14px; font-size: 0.75rem;
+}
+.map-filter-overlay .filter-label { font-size: 0.7rem; }
+.map-filter-overlay .filter-select { font-size: 0.72rem; padding: 4px 8px; }
+.map-filter-overlay .filter-divider { height: 20px; }
+
+/* Results panel inside map */
+.map-results-overlay {
+  position: absolute; bottom: 12px; right: 12px; z-index: 10;
+  width: 380px; max-height: 360px; overflow-y: auto;
+  background: rgba(10,22,40,0.92); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 16px; font-size: 0.8rem;
+}
 /* ── Future tab ── */
 
 /* ═══════════════════════════════════════════════════════════ */
@@ -1246,6 +1270,146 @@ a:hover { text-decoration: underline; }
   font-size: 1.5rem; font-weight: 700; color: #fbbf24; line-height: 1.5;
 }
 .unspoken-quote .quote-text .highlight { color: #ffffff; }
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  RESPONSIVE — Smaller laptops (≤1440px and ≤1280px)         */
+/* ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1440px) {
+  /* Intro slide */
+  .intro-photo { width: 360px; height: 400px; }
+  .intro-talk-title { font-size: 2.6rem; }
+  .intro-name { font-size: 2.2rem; }
+  .intro-role { font-size: 1rem; margin-bottom: 24px; }
+  .intro-subtitle { font-size: 1.15rem; margin-bottom: 20px; }
+  .intro-content { gap: 40px; }
+  /* Stats */
+  .stat-strip { grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .stat-chip { padding: 28px 12px 24px; }
+  .stat-chip .stat-num { font-size: 2.6rem; }
+  .stat-chip .stat-lbl { font-size: 0.75rem; margin-top: 8px; }
+  /* Cards */
+  .bad-card { padding: 24px 20px; }
+  .bad-card .bad-num { font-size: 2.4rem; }
+  .bad-card .bad-title { font-size: 0.95rem; }
+  .bad-card .bad-desc { font-size: 0.82rem; }
+  .bad-card .bad-quote { font-size: 0.78rem; }
+  .bad-chip { padding: 20px 16px; }
+  .bad-chip .bad-chip-title { font-size: 0.88rem; }
+  .bad-chip .bad-chip-desc { font-size: 0.8rem; }
+  /* Unspoken */
+  .unspoken-card { padding: 24px 18px; }
+  .unspoken-card .uc-num { font-size: 2.2rem; }
+  .unspoken-card .uc-title { font-size: 0.92rem; }
+  .unspoken-card .uc-desc { font-size: 0.82rem; }
+  .unspoken-card .uc-quote { font-size: 0.78rem; }
+  .unspoken-chip { padding: 18px 14px; }
+  .unspoken-chip .uch-title { font-size: 0.85rem; }
+  .unspoken-chip .uch-desc { font-size: 0.78rem; }
+  .unspoken-quote .quote-text { font-size: 1.2rem; }
+  /* Section intros */
+  .bad-section-intro h2 { font-size: 1.6rem; }
+  .bad-section-intro p { font-size: 0.88rem; }
+  .unspoken-intro h2 { font-size: 1.6rem; }
+  .unspoken-intro p { font-size: 0.88rem; }
+  /* Hero */
+  .hero h2 { font-size: 1.8rem; }
+  .hero p { font-size: 0.9rem; }
+  /* Header */
+  .header-brand h1 { font-size: 1.15rem; }
+}
+
+@media (max-width: 1280px) {
+  /* Intro slide */
+  .intro-photo { width: 300px; height: 340px; }
+  .intro-talk-title { font-size: 2.2rem; }
+  .intro-name { font-size: 1.9rem; }
+  .intro-role { font-size: 0.9rem; }
+  .intro-talk-label { font-size: 0.75rem; padding: 6px 14px; }
+  .intro-subtitle { font-size: 1rem; }
+  .intro-content { gap: 32px; padding: 30px 20px; }
+  .intro-start-btn { padding: 10px 24px; font-size: 0.9rem; margin-top: 20px; }
+  /* Stats — 7 cols still but tighter */
+  .stat-strip { gap: 8px; margin-bottom: 24px; }
+  .stat-chip { padding: 20px 8px 18px; border-radius: 12px; }
+  .stat-chip .stat-num { font-size: 2rem; }
+  .stat-chip .stat-lbl { font-size: 0.65rem; margin-top: 6px; }
+  /* Cards */
+  .bad-grid { gap: 14px; margin-bottom: 20px; }
+  .bad-card { padding: 20px 16px; border-radius: 14px; }
+  .bad-card .bad-num { font-size: 2rem; margin-bottom: 4px; }
+  .bad-card .bad-title { font-size: 0.88rem; margin-bottom: 6px; }
+  .bad-card .bad-desc { font-size: 0.78rem; line-height: 1.5; }
+  .bad-card .bad-quote { font-size: 0.72rem; margin-top: 8px; padding-top: 8px; }
+  .bad-secondary { gap: 10px; margin-bottom: 24px; }
+  .bad-chip { padding: 16px 12px; border-radius: 12px; }
+  .bad-chip .bad-chip-title { font-size: 0.82rem; margin-bottom: 6px; }
+  .bad-chip .bad-chip-desc { font-size: 0.75rem; line-height: 1.45; }
+  .bad-chip .bad-chip-quote { font-size: 0.72rem; }
+  /* Unspoken */
+  .unspoken-featured { gap: 14px; margin-bottom: 16px; }
+  .unspoken-card { padding: 20px 16px; border-radius: 14px; }
+  .unspoken-card .uc-num { font-size: 1.8rem; margin-bottom: 4px; }
+  .unspoken-card .uc-title { font-size: 0.85rem; margin-bottom: 6px; }
+  .unspoken-card .uc-desc { font-size: 0.78rem; line-height: 1.5; }
+  .unspoken-card .uc-quote { font-size: 0.72rem; }
+  .unspoken-bottom { gap: 10px; margin-bottom: 24px; }
+  .unspoken-chip { padding: 14px 12px; border-radius: 12px; }
+  .unspoken-chip .uch-title { font-size: 0.78rem; margin-bottom: 4px; }
+  .unspoken-chip .uch-desc { font-size: 0.72rem; line-height: 1.4; }
+  .unspoken-quote .quote-text { font-size: 1.05rem; }
+  .unspoken-quote .divider-img { width: 70px; margin-bottom: 12px; }
+  /* Section intros */
+  .bad-section-intro { margin-bottom: 20px; }
+  .bad-section-intro h2 { font-size: 1.4rem; }
+  .unspoken-intro { margin-bottom: 20px; }
+  .unspoken-intro h2 { font-size: 1.4rem; }
+  /* Hero */
+  .hero { padding: 36px 20px 40px; }
+  .hero h2 { font-size: 1.5rem; }
+  .hero p { font-size: 0.82rem; }
+  /* Tab bar */
+  .tab-btn { padding: 10px 28px; font-size: 0.82rem; }
+  /* Kem Cho */
+  #slide-kemcho div[style*="font-size:8rem"] { font-size: 5rem !important; }
+  /* Global logo */
+  .global-logo img { width: 72px; height: 80px; }
+  /* Contributors */
+  .contrib-heading { font-size: 0.95rem; margin-bottom: 10px; }
+  .contrib-photo { width: 60px; height: 60px; }
+  .contrib-name { font-size: 0.72rem; }
+  .contrib-role { font-size: 0.62rem; }
+  .contrib-org { font-size: 0.58rem; }
+  .contrib-card { padding: 10px 6px; }
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  MARQUEE BELT — Contributors                                */
+/* ═══════════════════════════════════════════════════════════ */
+.contrib-marquee-wrap {
+  overflow: hidden; position: relative;
+  max-width: 1440px; margin: 0 auto; padding: 0 24px;
+}
+.contrib-marquee-wrap::before,
+.contrib-marquee-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+}
+.contrib-marquee-wrap::before { left: 0; background: linear-gradient(90deg, #0a1628, transparent); }
+.contrib-marquee-wrap::after { right: 0; background: linear-gradient(90deg, transparent, #0a1628); }
+
+.contrib-marquee {
+  display: flex; gap: 16px; width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+}
+.contrib-marquee:hover { animation-play-state: paused; }
+
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.contrib-marquee .contrib-card {
+  flex-shrink: 0; min-width: 120px;
+}
 
 /* ═══════════════════════════════════════════════════════════ */
 /*  TAB 4 — The Future (cyan accent, hopeful theme)             */
@@ -1562,7 +1726,7 @@ a:hover { text-decoration: underline; }
 
 /* ── Global logo (top-left on all slides) ── */
 .global-logo {
-  position: fixed; top: 16px; left: 20px; z-index: 60;
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 60;
   display: flex; align-items: center; gap: 10px;
 }
 .global-logo img { width: 96px; height: 106px; border-radius: 8px; }
@@ -1732,52 +1896,51 @@ a:hover { text-decoration: underline; }
   <div class="stat-chip"><div class="stat-num blue">7+</div><div class="stat-lbl">KCDs in India</div><div class="stat-detail">Bengaluru, Chennai, Delhi, Pune, Mumbai, Gujarat & more. Community-driven, community-funded.</div></div>
 </div>
 
-<!-- ── CONTRIBUTORS GALLERY ── -->
+<!-- ── CONTRIBUTORS MARQUEE BELT ── -->
 <div class="contrib-section">
   <h3 class="contrib-heading">The People Behind the Numbers</h3>
-  <div class="contrib-gallery" id="contribGallery"></div>
+  <div class="contrib-marquee-wrap">
+    <div class="contrib-marquee" id="contribGallery"></div>
+  </div>
 </div>
 <div class="contrib-bio" id="contribBio" style="display:none;"></div>
 
 
-<!-- ── FILTER BAR ── -->
-<div style="max-width:1440px; margin:0 auto; padding:0 24px 12px;">
-  <div class="filter-bar" id="filterBar">
-    <span class="filter-label">Show</span>
-    <select class="filter-select" id="categoryFilter">
-      <option value="ambassadors">CNCF Ambassadors</option>
-      <option value="chapters">Community Chapters</option>
-      <option value="kubestronauts">Kubestronauts</option>
-      <option value="golden">Golden Kubestronauts</option>
-    </select>
-    <div class="filter-divider"></div>
-    <span class="filter-label">City</span>
-    <select class="filter-select" id="cityFilter">
-      <option value="all">All Cities</option>
-    </select>
-    <div class="filter-divider"></div>
-  </div>
+<!-- ── MAP SECTION ── -->
+<div style="max-width:1440px; margin:0 auto; padding:40px 24px 0;">
+  <h3 style="font-size:1.1rem; font-weight:800; color:var(--text-800); margin-bottom:16px; letter-spacing:-0.02em;">Explore the Map — Cloud Native Across India</h3>
 </div>
 
-<!-- ── MAP (standalone, full-width) ── -->
 <div class="map-standalone">
   <div class="map-panel" id="mapPanel">
-    <div class="map-svg-wrap" id="mapWrap"></div>
-    <button class="pan-india-btn" id="panIndiaBtn">🇮🇳 All India — Leaders, Projects & Stats <span class="count" id="panIndiaCount"></span></button>
-  </div>
-</div>
-
-<!-- ── MAP RESULTS PANEL ── -->
-<div id="mapResultsPanel" style="display:none; max-width:1440px; margin:16px auto 0; padding:0 24px;">
-  <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:20px 24px;">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-      <div>
-        <div id="sidebarTitle" style="font-size:1.2rem; font-weight:800; color:#E6EDFB;"></div>
-        <div id="sidebarCount" style="font-size:0.8rem; color:#7C8AA5; margin-top:4px;"></div>
-      </div>
-      <button id="sidebarClose" style="background:none; border:1px solid var(--border); border-radius:8px; padding:6px 14px; color:#B9CCF2; cursor:pointer; font-family:inherit; font-size:0.8rem;">✕ Close</button>
+    <!-- Filter bar (top-right inside map) -->
+    <div class="map-filter-overlay" id="filterBar">
+      <span class="filter-label">Show</span>
+      <select class="filter-select" id="categoryFilter">
+        <option value="ambassadors">CNCF Ambassadors</option>
+        <option value="chapters">Community Chapters</option>
+        <option value="kubestronauts">Kubestronauts</option>
+        <option value="golden">Golden Kubestronauts</option>
+      </select>
+      <div class="filter-divider"></div>
+      <span class="filter-label">City</span>
+      <select class="filter-select" id="cityFilter">
+        <option value="all">All Cities</option>
+      </select>
     </div>
-    <div id="sidebarContent" style="max-height:400px; overflow-y:auto;"></div>
+    <div class="map-svg-wrap" id="mapWrap"></div>
+    <button class="pan-india-btn" id="panIndiaBtn">All India — Leaders, Projects & Stats <span class="count" id="panIndiaCount"></span></button>
+    <!-- Results panel (bottom-right inside map) -->
+    <div class="map-results-overlay" id="mapResultsPanel" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div>
+          <div id="sidebarTitle" style="font-size:1rem; font-weight:800; color:#E6EDFB;"></div>
+          <div id="sidebarCount" style="font-size:0.7rem; color:#7C8AA5; margin-top:2px;"></div>
+        </div>
+        <button id="sidebarClose" style="background:none; border:1px solid var(--border); border-radius:6px; padding:4px 10px; color:#B9CCF2; cursor:pointer; font-family:inherit; font-size:0.72rem;">✕</button>
+      </div>
+      <div id="sidebarContent" style="max-height:300px; overflow-y:auto;"></div>
+    </div>
   </div>
 </div>
 
@@ -2256,7 +2419,7 @@ a:hover { text-decoration: underline; }
 
     categoryFilter.addEventListener('change', () => {
       const panel = document.getElementById('mapResultsPanel');
-      if (categoryFilter.value !== 'all' || cityFilter.value !== 'all') { if (panel) panel.style.display = 'block'; }
+      if (panel) panel.style.display = 'block';
       renderAllEntities(); renderDashboard(); updateCityDots(); updateBottomGrid(); updateMapStateHighlights();
     });
     cityFilter.addEventListener('change', () => {
@@ -2890,17 +3053,52 @@ a:hover { text-decoration: underline; }
 
 
   // ─── STAT CHIP CLICK-TO-EXPAND ─────────────
+  var statAutoPlayTimer = null;
+  var statAutoPlayIndex = -1;
+  var statAutoPlayPaused = false;
+
   function bindStatChips() {
     document.querySelectorAll('.stat-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const wasExpanded = chip.classList.contains('expanded');
-        // Close all others
         document.querySelectorAll('.stat-chip.expanded').forEach(c => c.classList.remove('expanded'));
-        // Toggle this one
         if (!wasExpanded) chip.classList.add('expanded');
+        // Pause auto-play for 15s when user clicks manually
+        statAutoPlayPaused = true;
+        clearTimeout(statAutoPlayTimer);
+        setTimeout(() => { statAutoPlayPaused = false; }, 15000);
       });
     });
   }
+
+  // ─── STAT CHIP AUTO-PLAY (cycles every 5s) ─────────────
+  function startStatAutoPlay() {
+    var chips = document.querySelectorAll('.stat-chip');
+    if (!chips.length) return;
+
+    function cycleNext() {
+      if (statAutoPlayPaused) {
+        statAutoPlayTimer = setTimeout(cycleNext, 1000);
+        return;
+      }
+      // Only auto-play when Good tab is active and we're on the main slide
+      var goodTab = document.getElementById('tab-good');
+      var mainSlide = document.getElementById('slide-main');
+      if (!goodTab || !mainSlide || !goodTab.classList.contains('active') || !mainSlide.classList.contains('active')) {
+        statAutoPlayTimer = setTimeout(cycleNext, 2000);
+        return;
+      }
+
+      statAutoPlayIndex = (statAutoPlayIndex + 1) % chips.length;
+      chips.forEach(c => c.classList.remove('expanded'));
+      chips[statAutoPlayIndex].classList.add('expanded');
+      statAutoPlayTimer = setTimeout(cycleNext, 5000);
+    }
+
+    statAutoPlayTimer = setTimeout(cycleNext, 3000);
+  }
+
+  startStatAutoPlay();
 
   // ─── FEATURED CONTRIBUTORS GALLERY ────────────
   const FEATURED_CONTRIBUTORS = [
@@ -2925,7 +3123,8 @@ a:hover { text-decoration: underline; }
   function renderContribGallery() {
     const gallery = document.getElementById('contribGallery');
     if (!gallery) return;
-    gallery.innerHTML = FEATURED_CONTRIBUTORS.map(fc => {
+    // Build one set of cards
+    var cardsHtml = FEATURED_CONTRIBUTORS.map(fc => {
       const ent = ENTITIES.find(e => e.id === fc.id);
       const name = ent ? ent.name : fc.id;
       const org = ent ? (ent.org || '') : '';
@@ -2937,6 +3136,8 @@ a:hover { text-decoration: underline; }
         (org ? '<div class="contrib-org">' + org + '</div>' : '') +
       '</div>';
     }).join('');
+    // Duplicate for seamless infinite scroll
+    gallery.innerHTML = cardsHtml + cardsHtml;
 
     // Click handlers
     gallery.querySelectorAll('.contrib-card').forEach(card => {

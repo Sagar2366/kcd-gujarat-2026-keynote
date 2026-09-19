@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+DOMAIN="kcdgujarat.com"
+
 echo "🚀 Deploying KCD Gujarat 2026 Keynote to Minikube"
 echo "=================================================="
 
@@ -16,23 +18,45 @@ if ! minikube status | grep -q "Running"; then
   minikube start
 fi
 
-# 3. Point docker to minikube's daemon
+# 3. Enable ingress addon
+echo "▶ Enabling NGINX Ingress controller..."
+minikube addons enable ingress
+echo "▶ Waiting for ingress controller to be ready..."
+kubectl wait --namespace ingress-nginx \
+  --for=condition=ready pod \
+  --selector=app.kubernetes.io/component=controller \
+  --timeout=120s 2>/dev/null || echo "  (ingress controller starting...)"
+
+# 4. Point docker to minikube's daemon
 echo "▶ Connecting to minikube's Docker daemon..."
 eval $(minikube docker-env)
 
-# 4. Build the image inside minikube
+# 5. Build the image inside minikube
 echo "▶ Building container image..."
 docker build -t kcd-keynote:latest .
 
-# 5. Deploy to k8s
+# 6. Deploy to k8s
 echo "▶ Applying Kubernetes manifests..."
 kubectl apply -f k8s/deploy.yaml
+kubectl apply -f k8s/ingress.yaml
 
-# 6. Wait for rollout
+# 7. Wait for rollout
 echo "▶ Waiting for pod to be ready..."
 kubectl rollout status deployment/kcd-keynote --timeout=60s
 
-# 7. Get the URL
+# 8. Configure /etc/hosts
+MINIKUBE_IP=$(minikube ip)
+echo ""
+echo "▶ Configuring $DOMAIN → $MINIKUBE_IP"
+
+if grep -q "$DOMAIN" /etc/hosts; then
+  echo "  $DOMAIN already in /etc/hosts — updating..."
+  sudo sed -i.bak "/$DOMAIN/d" /etc/hosts
+fi
+echo "$MINIKUBE_IP  $DOMAIN" | sudo tee -a /etc/hosts > /dev/null
+echo "  ✅ Added: $MINIKUBE_IP  $DOMAIN"
+
+# 9. Done
 echo ""
 echo "=================================================="
 echo "✅ Deployed!"
@@ -40,17 +64,15 @@ echo ""
 echo "Pod status:"
 kubectl get pods -l app=kcd-keynote
 echo ""
-
-URL=$(minikube service kcd-keynote --url 2>/dev/null || echo "")
-if [ -n "$URL" ]; then
-  echo "🌐 Open: $URL"
-else
-  echo "🌐 Run:  minikube service kcd-keynote"
-fi
+echo "Ingress:"
+kubectl get ingress kcd-keynote
+echo ""
+echo "🌐 Open: http://$DOMAIN"
 echo ""
 echo "Quick commands:"
-echo "  kubectl logs -l app=kcd-keynote     # View logs"
-echo "  kubectl get pods -l app=kcd-keynote # Pod status"
-echo "  minikube service kcd-keynote        # Open in browser"
-echo "  kubectl delete -f k8s/deploy.yaml   # Tear down"
+echo "  kubectl logs -l app=kcd-keynote       # View logs"
+echo "  kubectl get pods -l app=kcd-keynote   # Pod status"
+echo "  kubectl get ingress                   # Ingress status"
+echo "  kubectl delete -f k8s/                # Tear down"
+echo "  sudo sed -i.bak '/$DOMAIN/d' /etc/hosts  # Remove DNS entry"
 echo "=================================================="
