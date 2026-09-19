@@ -1453,28 +1453,12 @@ a:hover { text-decoration: underline; }
 }
 
 /* Forward */
-.flip-card.flip-out { display: block; animation: cardFadeOut 0.3s ease forwards; }
-.flip-card.flip-in  { display: block; animation: cardFadeIn 0.3s ease forwards; }
-@keyframes cardFadeOut {
-  0%   { opacity: 1; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(-30px); }
-}
-@keyframes cardFadeIn {
-  0%   { opacity: 0; transform: translateX(30px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
+.flip-card.flip-out { display: none; }
+.flip-card.flip-in  { display: block; }
 
 /* Reverse */
-.flip-card.flip-out-rev { display: block; animation: cardFadeOutRev 0.3s ease forwards; }
-.flip-card.flip-in-rev  { display: block; animation: cardFadeInRev 0.3s ease forwards; }
-@keyframes cardFadeOutRev {
-  0%   { opacity: 1; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(30px); }
-}
-@keyframes cardFadeInRev {
-  0%   { opacity: 0; transform: translateX(-30px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
+.flip-card.flip-out-rev { display: none; }
+.flip-card.flip-in-rev  { display: block; }
 
 .flip-nav {
   display: flex; align-items: center; justify-content: center;
@@ -3306,7 +3290,6 @@ a:hover { text-decoration: underline; }
     if (!flipCards.length || !prevBtn || !nextBtn) return;
 
     let flipIndex = 0;
-    let flipping = false;
 
     function updateNav() {
       counter.textContent = (flipIndex + 1) + ' / ' + flipCards.length;
@@ -3315,38 +3298,18 @@ a:hover { text-decoration: underline; }
     }
 
     nextBtn.addEventListener('click', function() {
-      if (flipping || flipIndex >= flipCards.length - 1) return;
-      flipping = true;
-      var old = flipCards[flipIndex];
+      if (flipIndex >= flipCards.length - 1) return;
+      flipCards[flipIndex].classList.remove('active');
       flipIndex++;
-      var next = flipCards[flipIndex];
-      old.classList.add('flip-out');
-      old.addEventListener('animationend', function() {
-        old.classList.remove('active', 'flip-out');
-        flipping = false;
-      }, { once: true });
-      next.classList.add('active', 'flip-in');
-      next.addEventListener('animationend', function() {
-        next.classList.remove('flip-in');
-      }, { once: true });
+      flipCards[flipIndex].classList.add('active');
       updateNav();
     });
 
     prevBtn.addEventListener('click', function() {
-      if (flipping || flipIndex <= 0) return;
-      flipping = true;
-      var old = flipCards[flipIndex];
+      if (flipIndex <= 0) return;
+      flipCards[flipIndex].classList.remove('active');
       flipIndex--;
-      var next = flipCards[flipIndex];
-      old.classList.add('flip-out-rev');
-      old.addEventListener('animationend', function() {
-        old.classList.remove('active', 'flip-out-rev');
-        flipping = false;
-      }, { once: true });
-      next.classList.add('active', 'flip-in-rev');
-      next.addEventListener('animationend', function() {
-        next.classList.remove('flip-in-rev');
-      }, { once: true });
+      flipCards[flipIndex].classList.add('active');
       updateNav();
     });
 
